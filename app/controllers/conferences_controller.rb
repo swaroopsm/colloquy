@@ -1,4 +1,7 @@
 class ConferencesController < ApplicationController
+  before_filter :authenticate_user! :except=> [:show, :index]
+
+
   # GET /conferences
   # GET /conferences.json
   def index
