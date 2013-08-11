@@ -13,5 +13,7 @@ class User < ActiveRecord::Base
   has_many :conferences, :class_name=>"ConferenceUser"
   has_many :pages
 
+  belongs_to :role
+
 
 end

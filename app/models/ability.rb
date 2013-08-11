@@ -10,14 +10,7 @@ class Ability
 
     if user.role.title == "admin"
          can :manage, Conference
-    end
-
-    if user.role.title == "reviewer"
-         
-    end
-
-    if user.role.title == "attendee"
-
+         can :manage, Page
     end
 
 
