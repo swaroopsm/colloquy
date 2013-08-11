@@ -1,5 +1,7 @@
 Colloquy::Application.routes.draw do
 
+  devise_for :users
+
   resources :conferences
 
   root :to => "home#index"
