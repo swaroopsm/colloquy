@@ -1,5 +1,8 @@
 Colloquy::Application.routes.draw do
 
+  resources :pages
+
+
   devise_for :users
 
   resources :conferences
