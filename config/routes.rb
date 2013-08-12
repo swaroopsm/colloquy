@@ -1,6 +1,8 @@
 Colloquy::Application.routes.draw do
 
-  resources :workshops
+  resources :workshops do
+  	resources :attachments, :only => [:update, :destroy]
+  end
 
 
   resources :plenaries
@@ -15,6 +17,8 @@ Colloquy::Application.routes.draw do
   devise_for :users
 
   resources :conferences
+
+  resources :attachments, :only => [:index]
 
   root :to => "home#index"
   # The priority is based upon order of creation:
