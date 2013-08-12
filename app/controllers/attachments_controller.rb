@@ -18,7 +18,7 @@ class AttachmentsController < ApplicationController
 
 	def update
 		@attachment = Attachment.find(params[:id])
-		@attachment.pic = params[:attachment][:pic]
+		@attachment.update_attributes(params[:attachment])
 		@attachment.save
 	end
 
