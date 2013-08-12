@@ -19,13 +19,17 @@ class AttachmentsController < ApplicationController
 	def update
 		@attachment = Attachment.find(params[:id])
 		@attachment.update_attributes(params[:attachment])
-		@attachment.save
+		if @attachment.save
+			redirect_to attachments_path
+		end
 	end
 
 	def destroy
 		@attachment = Attachment.find(params[:id])
-		@attachment.destroy
-		@attachment.pic.clear
+		if @attachment.destroy
+			@attachment.pic.clear
+			redirect_to attachments_path
+		end
 	end
 
 end

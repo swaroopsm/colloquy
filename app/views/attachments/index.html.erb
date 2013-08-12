@@ -3,39 +3,42 @@
 
 <% else -%>
 	<% if @workshops.any? -%>
+		<h3>Listing Images for Workshops </h3><br />
 		<% @workshops.each do |workshop| %>
 			<p>Images for <%= workshop[1].first.attachable.title %></p><hr />
 			<% workshop[1].each do |w| -%>
 				<%= image_tag w.pic.url(:thumb) %>
 				 | <%= link_to "Change", edit_attachment_path(w), :remote => true %>
 
-				 | <%= link_to "Remove", attachment_path(w), :method => :delete %> | &nbsp;&nbsp;&nbsp;
+				 | <%= link_to "Remove", attachment_path(w), :method => :delete, data: { confirm: 'Are you sure?' } %> | &nbsp;&nbsp;&nbsp;
 			<% end -%>
 			<br /><br /><br />
 		<% end -%>
 	<% end -%>
 
 	<% if @plenaries.any? -%>
+		<h3>Listing Images for Plenaries</h3><br />
 		<% @plenaries.each do |plenary| %>
 			<p>Images for <%= plenary[1].first.attachable.title %></p><hr />
 			<% plenary[1].each do |p| -%>
 				<%= image_tag p.pic.url(:thumb) %>
 				 | <%= link_to "Change", edit_attachment_path(p), :remote => true %>
 
-				 | <%= link_to "Remove", attachment_path(p), :method => :delete %> | &nbsp;&nbsp;&nbsp;
+				 | <%= link_to "Remove", attachment_path(p), :method => :delete, data: { confirm: 'Are you sure?' } %> | &nbsp;&nbsp;&nbsp;
 			<% end -%>
 			<br /><br /><br />
 		<% end -%>
 	<% end -%>
 
 	<% if @pages.any? -%>
+		<h3>Listing Images for Pages</h3><br />
 		<% @pages.each do |page| %>
 			<p>Images for <%= plenary[1].first.attachable.title %></p><hr />
 			<% page[1].each do |p| -%>
 				<%= image_tag p.pic.url(:thumb) %>
 				 | <%= link_to "Change", edit_attachment_path(p), :remote => true %>
 
-				 | <%= link_to "Remove", attachment_path(p), :method => :delete %> | &nbsp;&nbsp;&nbsp;
+				 | <%= link_to "Remove", attachment_path(p), :method => :delete, data: { confirm: 'Are you sure?' } %> | &nbsp;&nbsp;&nbsp;
 			<% end -%>
 			<br /><br /><br />
 		<% end -%>
