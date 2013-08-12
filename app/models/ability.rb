@@ -7,6 +7,7 @@ class Ability
 # handling user privs
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     user ||= User.new # guest user (not logged in)
+    user.role ||= Role.new 
 
     if user.role.title == "admin"
          can :manage, Conference

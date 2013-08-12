@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-before_filter :getallextras
+	before_filter :getallextras
 
 
 	private

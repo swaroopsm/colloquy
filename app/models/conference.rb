@@ -3,4 +3,9 @@ class Conference < ActiveRecord::Base
 
   has_many :users, :class_name => "ConferenceUser"
   has_many :pages
+
+  def self.active
+  	c = Conference.find_by_active(true)
+  	c
+  end
 end
