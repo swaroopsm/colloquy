@@ -1,0 +1,7 @@
+<% @workshops.each do |workshop| %>
+	<p>Images for <%= workshop[1].first.attachable.title %></p><hr />
+	<% workshop[1].each do |w| -%>
+		<%= image_tag w.pic.url(:thumb) %> | Change | <%= link_to "Remove", workshop_attachment_path(w.attachable, w), :method => :delete %> | &nbsp;&nbsp;&nbsp;
+	<% end -%>
+	<br /><br /><br />
+<% end -%>
