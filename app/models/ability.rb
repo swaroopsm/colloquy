@@ -13,6 +13,7 @@ class Ability
          can :manage, Conference
          can :manage, Page
          can :manage, Pagecat
+         can :manage, Plenary
     end
 
 

@@ -1,4 +1,11 @@
 class PlenariesController < ApplicationController
+  before_filter :authenticate_user!, :except=> [:show, :index]
+  before_filter :getallextras
+  before_filter :allconferences
+  load_and_authorize_resource :except => [:index, :show]
+
+
+
   # GET /plenaries
   # GET /plenaries.json
   def index
@@ -79,5 +86,14 @@ class PlenariesController < ApplicationController
       format.html { redirect_to plenaries_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+  def getallextras
+    @xpagecats = Pagecat.all
+  end
+
+  def allconferences
+    @xconfs = Conference.all
   end
 end
