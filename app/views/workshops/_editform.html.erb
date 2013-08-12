@@ -27,9 +27,6 @@
     <%= f.label :conference_id %><br />
     <%= f.text_field :conference_id %>
   </div>
-  <%= fields_for :attachments do |form| %>
-    <%= form.file_field :pic %>
-  <% end %>
   <% @workshop.attachments.each do |a| %>
     <%= image_tag a.pic.url(:thumb) %>
   <% end %>
