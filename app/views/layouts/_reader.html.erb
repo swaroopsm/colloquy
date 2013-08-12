@@ -28,13 +28,15 @@
 				<% if c.pages.length >0 %>
 				<ul>
 					<% c.pages.each do |p| %>
-						<%= link_to p.title, page_path(p) %>
-						<li><%= p.title %></li>
+						<li><%= link_to p.title, page_path(p) %></li>
+						
 					<% end %>
 				</ul>
 				<% end %>
 		</li>
 		<% end %>
+		<li><%= link_to "Login", new_user_session_path %></li>
+		<div class="timer1 yellowback"><a href="http://sccs2013.doattend.com/">Register</a></div>
 	</ul>
 </div>
 
