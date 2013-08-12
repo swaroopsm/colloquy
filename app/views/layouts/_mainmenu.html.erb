@@ -10,6 +10,7 @@
 
 <div id="mainmenu">
 	<ul id="nav_main">
+		<li><%= link_to "Home", root_path %></li>
 		<% @xpagecats.each do |c| %>
 			<li>
 				<a href="#"><%= c.type %></a>
