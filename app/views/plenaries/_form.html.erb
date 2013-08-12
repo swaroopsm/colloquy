@@ -1,4 +1,4 @@
-<%= form_for(@plenary) do |f| %>
+<%= form_for(@plenary,:html => { :multipart => true }) do |f| %>
   <% if @plenary.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@plenary.errors.count, "error") %> prohibited this plenary from being saved:</h2>
@@ -17,7 +17,8 @@
   </div>
   <div class="field">
     <%= f.label :content %><br />
-    <%= f.text_area :content %>
+    <%= f.text_area :content, :class => "tinymce" %>
+    <%= tinymce %>
   </div>
   <div class="field">
     <%= f.label :presenter %><br />
@@ -27,10 +28,12 @@
     <%= f.label :conference_id %><br />
     <%= f.number_field :conference_id %>
   </div>
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
-  </div>
+  <%= fields_for :attachments do |form| %>
+    <%= form.file_field :pic %>
+  <% end %>
+  <% @plenary.attachments.each do |a| %>
+    <%= image_tag a.pic.url(:thumb) %>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>

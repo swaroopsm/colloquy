@@ -41,13 +41,13 @@ class WorkshopsController < ApplicationController
   # GET /workshops/1/edit
   def edit
     @workshop = Workshop.find(params[:id])
-    # @workshop.attachments.build
   end
 
   # POST /workshops
   # POST /workshops.json
   def create
     @workshop = Workshop.new(params[:workshop])
+    @workshop.user = current_user
     @workshop.attachments.build(params[:attachments])
 
     respond_to do |format|

@@ -4,8 +4,6 @@ class PlenariesController < ApplicationController
   before_filter :allconferences, :only => [:edit, :new]
   load_and_authorize_resource :except => [:index, :show]
 
-
-
   # GET /plenaries
   # GET /plenaries.json
   def index
@@ -32,6 +30,7 @@ class PlenariesController < ApplicationController
   # GET /plenaries/new.json
   def new
     @plenary = Plenary.new
+    @plenary.attachments.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -48,6 +47,8 @@ class PlenariesController < ApplicationController
   # POST /plenaries.json
   def create
     @plenary = Plenary.new(params[:plenary])
+    @plenary.user = current_user
+    @plenary.attachments.build(params[:attachments])
 
     respond_to do |format|
       if @plenary.save

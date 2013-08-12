@@ -1,10 +1,10 @@
-<%= form_for(@workshop,:html => { :multipart => true }) do |f| %>
-  <% if @workshop.errors.any? %>
+<%= form_for(@plenary,:html => { :multipart => true }) do |f| %>
+  <% if @plenary.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@workshop.errors.count, "error") %> prohibited this workshop from being saved:</h2>
+      <h2><%= pluralize(@plenary.errors.count, "error") %> prohibited this plenary from being saved:</h2>
 
       <ul>
-      <% @workshop.errors.full_messages.each do |msg| %>
+      <% @plenary.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -26,15 +26,11 @@
   </div>
   <div class="field">
     <%= f.label :conference_id %><br />
-    <%= f.text_field :conference_id %>
+    <%= f.number_field :conference_id %>
   </div>
-  <%= fields_for :attachments do |form| %>
-    <%= form.file_field :pic %>
-  <% end %>
-  <% @workshop.attachments.each do |a| %>
+  <% @plenary.attachments.each do |a| %>
     <%= image_tag a.pic.url(:thumb) %>
   <% end %>
-  <p>To change the image, simply upload a new file.</p>
   <div class="actions">
     <%= f.submit %>
   </div>
