@@ -14,6 +14,7 @@ class Ability
          can :manage, Page
          can :manage, Pagecat
          can :manage, Plenary
+         can :manage, Workshop
     end
 
 

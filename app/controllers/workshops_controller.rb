@@ -1,4 +1,9 @@
 class WorkshopsController < ApplicationController
+  before_filter :authenticate_user!, :except=> [:show, :index]
+  before_filter :getallextras, :only => [:index, :show]
+  before_filter :allconferences, :only => [:edit, :new]
+  load_and_authorize_resource :except => [:index, :show]
+
   # GET /workshops
   # GET /workshops.json
   def index
@@ -80,4 +85,16 @@ class WorkshopsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  private
+  def getallextras
+    @xpagecats = Pagecat.all
+  end
+
+  def allconferences
+    @xconfs = Conference.all
+  end
+
+
 end
