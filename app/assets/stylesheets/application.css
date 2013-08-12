@@ -11,3 +11,19 @@
  *= require_self
  *= require_tree .
  */
+
+
+
+/*SIGNED IN DIV*/
+
+#signedin {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	background-color: rgba(0,0,0,0.6);
+	color: white;
+	padding: 15px;
+	font-size: 13px;
+	border-top-left-radius: 5px;
+
+}

@@ -1,7 +1,22 @@
 Colloquy::Application.routes.draw do
+
+  resources :workshops
+
+
+  resources :plenaries
+
+
+  resources :pagetypes
+
+
+  resources :pages
+
+
+  devise_for :users
+
   resources :conferences
 
-
+  root :to => "home#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

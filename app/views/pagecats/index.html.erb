@@ -1,0 +1,23 @@
+<h1>Listing pagecats</h1>
+
+<table>
+  <tr>
+    <th>Type</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pagetypes.each do |pagecat| %>
+  <tr>
+    <td><%= pagecat.type %></td>
+    <td><%= link_to 'Show', pagecat %></td>
+    <td><%= link_to 'Edit', edit_pagecat_path(pagecat) %></td>
+    <td><%= link_to 'Destroy', pagecat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Pagecat', new_pagecat_path %>
