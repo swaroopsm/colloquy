@@ -30,6 +30,7 @@ class WorkshopsController < ApplicationController
   # GET /workshops/new.json
   def new
     @workshop = Workshop.new
+    # @workshop.attachments.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,12 +41,14 @@ class WorkshopsController < ApplicationController
   # GET /workshops/1/edit
   def edit
     @workshop = Workshop.find(params[:id])
+    # @workshop.attachments.build
   end
 
   # POST /workshops
   # POST /workshops.json
   def create
     @workshop = Workshop.new(params[:workshop])
+    # @workshop.attachments.build(params[:attachments])
 
     respond_to do |format|
       if @workshop.save
@@ -62,6 +65,7 @@ class WorkshopsController < ApplicationController
   # PUT /workshops/1.json
   def update
     @workshop = Workshop.find(params[:id])
+    # @workshop.attachments.build(params[:attachments])
 
     respond_to do |format|
       if @workshop.update_attributes(params[:workshop])
