@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :pagecat_id %><br />
+    <%= f.number_field :pagecat_id %>
+  </div>
+
+  <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
@@ -23,10 +28,6 @@
   <div class="field">
     <%= f.label :active %><br />
     <%= f.check_box :active %>
-  </div>
-  <div class="field">
-    <%= f.label :conference_id %><br />
-    <%= f.number_field :conference_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

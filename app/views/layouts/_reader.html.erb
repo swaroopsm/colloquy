@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Colloquy</title>
+  <link href='http://fonts.googleapis.com/css?family=Averia+Serif+Libre:300|Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+<div id="header">
+	<!-- <a href="http://www.sccs-bng.org/"><img src="http://www.sccs-bng.org/images/logo.png" alt=""></a> -->
+	<h1>STUDENTS&#8217; CONFERENCE ON<br>CONSERVATION SCIENCE</h1>
+	<h2>25 - 28 SEPTEMBER, 2013, BANGALORE</h2>
+	<p class="desc">100 Presentations | 300 of Africa and Asia's brightest conservation researchers</p>
+	<div class="shadow">
+		<!-- <img src="http://www.sccs-bng.org/images/shadow-top.png" alt=""> -->
+	</div>
+</div>
+
+<div id="mainmenu">
+	<ul id="nav_main">
+		<% @xpagecats.each do |c| %>
+			<li>
+				<a href="#"><%= c.type %></a>
+				<% if c.pages.length >0 %>
+				<ul>
+					<% c.pages.each do |p| %>
+						<%= link_to p.title, page_path(p) %>
+						<li><%= p.title %></li>
+					<% end %>
+				</ul>
+				<% end %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+
+	<p class="notice"><%= notice %></p>
+	<p class="alert"><%= alert %></p>
+
+<%= yield %>
+
+
+<div id="signedin">
+	<% if user_signed_in? %>
+		Hi <%= current_user.email %>! <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %> 
+	<% end %>
+</div>
+</body>
+</html>

@@ -11,6 +11,7 @@ class Ability
     if user.role.title == "admin"
          can :manage, Conference
          can :manage, Page
+         can :manage, Pagecat
     end
 
 

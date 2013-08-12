@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130811123215) do
+ActiveRecord::Schema.define(:version => 20130811141917) do
 
   create_table "conference_users", :force => true do |t|
     t.integer  "conference_id"
@@ -31,6 +31,12 @@ ActiveRecord::Schema.define(:version => 20130811123215) do
     t.datetime "updated_at",     :null => false
   end
 
+  create_table "pagecats", :force => true do |t|
+    t.string   "type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "pages", :force => true do |t|
     t.string   "title"
     t.text     "content"
@@ -39,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20130811123215) do
     t.integer  "user_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.integer  "pagecat_id"
   end
 
   create_table "roles", :force => true do |t|
