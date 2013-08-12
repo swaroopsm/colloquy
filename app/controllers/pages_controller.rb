@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   before_filter :authenticate_user!, :except=> [:show, :index]
+  before_filter :getallextras
   load_and_authorize_resource :except => [:index, :show]
 
 
@@ -84,5 +85,12 @@ class PagesController < ApplicationController
       format.html { redirect_to pages_url }
       format.json { head :no_content }
     end
+  end
+
+
+  private
+  def getallextras
+    @xpage = Page.select([:title, :pagecat_id])
+    @xpagecats = Pagecat.all
   end
 end

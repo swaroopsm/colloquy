@@ -8,41 +8,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-
-<div id="header">
-	<!-- <a href="http://www.sccs-bng.org/"><img src="http://www.sccs-bng.org/images/logo.png" alt=""></a> -->
-	<h1>STUDENTS&#8217; CONFERENCE ON<br>CONSERVATION SCIENCE</h1>
-	<h2>25 - 28 SEPTEMBER, 2013, BANGALORE</h2>
-	<p class="desc">100 Presentations | 300 of Africa and Asia's brightest conservation researchers</p>
-	<div class="shadow">
-		<!-- <img src="http://www.sccs-bng.org/images/shadow-top.png" alt=""> -->
-	</div>
-</div>
-
-<div id="mainmenu">
-	<ul id="nav_main">
-		<% @xpagecats.each do |c| %>
-			<li>
-				<a href="#"><%= c.type %></a>
-				<% if c.pages.length >0 %>
-				<ul>
-					<% c.pages.each do |p| %>
-						<li><%= link_to p.title, page_path(p) %></li>
-						
-					<% end %>
-				</ul>
-				<% end %>
-		</li>
-		<% end %>
-		<li><%= link_to "Login", new_user_session_path %></li>
-		<div class="timer1 yellowback"><a href="http://sccs2013.doattend.com/">Register</a></div>
-	</ul>
-</div>
-
 	<p class="notice"><%= notice %></p>
 	<p class="alert"><%= alert %></p>
 
+	<%= render 'layouts/mainmenu' %>
 <%= yield %>
 
 
