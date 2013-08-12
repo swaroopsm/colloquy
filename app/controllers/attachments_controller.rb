@@ -9,6 +9,12 @@ class AttachmentsController < ApplicationController
 		@pages = @attachments.select{ |a| a.attachable_type == "Page" }.group_by{ |id| id[:attachable_id] }
 	end
 
+	def update
+		@attachment = Attachment.find(params[:id])
+		@attachment.pic = params[:attachment][:pic]
+		@attachment.save
+	end
+
 	def destroy
 		@attachment = Attachment.find(params[:id])
 		@attachment.destroy
