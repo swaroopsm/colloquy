@@ -30,7 +30,7 @@ class WorkshopsController < ApplicationController
   # GET /workshops/new.json
   def new
     @workshop = Workshop.new
-    # @workshop.attachments.build
+    @workshop.attachments.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -48,7 +48,7 @@ class WorkshopsController < ApplicationController
   # POST /workshops.json
   def create
     @workshop = Workshop.new(params[:workshop])
-    # @workshop.attachments.build(params[:attachments])
+    @workshop.attachments.build(params[:attachments])
 
     respond_to do |format|
       if @workshop.save
