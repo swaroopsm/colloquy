@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @plenary.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @plenary.content %>
+</p>
+
+<p>
+  <b>Presenter:</b>
+  <%= @plenary.presenter %>
+</p>
+
+<p>
+  <b>Conference:</b>
+  <%= @plenary.conference_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @plenary.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_plenary_path(@plenary) %> |
+<%= link_to 'Back', plenaries_path %>

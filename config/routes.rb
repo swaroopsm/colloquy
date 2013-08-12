@@ -1,5 +1,8 @@
 Colloquy::Application.routes.draw do
 
+  resources :plenaries
+
+
   resources :pagetypes
 
 
