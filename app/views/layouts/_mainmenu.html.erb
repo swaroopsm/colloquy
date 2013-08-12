@@ -11,6 +11,11 @@
 <div id="mainmenu">
 	<ul id="nav_main">
 		<li><%= link_to "Home", root_path %></li>
+		<li><a href="#">Programme</a>
+				<ul>
+					<li><%= link_to "Plenaries", plenaries_path %></li>
+				</ul>
+		</li>
 		<% @xpagecats.each do |c| %>
 			<li>
 				<a href="#"><%= c.type %></a>
@@ -24,7 +29,13 @@
 				<% end %>
 		</li>
 		<% end %>
-		<li><%= link_to "Login", new_user_session_path %></li>
+		<li>
+			<% if user_signed_in? %>
+			<%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+			<% else %>
+			<%= link_to "Login", new_user_session_path %>
+			<% end %>
+		</li>
 		<div class="timer1 yellowback"><a href="http://sccs2013.doattend.com/">Register</a></div>
 	</ul>
 </div>

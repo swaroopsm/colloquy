@@ -1,0 +1,9 @@
+<% if user_signed_in? -%>
+	<% if current_user.role  == "attendee"%>
+		<%= render 'layouts/reader' %>
+	<% else %>
+		<%= render 'layouts/admin' %>
+	<% end %>
+<% else -%>
+	<%= render 'layouts/reader' %>
+<% end %>
