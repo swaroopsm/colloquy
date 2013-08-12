@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   before_filter :authenticate_user!, :except=> [:show, :index]
   before_filter :getallextras
+  before_filter :allconferences
   load_and_authorize_resource :except => [:index, :show]
 
 
@@ -90,7 +91,10 @@ class PagesController < ApplicationController
 
   private
   def getallextras
-    @xpage = Page.select([:title, :pagecat_id])
     @xpagecats = Pagecat.all
+  end
+
+  def allconferences
+    @xconfs = Conference.all
   end
 end
