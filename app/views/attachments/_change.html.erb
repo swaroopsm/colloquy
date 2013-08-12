@@ -1,0 +1,7 @@
+<h3>Change Image for <%= @attachment.attachable.title %></h3>
+<hr>
+
+<%= form_for @attachment do |a| %>
+	<%= a.file_field :pic %>
+	<%= a.submit "Update Image" %>
+<% end -%>
