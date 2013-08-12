@@ -1,38 +1,43 @@
-<% if @workshops.any? -%>
-	<% @workshops.each do |workshop| %>
-		<p>Images for <%= workshop[1].first.attachable.title %></p><hr />
-		<% workshop[1].each do |w| -%>
-			<%= image_tag w.pic.url(:thumb) %>
-			 | <%= link_to "Change", edit_attachment_path(w), :remote => true %>
+<% if @workshops.empty? and @plenaries.empty? and @pages.empty? -%>
+	<h3>There exists no images. Add images in the respective views.</h3>
 
-			 | <%= link_to "Remove", attachment_path(w), :method => :delete %> | &nbsp;&nbsp;&nbsp;
+<% else -%>
+	<% if @workshops.any? -%>
+		<% @workshops.each do |workshop| %>
+			<p>Images for <%= workshop[1].first.attachable.title %></p><hr />
+			<% workshop[1].each do |w| -%>
+				<%= image_tag w.pic.url(:thumb) %>
+				 | <%= link_to "Change", edit_attachment_path(w), :remote => true %>
+
+				 | <%= link_to "Remove", attachment_path(w), :method => :delete %> | &nbsp;&nbsp;&nbsp;
+			<% end -%>
+			<br /><br /><br />
 		<% end -%>
-		<br /><br /><br />
 	<% end -%>
-<% end -%>
 
-<% if @plenaries.any? -%>
-	<% @plenaries.each do |plenary| %>
-		<p>Images for <%= plenary[1].first.attachable.title %></p><hr />
-		<% plenary[1].each do |p| -%>
-			<%= image_tag p.pic.url(:thumb) %>
-			 | <%= link_to "Change", edit_attachment_path(p), :remote => true %>
+	<% if @plenaries.any? -%>
+		<% @plenaries.each do |plenary| %>
+			<p>Images for <%= plenary[1].first.attachable.title %></p><hr />
+			<% plenary[1].each do |p| -%>
+				<%= image_tag p.pic.url(:thumb) %>
+				 | <%= link_to "Change", edit_attachment_path(p), :remote => true %>
 
-			 | <%= link_to "Remove", attachment_path(p), :method => :delete %> | &nbsp;&nbsp;&nbsp;
+				 | <%= link_to "Remove", attachment_path(p), :method => :delete %> | &nbsp;&nbsp;&nbsp;
+			<% end -%>
+			<br /><br /><br />
 		<% end -%>
-		<br /><br /><br />
 	<% end -%>
-<% end -%>
 
-<% if @pages.any? -%>
-	<% @pages.each do |page| %>
-		<p>Images for <%= plenary[1].first.attachable.title %></p><hr />
-		<% page[1].each do |p| -%>
-			<%= image_tag p.pic.url(:thumb) %>
-			 | <%= link_to "Change", edit_attachment_path(p), :remote => true %>
+	<% if @pages.any? -%>
+		<% @pages.each do |page| %>
+			<p>Images for <%= plenary[1].first.attachable.title %></p><hr />
+			<% page[1].each do |p| -%>
+				<%= image_tag p.pic.url(:thumb) %>
+				 | <%= link_to "Change", edit_attachment_path(p), :remote => true %>
 
-			 | <%= link_to "Remove", attachment_path(p), :method => :delete %> | &nbsp;&nbsp;&nbsp;
+				 | <%= link_to "Remove", attachment_path(p), :method => :delete %> | &nbsp;&nbsp;&nbsp;
+			<% end -%>
+			<br /><br /><br />
 		<% end -%>
-		<br /><br /><br />
 	<% end -%>
 <% end -%>
