@@ -11,6 +11,12 @@ class Submission < ActiveRecord::Base
 	has_many :attachments, :as => :attachable
   accepts_nested_attributes_for :attachments
 
+	# Check if an abstract has been approved for a talk or a poster
+	def approved?
+		approval = [1,2]
+		!self.approved.nil? or approval.include? self.approved
+	end
+
   private
   def full_content
   	# Change this according to the client's need of abstract fields

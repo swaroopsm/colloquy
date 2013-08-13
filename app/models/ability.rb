@@ -19,6 +19,10 @@ class Ability
     	can [:new, :create], Submission do |s|
     		!user.submitted?
     	end
+    	can :read, Conference
+    	can :read, Submission do |s|
+    		s.user == user || s.approved?
+    	end
     elsif user.reviewer?
         # Write permissions for reviewer here
     else
