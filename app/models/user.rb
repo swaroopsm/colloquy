@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :pages
   has_many :plenaries
   has_many :workshops
+  has_many :submissions
 
   belongs_to :role
 
