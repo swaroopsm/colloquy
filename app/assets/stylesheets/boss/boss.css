@@ -80,8 +80,13 @@ body {
 }
 
 a {
-	color: green;
+	color: #F7931E;
+	font-weight: 700;
 	text-decoration: none;
+}
+
+a:hover {
+	color: green;
 }
 
 #signedin {
