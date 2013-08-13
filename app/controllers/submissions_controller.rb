@@ -30,7 +30,7 @@ class SubmissionsController < ApplicationController
   # GET /submissions/new.json
   def new
     @submission = Submission.new
-
+		@submission.attachments.build
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @submission }
@@ -48,6 +48,7 @@ class SubmissionsController < ApplicationController
     @submission = Submission.new(params[:submission])
     @submission.user = current_user
     @submission.conference = Conference.active
+    @submission.attachments.build(params[:attachments])
 
     respond_to do |format|
       if @submission.save

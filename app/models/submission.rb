@@ -4,5 +4,7 @@ class Submission < ActiveRecord::Base
 
 	belongs_to :user
 	belongs_to :conference
+	has_many :attachments, :as => :attachable
+  accepts_nested_attributes_for :attachments
 
 end
