@@ -1,6 +1,8 @@
 class SubmissionsController < ApplicationController
 
 	before_filter :authenticate_user!
+	load_and_authorize_resource :conference, :except => [:new, :create]
+	load_and_authorize_resource :submission, :through => :conference, :shallow => true
 
   # GET /submissions
   # GET /submissions.json
@@ -44,6 +46,8 @@ class SubmissionsController < ApplicationController
   # POST /submissions.json
   def create
     @submission = Submission.new(params[:submission])
+    @submission.user = current_user
+    @submission.conference = Conference.active
 
     respond_to do |format|
       if @submission.save

@@ -18,5 +18,24 @@ class User < ActiveRecord::Base
 
   belongs_to :role
 
+	# Check role of a user
+		def admin?
+		self.role.title == "admin"
+	end
+
+	def attendee?
+		self.role.title == "attendee"
+	end
+
+	def reviewer?
+		self.role.title == "reviewer"
+	end
+
+	# Check if a user has submitted a conference for the current/active conference
+	def submitted?
+		s = Submission.where(:user_id => self, :conference_id => Conference.active)
+		s.size > 0
+	end
+
 
 end

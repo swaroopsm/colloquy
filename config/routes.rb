@@ -14,13 +14,14 @@ Colloquy::Application.routes.draw do
 
   devise_for :users
 
-
   root :to => "home#index"
   resources :conferences, :path => "" do 
     resources :plenaries
-    resources :submissions
+    resources :submissions, :except => [:new, :create]
     resources :pages, :path => ""
   end
+
+  resources :submissions, :only => [:new, :create]
 
   resources :attachments, :only => [:update, :destroy, :edit, :index]
 
