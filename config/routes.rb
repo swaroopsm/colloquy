@@ -4,6 +4,9 @@ Colloquy::Application.routes.draw do
 
   resources :workshops
   resources :boss, :only => [:index]
+
+  match "boss/pages" => "boss#pages", :as => "boss_pages"
+
   resources :pagetypes
 
   resources :conferences, :only => [:index, :new, :show, :edit, :update, :create, :destroy]
@@ -11,6 +14,7 @@ Colloquy::Application.routes.draw do
   devise_for :users
 
   root :to => "home#index"
+  
   resources :conferences, :path => "" , :except => [:index, :new, :show, :edit, :update, :create, :destroy] do 
     resources :plenaries
     resources :submissions, :except => [:new, :create]

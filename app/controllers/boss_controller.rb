@@ -8,6 +8,11 @@ class BossController < ApplicationController
 
 	end
 
+
+
+	def pages
+	end
+
 	private
 	
 	def onlyboss
