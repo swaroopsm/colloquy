@@ -88,4 +88,21 @@ class SubmissionsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # This assigns a reviewer to an abstract
+  def assign
+		@reviewer = User.find(params[:user_id])
+		@submission = Submission.find(params[:id])
+		@assign = ReviewerSubmission.new
+		@assign.user = @reviewer
+		@assign.submission = @submission
+		@assign.save
+  end
+
+  # This unassigns a reviewer from an abstract
+  def unassign
+		@unassign = ReviewerSubmission.find(params[:id])
+		@unassign.destroy
+  end
+
 end

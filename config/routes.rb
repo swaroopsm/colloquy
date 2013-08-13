@@ -6,7 +6,9 @@ Colloquy::Application.routes.draw do
   resources :workshops
 
 
-
+	# Assign & Unassign an abstract
+	match 'reviewer/:user_id/abstract/:id/assign' => "submission#assign", :as => "submission_assign"
+	match 'abstract/:id/unassign' => "submission#unassign", :as => "submission_unassign"
 
 
   resources :pagetypes
