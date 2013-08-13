@@ -25,8 +25,8 @@
   <% if @attendees.any? %>
     <% @attendees_ids = [] %>
     <% @attendees.each do |a| %>
-      <% @attendees_ids.push a.user.id %>
-      <%= a.email %>, 
+      <% @attendees_ids.push a.user %>
+      <%= a.user.email %>, 
     <% end %>
   <% else %>
     There are no attendees for this workshop yet!
@@ -34,12 +34,12 @@
 </p>
 
 <br><br>
-<% if @attendees_ids and @attendees_ids.include? current_user.id %>
-  You are attending this workshop
+<% if @attendees_ids and @attendees_ids.include? current_user %>
+  You are attending this workshop, <%= link_to "Unattend this workshop", unattend_path(@workshop), :remote => true %>
 <% else %>
-  <%= link_to "Attend this workshop", attend_path(@workshop), :remote => true %>
+  You are not attending this workshop, <%= link_to "Attend this workshop", attend_path(@workshop), :remote => true %>
 <% end %>
-
+<br>
 <%= image_tag @workshop.attachments.first.pic.url %>
 
 <br>

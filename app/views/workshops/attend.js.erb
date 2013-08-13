@@ -2,4 +2,5 @@
 	alert(" <%= @workshop_attendee.errors.full_messages.first %>");
 <% else -%>
 	alert('You are now attending this workshop.');
+	location.reload();
 <% end -%>

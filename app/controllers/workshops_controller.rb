@@ -96,7 +96,7 @@ class WorkshopsController < ApplicationController
   def attend
     @workshop = Workshop.find(params[:workshop_id])
     @workshop_attendee = WorkshopAttendee.new
-    @workshop_attendee[:user_id] = current_user
+    @workshop_attendee.user = current_user
     @workshop_attendee.workshop = @workshop
     if @workshop_attendee.save
       respond_to do |format|
@@ -104,6 +104,17 @@ class WorkshopsController < ApplicationController
       end
     end
   end
+
+   # Unattend the workshop
+  def unattend
+    @workshop = Workshop.find(params[:workshop_id])
+    @workshop_attendee = WorkshopAttendee.where(:user_id => current_user, :workshop_id => @workshop)
+    @workshop_attendee[0].destroy
+      respond_to do |format|
+        format.js
+      end
+  end
+
 
 
   private

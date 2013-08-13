@@ -19,6 +19,8 @@ Colloquy::Application.routes.draw do
   resources :attachments, :only => [:update, :destroy, :edit, :index]
 
   match 'workshops/:workshop_id/attend' => 'workshops#attend', :as => 'attend'
+  match 'workshops/:workshop_id/unattend' => 'workshops#unattend', :as => 'unattend'
+
 
   root :to => "home#index"
   # The priority is based upon order of creation:

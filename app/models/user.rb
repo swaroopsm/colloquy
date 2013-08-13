@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   has_many :plenaries
   has_many :workshops
 
-  belongs_to :workshop_attendee
+  has_many :workshop_attendees
   belongs_to :role
 
 
