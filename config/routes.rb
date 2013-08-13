@@ -1,5 +1,8 @@
 Colloquy::Application.routes.draw do
 
+  resources :submissions
+
+
   resources :workshops
 
 
@@ -11,9 +14,11 @@ Colloquy::Application.routes.draw do
 
   devise_for :users
 
+
   root :to => "home#index"
   resources :conferences, :path => "" do 
     resources :plenaries
+    resources :submissions
     resources :pages, :path => ""
   end
 

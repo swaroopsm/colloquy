@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  authors: MyText
+  content: MyText
+  conference_id: 1
+  user_id: 1
+  approved: 1
+  preference: 1
+  bursary_for: MyString
+  bursary_why: MyText
+
+two:
+  title: MyString
+  authors: MyText
+  content: MyText
+  conference_id: 1
+  user_id: 1
+  approved: 1
+  preference: 1
+  bursary_for: MyString
+  bursary_why: MyText
