@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_many  :workshops
   has_many  :submissions
   has_many  :reviews, :class_name => "ReviewerSubmission"
+  has_many	:scores
 
   belongs_to :role
 

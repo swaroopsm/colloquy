@@ -13,6 +13,7 @@ class Submission < ActiveRecord::Base
 	belongs_to  :conference
 	has_many 		:attachments, :as => :attachable
 	has_many		:reviewers, :class_name => "ReviewerSubmission"
+	has_many		:scores
 
   accepts_nested_attributes_for :attachments
 
