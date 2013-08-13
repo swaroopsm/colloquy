@@ -25,7 +25,13 @@ class Ability
     		s.user == user || s.approved?
     	end
     elsif user.reviewer?
-        # Write permissions for reviewer here
+    	# Write permissions for reviewer here
+    	can :read, Submission do |s|
+				s.approved? or ReviewerSubmission.where(:submission_id => s, :user_id => user).size > 0
+    	end
+    	can [:new, :create], Score do |s|
+				ReviewerSubmission.where(:submission_id => s.submission, :user_id => user).size > 0
+    	end
     else
         # Write persmissions for public here
     end
