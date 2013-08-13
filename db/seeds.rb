@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+roles = ["admin", "reviewer", "attendee"]
+
+roles.each do |r|
+	Role.create(title: r)
+end
