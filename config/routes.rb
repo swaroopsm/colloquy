@@ -13,6 +13,12 @@ Colloquy::Application.routes.draw do
 
   resources :pagetypes
 
+	 resources :submissions, :only => [:new, :create], :path => :abstracts do
+  	resources :scores
+  end
+
+
+  resources :attachments, :only => [:update, :destroy, :edit, :index]
 
   devise_for :users
 
@@ -23,12 +29,6 @@ Colloquy::Application.routes.draw do
     resources :pages, :path => ""
   end
 
-  resources :submissions, :only => [:new, :create], :path => :abstracts do
-  	resources :scores
-  end
-
-
-  resources :attachments, :only => [:update, :destroy, :edit, :index]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
