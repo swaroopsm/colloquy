@@ -1,7 +1,8 @@
 class ScoresController < ApplicationController
 
 	before_filter :authenticate_user!
-	load_and_authorize_resource
+	load_and_authorize_resource :submission
+	load_and_authorize_resource :score, :through => :submission
 
 	def create
 		@score = Score.new(params[:score])
@@ -10,4 +11,7 @@ class ScoresController < ApplicationController
 		@score.save
 	end
 
+	def new
+
+	end
 end
