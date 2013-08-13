@@ -48,7 +48,7 @@ class SubmissionsController < ApplicationController
     @submission = Submission.new(params[:submission])
     @submission.user = current_user
     @submission.conference = Conference.active
-    @submission.attachments.build(params[:attachments])
+    @submission.attachments.build(params[:attachments]) if params[:attachments].present?
 
     respond_to do |format|
       if @submission.save

@@ -43,6 +43,11 @@
   <b>Bursary why:</b>
   <%= @submission.bursary_why %>
 </p>
+<% if @submission.attachments.any? -%>
+	<% @submission.attachments.each do |a| -%>
+		<p><%= image_tag a.pic.url %></p>
+	<% end -%>
+<% end -%>
 
 
 <%= link_to 'Edit', edit_submission_path(@submission) %> |
