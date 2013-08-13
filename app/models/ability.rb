@@ -17,7 +17,7 @@ class Ability
         can :manage, Workshop
     elsif user.role.title == "attendee"
       # Workshop abilities for attendee
-        can [:read], Workshop
+        can [:read,:attend], Workshop
     else
       
     end

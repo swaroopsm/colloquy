@@ -19,6 +19,7 @@ class WorkshopsController < ApplicationController
   # GET /workshops/1.json
   def show
     @workshop = Workshop.find(params[:id])
+    @attendees = @workshop.attendees
 
     respond_to do |format|
       format.html # show.html.erb
@@ -50,7 +51,7 @@ class WorkshopsController < ApplicationController
     @workshop.user = current_user
     @workshop.attachments.build(params[:attachments])
     @workshop.conference = Conference.active
-    
+
     respond_to do |format|
       if @workshop.save
         format.html { redirect_to @workshop, notice: 'Workshop was successfully created.' }
@@ -88,6 +89,19 @@ class WorkshopsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to workshops_url }
       format.json { head :no_content }
+    end
+  end
+
+  # Attend the workshop
+  def attend
+    @workshop = Workshop.find(params[:workshop_id])
+    @workshop_attendee = WorkshopAttendee.new
+    @workshop_attendee[:user_id] = current_user
+    @workshop_attendee.workshop = @workshop
+    if @workshop_attendee.save
+      respond_to do |format|
+        format.js
+      end
     end
   end
 

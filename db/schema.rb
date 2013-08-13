@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130813082812) do
+ActiveRecord::Schema.define(:version => 20130813091929) do
 
   create_table "attachments", :force => true do |t|
     t.string   "attachable_type"
@@ -95,10 +95,10 @@ ActiveRecord::Schema.define(:version => 20130813082812) do
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
   create_table "workshop_attendees", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "workshop_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "user_id"
+    t.integer  "workshop_id"
   end
 
   create_table "workshops", :force => true do |t|

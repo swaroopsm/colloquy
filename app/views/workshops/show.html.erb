@@ -21,10 +21,24 @@
 </p>
 
 <p>
-  <b>User:</b>
-  <%= @workshop.user.email %>
+  <b>Attendees:</b>
+  <% if @attendees.any? %>
+    <% @attendees_ids = [] %>
+    <% @attendees.each do |a| %>
+      <% @attendees_ids.push a.user.id %>
+      <%= a.email %>, 
+    <% end %>
+  <% else %>
+    There are no attendees for this workshop yet!
+  <% end %>
 </p>
 
+<br><br>
+<% if @attendees_ids and @attendees_ids.include? current_user.id %>
+  You are attending this workshop
+<% else %>
+  <%= link_to "Attend this workshop", attend_path(@workshop), :remote => true %>
+<% end %>
 
 <%= image_tag @workshop.attachments.first.pic.url %>
 

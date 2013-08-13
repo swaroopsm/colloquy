@@ -6,7 +6,6 @@
     <th>Content</th>
     <th>Presenter</th>
     <th>Conference</th>
-    <th>User</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,8 +16,7 @@
     <td><%= workshop.title %></td>
     <td><%= workshop.content %></td>
     <td><%= workshop.presenter %></td>
-    <td><%= workshop.conference_id %></td>
-    <td><%= workshop.user_id %></td>
+    <td><%= workshop.conference.title %></td>
     <td><%= link_to 'Show', workshop %></td>
     <td><%= link_to 'Edit', edit_workshop_path(workshop) %></td>
     <td><%= link_to 'Destroy', workshop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
