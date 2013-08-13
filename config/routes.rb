@@ -23,7 +23,10 @@ Colloquy::Application.routes.draw do
     resources :pages, :path => ""
   end
 
-  resources :submissions, :only => [:new, :create]
+  resources :submissions, :only => [:new, :create], :path => :abstracts do
+  	resources :scores
+  end
+
 
   resources :attachments, :only => [:update, :destroy, :edit, :index]
 
