@@ -52,7 +52,7 @@ class SubmissionsController < ApplicationController
 
     respond_to do |format|
       if @submission.save
-        format.html { redirect_to @submission, notice: 'Submission was successfully created.' }
+        format.html { redirect_to conference_submission_path(Conference.active, @submission), notice: 'Submission was successfully created.' }
         format.json { render json: @submission, status: :created, location: @submission }
       else
         format.html { render action: "new" }
