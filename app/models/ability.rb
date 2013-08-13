@@ -19,6 +19,8 @@ class Ability
     	can [:new, :create], Submission do |s|
     		!user.submitted?
     	end
+    elsif user.reviewer?
+        # Write permissions for reviewer here
     else
         # Write persmissions for public here
     end
