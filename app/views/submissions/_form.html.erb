@@ -20,8 +20,20 @@
     <%= f.text_area :authors %>
   </div>
   <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content %>
+    <%= f.label :aim %><br />
+    <%= f.text_area :aim, :class => "tinymce" %>
+  </div>
+  <div class="field">
+    <%= f.label :methods %><br />
+    <%= f.text_area :methods, :class => "tinymce" %>
+  </div>
+  <div class="field">
+    <%= f.label :results %><br />
+    <%= f.text_area :results, :class => "tinymce" %>
+  </div>
+  <div class="field">
+    <%= f.label :conservation %><br />
+    <%= f.text_area :conservation, :class => "tinymce" %>
   </div>
   <div class="field">
     <%= f.label :preference %><br />
@@ -45,3 +57,5 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<%= tinymce %>
