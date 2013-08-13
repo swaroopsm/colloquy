@@ -10,11 +10,16 @@ class Ability
     user.role ||= Role.new 
 
     if user.role.title == "admin"
-         can :manage, Conference
-         can :manage, Page
-         can :manage, Pagecat
-         can :manage, Plenary
-         can :manage, Workshop
+        can :manage, Conference
+        can :manage, Page
+        can :manage, Pagecat
+        can :manage, Plenary
+        can :manage, Workshop
+    elsif user.role.title == "attendee"
+      # Workshop abilities for attendee
+        can [:read], Workshop
+    else
+      
     end
 
 

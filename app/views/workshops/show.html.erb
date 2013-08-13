@@ -17,17 +17,19 @@
 
 <p>
   <b>Conference:</b>
-  <%= @workshop.conference_id %>
+  <%= @workshop.conference.title %>
 </p>
 
 <p>
   <b>User:</b>
-  <%= @workshop.user_id %>
+  <%= @workshop.user.email %>
 </p>
 
 
 <%= image_tag @workshop.attachments.first.pic.url %>
 
-
-<%= link_to 'Edit', edit_workshop_path(@workshop) %> |
+<br>
+<% if can? :edit, @workshop %>
+  <%= link_to 'Edit', edit_workshop_path(@workshop) %> |
+<% end %>
 <%= link_to 'Back', workshops_path %>
