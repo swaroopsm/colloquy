@@ -20,15 +20,15 @@ class User < ActiveRecord::Base
 
 	# Check role of a user
 		def admin?
-		self.role.name == "admin"
+		self.role.title == "admin"
 	end
 
 	def attendee?
-		self.role.name == "attendee"
+		self.role.title == "attendee"
 	end
 
 	def reviewer?
-		self.role.name == "reviewer"
+		self.role.title == "reviewer"
 	end
 
 
