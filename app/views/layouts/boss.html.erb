@@ -11,28 +11,30 @@
 <body>
 	<h1>SCCS Colloquy : <%= current_user.role.title.humanize %> Interface</h1>
 	<div class="adminbar">
-		<h2>Conferences</h2>
+		<div class="manage">
+		<h5>Conferences</h5>
 		<%= link_to "All Conferences", conferences_path() %>
 		<%= link_to "New Conference", new_conference_path(), :remote=>true %>
-		<%= link_to "Edit #{@conference.title} Conference", edit_conference_path(@conference), :remote=>true %>
+		<% # link_to "Edit #{@conference.title} Conference", edit_conference_path(@conference), :remote=>true %>
+		</div>
 
-
-		<h2>Pages</h2>
+		<div class="manage">
+		<h5>Pages</h5>
 		<%= link_to "All Pages", boss_pages_path %>
 		<%= link_to "New Page", new_conference_page_path(@conference), :remote=>true %>
+		</div>
+
+		<h5>Workshops</h5>
 
 
-		<h2>Workshops</h2>
+		<h5>Plenaries</h5>
 
-
-		<h2>Plenaries</h2>
-		<%= link_to "All Plenaries", conference_plenaries_path(@conference)  %>
 
 		
-		<h2>Attendees</h2>
+		<h5>Attendees</h5>
 
 
-		<h2>Reviewers</h2>
+		<h5>Reviewers</h5>
 
 
 	</div>

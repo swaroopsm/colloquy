@@ -72,7 +72,7 @@ body {
      font-smoothing: antialiased;
      font-family: 'Open Sans', sans-serif;
      font-weight: 100;
-     font-size: 14px;
+     font-size: 13px;
      line-height: 1.6;
 }
 
@@ -87,6 +87,22 @@ a {
 
 a:hover {
 	color: green;
+}
+
+h1, h2, h3, h4, h5 {
+	font-weight: 700;
+}
+
+h1 {font-size: 150%;} h2 {font-size: 140%;} h3 {font-size: 130%;} h4 {font-size: 120%;} h5 {font-size: 110%;}
+
+
+.manage {
+	margin: 30px;
+	display: inline-block;
+	width: 400px;
+}
+.manage a {
+
 }
 
 #signedin {
@@ -120,8 +136,8 @@ table tr {
 
 table thead th {
 background:0;
-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#8C8C8C',endColorstr='#7D7D7D');
-background-color:#8C8C8C;
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#333',endColorstr='#7D7D7D');
+background-color:#333;
 color:#FFF;
 font-size:15px;
 font-weight:700;
@@ -153,7 +169,7 @@ border-bottom:none;
 }
 
 table tfoot td div {
-border-top:1px solid #8C8C8C;
+border-top:1px solid #333;
 background:#EBEBEB;
 padding:2px;
 }
@@ -178,13 +194,13 @@ table tfoot li a {
 text-decoration:none;
 display:inline-block;
 color:#F5F5F5;
-border:1px solid #8C8C8C;
+border:1px solid #333;
 -webkit-border-radius:3px;
 -moz-border-radius:3px;
 border-radius:3px;
 background:0;
-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#8C8C8C',endColorstr='#7D7D7D');
-background-color:#8C8C8C;
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#333',endColorstr='#7D7D7D');
+background-color:#333;
 margin:1px;
 padding:2px 8px;
 }
@@ -193,6 +209,6 @@ table tfoot ul.active,.datagrid table tfoot ul a:hover {
 text-decoration:none;
 color:#F5F5F5;
 background:none;
-background-color:#8C8C8C;
+background-color:#333;
 border-color:#7D7D7D;
 }
