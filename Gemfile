@@ -32,6 +32,9 @@ gem 'paperclip'
 # TinyMCE
 gem 'tinymce-rails'
 
+# Friendly ID
+gem 'friendly_id'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

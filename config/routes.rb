@@ -6,26 +6,25 @@ Colloquy::Application.routes.draw do
   resources :workshops
 
 
-  resources :plenaries
+  
 
 
   resources :pagetypes
 
 
-  resources :pages
-
-
   devise_for :users
 
-  resources :conferences do
-  	resources :submissions, :except => [:new, :create]
+  root :to => "home#index"
+  resources :conferences, :path => "" do 
+    resources :plenaries
+    resources :submissions, :except => [:new, :create]
+    resources :pages, :path => ""
   end
 
   resources :submissions, :only => [:new, :create]
 
   resources :attachments, :only => [:update, :destroy, :edit, :index]
 
-  root :to => "home#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

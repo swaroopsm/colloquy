@@ -10,7 +10,7 @@ class Ability
     user.role ||= Role.new
 
     if user.admin?
-    	can :manage, Conference
+      can :manage, Conference
       can :manage, Page
       can :manage, Pagecat
       can :manage, Plenary
@@ -19,6 +19,10 @@ class Ability
     	can [:new, :create], Submission do |s|
     		!user.submitted?
     	end
+    elsif user.reviewer?
+        # Write permissions for reviewer here
+    else
+        # Write persmissions for public here
     end
 
 
