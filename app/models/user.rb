@@ -18,5 +18,18 @@ class User < ActiveRecord::Base
 
   belongs_to :role
 
+	# Check role of a user
+		def admin?
+		self.role.name == "admin"
+	end
+
+	def attendee?
+		self.role.name == "attendee"
+	end
+
+	def reviewer?
+		self.role.name == "reviewer"
+	end
+
 
 end
