@@ -35,6 +35,9 @@ gem 'tinymce-rails'
 # Friendly ID
 gem 'friendly_id'
 
+# Datatables
+gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

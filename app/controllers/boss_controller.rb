@@ -5,10 +5,10 @@ class BossController < ApplicationController
 	layout "boss"
 
 	def index
-
 	end
 
-
+	def conferences
+	end
 
 	def pages
 	end
