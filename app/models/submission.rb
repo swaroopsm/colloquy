@@ -6,6 +6,9 @@ class Submission < ActiveRecord::Base
 
   before_save :full_content
 
+	validates_presence_of :authors, :preference, :title,
+												:aim, :methods, :results, :conservation # Virtual Attributes
+
 	belongs_to :user
 	belongs_to :conference
 	has_many :attachments, :as => :attachable
