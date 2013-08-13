@@ -31,6 +31,7 @@ class PagesController < ApplicationController
   # GET /pages/new.json
   def new
     @page = Page.new
+    @page.attachments.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -48,10 +49,11 @@ class PagesController < ApplicationController
   def create
     @page = Page.new(params[:page])
     @page.user = current_user
+    @page.attachments.build(params[:attachments])
 
     respond_to do |format|
       if @page.save
-        
+        redirect_to conference_pages_path(@conference)
         format.json { render json: @page, status: :created, location: @page }
       else
         format.html { render action: "new" }

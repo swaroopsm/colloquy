@@ -7,4 +7,7 @@ class Page < ActiveRecord::Base
   belongs_to :conference
   belongs_to :user
   belongs_to :pagecat
+
+  has_many :attachments, :as => :attachable
+  accepts_nested_attributes_for :attachments
 end
