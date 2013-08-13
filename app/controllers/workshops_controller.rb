@@ -98,7 +98,7 @@ class WorkshopsController < ApplicationController
     @xpagecats.each do | p |
       @cats << p.id
     end
-    @xpages = Page.where("pagecat_id IN (?)", @cats ).group_by{ |c| c[:pagecat_id] }
+    @xpages = Page.where("pagecat_id IN (?)", @cats ).where(:conference_id => Conference.active).group_by{ |c| c[:pagecat_id] }
   end
 
   def allconferences

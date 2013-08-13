@@ -17,6 +17,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :conference_id %>
+    <%= f.collection_select(:conference_id, @xconfs, :id, :title, :prompt=>true) %>
+  </div>
+
+  <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>

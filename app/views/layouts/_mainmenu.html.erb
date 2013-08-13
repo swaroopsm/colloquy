@@ -13,20 +13,20 @@
 		<li><%= link_to "Home", root_path %></li>
 		<li><a href="#">Programme</a>
 				<ul>
-					<li><%= link_to "Plenaries", plenaries_path %></li>
+					<li><%= link_to "Plenaries", conference_plenaries_path(@conference) %></li>
 					<li><%= link_to "Workshops", workshops_path %></li>
 				</ul>
 		</li>
 
-<% @xpages.each do |c| %>
-		<li><a href="#"><%= c[1].first.pagecat.title %></a>
-		<ul>
-				<% c[1].each do |p| %>
-					<li><%= link_to p.title, page_path(p) %></li>
-				<% end %>
-		</ul>
-		</li>
-<% end %>
+		<% @xpages.each do |c| %>
+				<li><a href="#"><%= c[1].first.pagecat.title %></a>
+				<ul>
+						<% c[1].each do |p| %>
+							<li><%= link_to p.title, conference_page_path(@conference, p) %></li>
+						<% end %>
+				</ul>
+				</li>
+		<% end %>
 
 		<li>
 			<% if user_signed_in? %>

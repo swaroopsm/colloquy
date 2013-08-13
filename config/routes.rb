@@ -3,18 +3,18 @@ Colloquy::Application.routes.draw do
   resources :workshops
 
 
-  resources :plenaries
+  
 
 
   resources :pagetypes
 
 
-  resources :pages
-
-
   devise_for :users
 
-  resources :conferences
+  resources :conferences do 
+      resources :pages
+      resources :plenaries
+  end
 
   resources :attachments, :only => [:update, :destroy, :edit, :index]
 

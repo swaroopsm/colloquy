@@ -1,7 +1,8 @@
 class HomeController < ApplicationController
-	
+	before_filter :getallextras
+
   def index
-  	getallextras
+  	
   end
 
 
@@ -13,7 +14,8 @@ class HomeController < ApplicationController
     @xpagecats.each do | p |
       @cats << p.id
     end
-    @xpages = Page.where("pagecat_id IN (?)", @cats ).group_by{ |c| c[:pagecat_id] }
+    @xpages = Page.where("pagecat_id IN (?)", @cats ).where(:conference_id => Conference.active).group_by{ |c| c[:pagecat_id] }
+    @conference = Conference.active
   end
 
   def allconferences
