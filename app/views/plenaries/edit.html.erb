@@ -2,5 +2,5 @@
 
 <%= render 'editform' %>
 
-<%= link_to 'Show', @plenary %> |
-<%= link_to 'Back', plenaries_path %>
+<%= link_to 'Show', conference_plenary_path(@conference, @plenary) %> |
+<%= link_to 'Back', conference_plenaries_path(@conference) %>

@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @page %> |
-<%= link_to 'Back', conference_pages_path(@xconf) %>
+<%= link_to 'Show', conference_page_path(@conference, @page) %> |
+<%= link_to 'Back', conference_pages_path(@conference) %>

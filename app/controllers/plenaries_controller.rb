@@ -1,6 +1,6 @@
 class PlenariesController < ApplicationController
   before_filter :authenticate_user!, :except=> [:show, :index]
-  before_filter :getallextras, :only => [:index, :show]
+  before_filter :getallextras
   before_filter :allconferences, :only => [:edit, :new]
   load_and_authorize_resource :except => [:index, :show]
 
