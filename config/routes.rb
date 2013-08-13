@@ -18,7 +18,7 @@ Colloquy::Application.routes.draw do
   devise_for :users
 
   resources :conferences do
-  	resources :submissions, :except => [:new]
+  	resources :submissions, :except => [:new, :create]
   end
 
   resources :submissions, :only => [:new, :create]
