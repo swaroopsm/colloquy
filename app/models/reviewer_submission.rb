@@ -1,3 +1,6 @@
 class ReviewerSubmission < ActiveRecord::Base
-  attr_accessible :submission_id, :user_id
+
+  belongs_to :user
+  belongs_to :submission
+
 end

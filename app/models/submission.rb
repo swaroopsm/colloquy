@@ -9,9 +9,11 @@ class Submission < ActiveRecord::Base
 	validates_presence_of :authors, :preference, :title,
 												:aim, :methods, :results, :conservation # Virtual Attributes
 
-	belongs_to :user
-	belongs_to :conference
-	has_many :attachments, :as => :attachable
+	belongs_to	:user
+	belongs_to  :conference
+	has_many 		:attachments, :as => :attachable
+	has_many		:reviewers, :class_name => "ReviewerSubmission"
+
   accepts_nested_attributes_for :attachments
 
 	# Check if an abstract has been approved for a talk or a poster
