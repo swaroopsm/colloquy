@@ -17,7 +17,7 @@ class Ability
       can :manage, Workshop
     elsif user.attendee?
     	can [:new, :create], Submission do |s|
-    		!user.submitted?
+    		!user.submitted? and user.registered?
     	end
     	can :read, Conference
     	can :read, Submission do |s|
