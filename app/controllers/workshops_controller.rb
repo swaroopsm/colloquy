@@ -49,7 +49,8 @@ class WorkshopsController < ApplicationController
     @workshop = Workshop.new(params[:workshop])
     @workshop.user = current_user
     @workshop.attachments.build(params[:attachments])
-
+    @workshop.conference = Conference.active
+    
     respond_to do |format|
       if @workshop.save
         format.html { redirect_to @workshop, notice: 'Workshop was successfully created.' }

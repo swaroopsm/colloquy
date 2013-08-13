@@ -1,5 +1,5 @@
 class Workshop < ActiveRecord::Base
-  attr_accessible :conference_id, :content, :presenter, :title
+  attr_accessible :content, :presenter, :title
   belongs_to :conference
   belongs_to :user
   has_many :attachments, :as => :attachable

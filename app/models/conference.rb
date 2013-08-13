@@ -10,4 +10,5 @@ class Conference < ActiveRecord::Base
   	c = Conference.find_by_active(true)
   	c
   end
+
 end
