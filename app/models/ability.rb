@@ -15,6 +15,7 @@ class Ability
       can :manage, Pagecat
       can :manage, Plenary
       can :manage, Workshop
+
     elsif user.attendee?
     	can [:new, :create], Submission do |s|
     		!user.submitted?

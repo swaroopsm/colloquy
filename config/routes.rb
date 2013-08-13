@@ -1,25 +1,23 @@
 Colloquy::Application.routes.draw do
 
-  resources :submissions
 
 
   resources :workshops
-
-
-  
-
-
+  resources :boss, :only => [:index]
   resources :pagetypes
 
-
+  resources :conferences, :only => [:index, :new, :show, :edit, :update, :create, :destroy]
+  
   devise_for :users
 
   root :to => "home#index"
-  resources :conferences, :path => "" do 
+  resources :conferences, :path => "" , :except => [:index, :new, :show, :edit, :update, :create, :destroy] do 
     resources :plenaries
     resources :submissions, :except => [:new, :create]
     resources :pages, :path => ""
   end
+
+
 
   resources :submissions, :only => [:new, :create]
 
