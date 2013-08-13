@@ -10,11 +10,15 @@ class Ability
     user.role ||= Role.new
 
     if user.admin?
-         can :manage, Conference
-         can :manage, Page
-         can :manage, Pagecat
-         can :manage, Plenary
-         can :manage, Workshop
+    	can :manage, Conference
+      can :manage, Page
+      can :manage, Pagecat
+      can :manage, Plenary
+      can :manage, Workshop
+    elsif user.attendee?
+    	can [:new, :create], Submission do |s|
+    		!user.submitted?
+    	end
     end
 
 
