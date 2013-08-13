@@ -1,5 +1,8 @@
 Colloquy::Application.routes.draw do
 
+  resources :submissions
+
+
   resources :workshops
 
 
@@ -14,7 +17,11 @@ Colloquy::Application.routes.draw do
 
   devise_for :users
 
-  resources :conferences
+  resources :conferences do
+  	resources :submissions, :except => [:new, :create]
+  end
+
+  resources :submissions, :only => [:new, :create]
 
   resources :attachments, :only => [:update, :destroy, :edit, :index]
 

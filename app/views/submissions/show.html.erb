@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @submission.title %>
+</p>
+
+<p>
+  <b>Authors:</b>
+  <%= @submission.authors %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @submission.content %>
+</p>
+
+<p>
+  <b>Conference:</b>
+  <%= @submission.conference_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @submission.user_id %>
+</p>
+
+<p>
+  <b>Approved:</b>
+  <%= @submission.approved %>
+</p>
+
+<p>
+  <b>Preference:</b>
+  <%= @submission.preference %>
+</p>
+
+<p>
+  <b>Bursary for:</b>
+  <%= @submission.bursary_for %>
+</p>
+
+<p>
+  <b>Bursary why:</b>
+  <%= @submission.bursary_why %>
+</p>
+
+
+<%= link_to 'Edit', edit_submission_path(@submission) %> |
+<%= link_to 'Back', submissions_path %>

@@ -7,19 +7,20 @@ class Ability
 # handling user privs
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     user ||= User.new # guest user (not logged in)
-    user.role ||= Role.new 
+    user.role ||= Role.new
 
-    if user.role.title == "admin"
-        can :manage, Conference
-        can :manage, Page
-        can :manage, Pagecat
-        can :manage, Plenary
-        can :manage, Workshop
-    elsif user.role.title == "attendee"
-      # Workshop abilities for attendee
+    if user.admin?
+    	can :manage, Conference
+      can :manage, Page
+      can :manage, Pagecat
+      can :manage, Plenary
+      can :manage, Workshop
+    elsif user.attendee?
+    	can [:new, :create], Submission do |s|
+    		!user.submitted?
+    	end
+       # Workshop abilities for attendee
         can [:read,:attend, :unattend], Workshop
-    else
-      
     end
 
 
@@ -34,12 +35,12 @@ class Ability
     #     can :read, :all
     #   end
     #
-    # The first argument to `can` is the action you are giving the user 
+    # The first argument to `can` is the action you are giving the user
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions
     # here are :read, :create, :update and :destroy.
     #
-    # The second argument is the resource the user can perform the action on. 
+    # The second argument is the resource the user can perform the action on.
     # If you pass :all it will apply to every resource. Otherwise pass a Ruby
     # class of the resource.
     #
