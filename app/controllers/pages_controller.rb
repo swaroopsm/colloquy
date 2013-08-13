@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   before_filter :authenticate_user!, :except=> [:show, :index]
-  before_filter :getallextras, :only => [:index, :show]
+  before_filter :getallextras
   before_filter :allconferences, :only => [:edit, :new]
   load_and_authorize_resource :except => [:index, :show]
 
@@ -92,6 +92,11 @@ class PagesController < ApplicationController
   private
   def getallextras
     @xpagecats = Pagecat.all
+    @cats = []
+    @xpagecats.each do | p |
+      @cats << p.id
+    end
+    @xpages = Page.where("pagecat_id IN (?)", @cats ).group_by{ |c| c[:pagecat_id] }
   end
 
   def allconferences

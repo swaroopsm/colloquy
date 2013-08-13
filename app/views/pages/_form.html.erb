@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :pagecat_id %><br />
-    <%= f.number_field :pagecat_id %>
+    <%= f.label :pagecat_id %>
+    <%= f.collection_select(:pagecat_id, @xpagecats, :id, :title, :prompt=>true) %>
   </div>
 
   <div class="field">
