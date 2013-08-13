@@ -11,6 +11,7 @@ class BossController < ApplicationController
 	end
 
 	def pages
+		@pages = Page.all
 	end
 
 	private
