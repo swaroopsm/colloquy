@@ -26,5 +26,5 @@
 </p>
 
 <div id="adminfuncs">
-  <%= link_to 'Edit', edit_plenary_path(@plenary) if can? :manage, @plenary %>
+  <%= link_to 'Edit', edit_conference_plenary_path(@conference, @plenary) if can? :manage, @plenary %>
 </div>

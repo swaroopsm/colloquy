@@ -19,13 +19,13 @@
     <td><%= page.active %></td>
     <td><%= page.conference_id %></td>
     <td><%= page.user_id %></td>
-    <td><%= link_to 'Show', page %></td>
-    <td><%= link_to 'Edit', edit_page_path(page) %></td>
-    <td><%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', conference_page_path(@conference, page) %></td>
+    <td><%= link_to 'Edit', edit_conference_page_path(@conference, page) %></td>
+    <td><%= link_to 'Destroy', conference_page_path(@conference, page), method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Page', new_page_path %>
+<%= link_to 'New Page', new_conference_page_path(@conference) %>

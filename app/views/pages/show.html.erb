@@ -5,5 +5,5 @@
 <%=raw @page.content %>
 
 <div id="adminfuncs">
-<%= link_to 'Edit', edit_page_path(@page) if can? :manage, @page %>
+<%= link_to 'Edit', edit_conference_page_path(@conference, @page) if can? :manage, @page %>
 </div>

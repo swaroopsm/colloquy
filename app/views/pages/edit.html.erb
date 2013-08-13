@@ -1,6 +1,6 @@
 <h1>Editing page</h1>
 
-<%= render 'form' %>
+<%= render 'editform' %>
 
-<%= link_to 'Show', @page %> |
-<%= link_to 'Back', pages_path %>
+<%= link_to 'Show', conference_page_path(@conference, @page) %> |
+<%= link_to 'Back', conference_pages_path(@conference) %>

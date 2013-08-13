@@ -6,22 +6,29 @@ Colloquy::Application.routes.draw do
   resources :workshops
 
 
-  resources :plenaries
+	# Assign & Unassign an abstract
+	match 'reviewer/:user_id/abstract/:id/assign' => "submission#assign", :as => "submission_assign", :method => :post
+	match 'abstract/:id/unassign' => "submission#unassign", :as => "submission_unassign", :method => :delete
 
 
   resources :pagetypes
 
+	 resources :submissions, :only => [:new, :create], :path => :abstracts do
+  	resources :scores
+  end
 
-  resources :pages
 
+  resources :attachments, :only => [:update, :destroy, :edit, :index]
 
   devise_for :users
 
-  resources :conferences do
-  	resources :submissions, :except => [:new, :create]
+  root :to => "home#index"
+  resources :conferences, :path => "" do
+    resources :plenaries
+    resources :submissions, :except => [:new, :create], :path => :abstracts
+    resources :pages, :path => ""
   end
 
-  resources :submissions, :only => [:new, :create]
 
   resources :attachments, :only => [:update, :destroy, :edit, :index]
 

@@ -10,11 +10,13 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
 
-  has_many :conferences, :class_name=>"ConferenceUser"
-  has_many :pages
-  has_many :plenaries
-  has_many :workshops
-  has_many :submissions
+  has_many	:conferences, :class_name=>"ConferenceUser"
+  has_many  :pages
+  has_many  :plenaries
+  has_many  :workshops
+  has_many  :submissions
+  has_many  :reviews, :class_name => "ReviewerSubmission"
+  has_many	:scores
 
   has_many :workshop_attendees
   belongs_to :role
@@ -38,5 +40,8 @@ class User < ActiveRecord::Base
 		s.size > 0
 	end
 
-
+	# Check if user is registered for current/active conference
+	def registered?
+		ConferenceUser.where(:user_id => self, :conference_id => Conference.active).size > 0
+	end
 end

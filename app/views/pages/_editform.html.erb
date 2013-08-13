@@ -1,4 +1,4 @@
-<%= form_for([@conference, @page],:html => { :multipart => true }) do |f| %>
+<%= form_for [@conference, @page] do |f| %>
   <% if @page.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
@@ -30,9 +30,6 @@
     <%= f.text_area :content, :class => "tinymce" %>
     <%= tinymce %>
   </div>
-  <%= fields_for :attachments do |form| %>
-    <%= form.file_field :pic %>
-  <% end %>
   <% @page.attachments.each do |a| %>
     <%= image_tag a.pic.url(:thumb) %>
   <% end %>

@@ -4,4 +4,7 @@ class Plenary < ActiveRecord::Base
   belongs_to :user
   has_many :attachments, :as => :attachable
   accepts_nested_attributes_for :attachments
+
+  extend FriendlyId
+  friendly_id :title, use: :slugged
 end

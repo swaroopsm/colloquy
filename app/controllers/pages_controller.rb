@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   before_filter :authenticate_user!, :except=> [:show, :index]
-  before_filter :getallextras, :only => [:index, :show]
+  before_filter :getallextras
   before_filter :allconferences, :only => [:edit, :new]
   load_and_authorize_resource :except => [:index, :show]
 
@@ -31,6 +31,7 @@ class PagesController < ApplicationController
   # GET /pages/new.json
   def new
     @page = Page.new
+    @page.attachments.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -48,10 +49,11 @@ class PagesController < ApplicationController
   def create
     @page = Page.new(params[:page])
     @page.user = current_user
+    @page.attachments.build(params[:attachments])
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to @page, notice: 'Page was successfully created.' }
+        redirect_to conference_pages_path(@conference)
         format.json { render json: @page, status: :created, location: @page }
       else
         format.html { render action: "new" }
@@ -83,7 +85,6 @@ class PagesController < ApplicationController
     @page.destroy
 
     respond_to do |format|
-      format.html { redirect_to pages_url }
       format.json { head :no_content }
     end
   end
@@ -92,6 +93,13 @@ class PagesController < ApplicationController
   private
   def getallextras
     @xpagecats = Pagecat.all
+    @cats = []
+    @xpagecats.each do | p |
+      @cats << p.id
+    end
+    @xpages = Page.where("pagecat_id IN (?)", @cats ).where(:conference_id => Conference.active).group_by{ |c| c[:pagecat_id] }
+    @conference = Conference.find(params[:conference_id])
+
   end
 
   def allconferences

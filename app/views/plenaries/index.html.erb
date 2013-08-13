@@ -19,13 +19,13 @@
     <td><%= plenary.presenter %></td>
     <td><%= plenary.conference_id %></td>
     <td><%= plenary.user_id %></td>
-    <td><%= link_to 'Show', plenary %></td>
-    <td><%= link_to 'Edit', edit_plenary_path(plenary) %></td>
-    <td><%= link_to 'Destroy', plenary, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', conference_plenary_path(@conference, plenary) %></td>
+    <td><%= link_to 'Edit', edit_conference_plenary_path(@conference, plenary) %></td>
+    <td><%= link_to 'Destroy', conference_plenary_path(@conference, plenary), method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Plenary', new_plenary_path %>
+<%= link_to 'New Plenary', new_conference_plenary_path(@conference) %>
