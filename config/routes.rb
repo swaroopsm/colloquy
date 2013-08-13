@@ -6,7 +6,7 @@ Colloquy::Application.routes.draw do
   resources :workshops
 
 
-  
+
 
 
   resources :pagetypes
@@ -15,9 +15,9 @@ Colloquy::Application.routes.draw do
   devise_for :users
 
   root :to => "home#index"
-  resources :conferences, :path => "" do 
+  resources :conferences, :path => "" do
     resources :plenaries
-    resources :submissions, :except => [:new, :create]
+    resources :submissions, :except => [:new, :create], :path => :abstracts
     resources :pages, :path => ""
   end
 
