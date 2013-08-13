@@ -24,20 +24,9 @@
     <%= f.text_area :content %>
   </div>
   <div class="field">
-    <%= f.label :conference_id %><br />
-    <%= f.number_field :conference_id %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :approved %><br />
-    <%= f.number_field :approved %>
-  </div>
-  <div class="field">
     <%= f.label :preference %><br />
-    <%= f.number_field :preference %>
+    <%= f.radio_button :preference, "1" %> Talk
+    <%= f.radio_button :preference, "2" %> Poster
   </div>
   <div class="field">
     <%= f.label :bursary_for %><br />
