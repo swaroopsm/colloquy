@@ -69,6 +69,11 @@ class WorkshopsController < ApplicationController
     # @workshop.attachments.build(params[:attachments])
 
     @workshop.update_attributes(params[:workshop])
+    if @workshop.save
+      respond_to do |format|
+        format.js
+      end
+    end
     
   end
 
