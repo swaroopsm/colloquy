@@ -97,9 +97,9 @@ h1 {font-size: 150%;} h2 {font-size: 140%;} h3 {font-size: 130%;} h4 {font-size:
 
 
 .manage {
-	margin: 30px;
+	margin: 10px;
 	display: inline-block;
-	width: 400px;
+	width: 280px;
 }
 .manage a {
 
