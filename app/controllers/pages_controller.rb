@@ -61,7 +61,7 @@ class PagesController < ApplicationController
   def update
     @page = Page.find(params[:id])
 
-    @page.update_attributes
+    @page.update_attributes(params[:page])
     respond_to do |format|
       format.js
     end

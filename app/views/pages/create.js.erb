@@ -1,9 +1,10 @@
 <% if @page.errors.any? -%>
 	html = "";
 	<% @page.errors.full_messages.each do |error| -%>
-		html += '<%= error %>'
+		html += '<%= error %>. '
 	<% end -%>
 	message("error", html);
 <% else -%>
+  modalclose;
 	message("success", "Your page was created!");
 <% end -%>
