@@ -18,6 +18,10 @@ class BossController < ApplicationController
     @plenaries = Plenary.all
   end
 
+  def attendees
+    @attendees = User.where(:role => "attendee").where(:conference_id => Conference.active)
+  end
+
 	private
 
 	def onlyboss
