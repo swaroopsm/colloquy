@@ -1,1 +1,9 @@
-message("success", "Your page was created!");
+<% if @page.errors.any? -%>
+	html = "";
+	<% @page.errors.full_messages.each do |error| -%>
+		html += '<%= error %>'
+	<% end -%>
+	message("error", html);
+<% else -%>
+	message("success", "Your page was created!");
+<% end -%>
