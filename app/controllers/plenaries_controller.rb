@@ -30,6 +30,7 @@ class PlenariesController < ApplicationController
   # GET /plenaries/new.json
   def new
     @plenary = Plenary.new
+    @plenary.user = current_user
     @plenary.attachments.build
 
     respond_to do |format|
@@ -72,7 +73,6 @@ class PlenariesController < ApplicationController
   def destroy
     @plenary = Plenary.find(params[:id])
     @plenary.destroy
-
     respond_to do |format|
       format.js
     end
