@@ -82,9 +82,8 @@ class PagesController < ApplicationController
   def destroy
     @page = Page.find(params[:id])
     @page.destroy
-
     respond_to do |format|
-      format.json { head :no_content }
+      format.js
     end
   end
 

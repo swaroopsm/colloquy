@@ -16,8 +16,9 @@
       }, 3000);
       // setting timeout for removal of message
       setTimeout(function(){
-      messagediv.children().remove();
-      },5000);
+        messagediv.children().remove();
+        location.reload();
+      },3000);
     } else if (messagetype=='loading') {
       messagediv.append('<div class="loading"><i class="icon-spin animate-spin" style="color: #fff;"></i>'+message+'<div class="close">&times;</div></div>');
     } else {
@@ -46,10 +47,7 @@
     $("#loaderwrap").hide();
   }
 
-
-jQuery(document).ready(function($) {
-
-  $(".closemodal").click(function() {
+  closemodal = function() {
     var modaldiv = $("#modal");
     // alert(modaldiv);
 
@@ -59,6 +57,12 @@ jQuery(document).ready(function($) {
         modaldiv.parent().css('display', 'none');
       });
     });
+  }
+
+jQuery(document).ready(function($) {
+
+  $(".closemodal").click(function() {
+    closemodal();
 
   });
 
