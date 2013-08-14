@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require dataTables/jquery.dataTables
 //= require tinymce-jquery
+//= require jquery.remotipart
 //= require_tree .

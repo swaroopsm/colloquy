@@ -50,7 +50,8 @@ class PagesController < ApplicationController
     @page.user = current_user
     @page.attachments.build(params[:attachments])
 
-    @page.save respond_to do |format|
+    @page.save
+    respond_to do |format|
       format.js
     end
   end
@@ -60,7 +61,8 @@ class PagesController < ApplicationController
   def update
     @page = Page.find(params[:id])
 
-    @page.update_attributes respond_to do |format|
+    @page.update_attributes(params[:page])
+    respond_to do |format|
       format.js
     end
 
