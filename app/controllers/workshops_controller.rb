@@ -20,7 +20,7 @@ class WorkshopsController < ApplicationController
   def show
     @workshop = Workshop.find(params[:id])
     @attendees = @workshop.attendees
-
+    @conference = Conference.find(params[:conference_id])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @workshop }
@@ -34,14 +34,17 @@ class WorkshopsController < ApplicationController
     @workshop.attachments.build
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @workshop }
+      format.js
     end
   end
 
   # GET /workshops/1/edit
   def edit
     @workshop = Workshop.find(params[:id])
+    @conference = Conference.find(params[:conference_id])
+    respond_to do |format|
+      format.js
+    end
   end
 
   # POST /workshops
@@ -54,11 +57,7 @@ class WorkshopsController < ApplicationController
 
     respond_to do |format|
       if @workshop.save
-        format.html { redirect_to @workshop, notice: 'Workshop was successfully created.' }
-        format.json { render json: @workshop, status: :created, location: @workshop }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @workshop.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -69,15 +68,8 @@ class WorkshopsController < ApplicationController
     @workshop = Workshop.find(params[:id])
     # @workshop.attachments.build(params[:attachments])
 
-    respond_to do |format|
-      if @workshop.update_attributes(params[:workshop])
-        format.html { redirect_to @workshop, notice: 'Workshop was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @workshop.errors, status: :unprocessable_entity }
-      end
-    end
+    @workshop.update_attributes(params[:workshop])
+    
   end
 
   # DELETE /workshops/1

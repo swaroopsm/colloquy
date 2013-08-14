@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Colloquy</title>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    "boss/boss", :media => "all" %>
+  <%= stylesheet_link_tag    "style", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<h1>SCCS Colloquy : <%= current_user.role.title.humanize %> Interface</h1>
+	<div class="adminbar">
+		<div class="manage">
+			<h5>Conferences</h5>
+			<%= link_to "All Conferences", conferences_path() %>
+			<%= link_to "New Conference", new_conference_path(), :remote=>true %>
+			<% # link_to "Edit #{@conference.title} Conference", edit_conference_path(@conference), :remote=>true %>
+		</div>
+
+		<div class="manage">
+			<h5>Pages</h5>
+			<%= link_to "All Pages", boss_pages_path %>
+			<%= link_to "New Page", new_conference_page_path(@conference), :remote=>true %>
+		</div>
+
+		<div class="manage">
+			<h5>Workshops</h5>
+			<%= link_to "All Workshops", boss_workshops_path %>
+			<%= link_to "New Workshop", new_conference_workshop_path(@conference), :remote => true %>
+
+		</div>
+
+
+		<h5>Plenaries</h5>
+
+
+
+		<h5>Attendees</h5>
+
+
+		<h5>Reviewers</h5>
+
+
+	</div>
+
+<%= yield %>
+
+
+
+<div id="signedin">
+	<% if user_signed_in? %>
+		Hi <%= current_user.email %>! <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+	<% end %>
+</div>
+
+
+<div id="modalwrap">
+	<div class="closemodal">&times; CLOSE</div>
+	<div id="modal">
+	</div>
+</div>
+
+
+<div id="loaderwrap"></div>
+</body>
+</html>

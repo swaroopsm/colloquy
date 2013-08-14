@@ -1,27 +1,35 @@
 Colloquy::Application.routes.draw do
 
-  resources :submissions
+  resources :workshops
 
+  # boss paths
+  resources :boss, :only => [:index]
 
+  match "boss/pages" => "boss#pages", :as => "boss_pages"
+  match "boss/workshops" => 'boss#workshops', :as => 'boss_workshops'
 
+  resources :pagetypes
+
+  resources :conferences, :only => [:index, :new, :show, :edit, :update, :create, :destroy]
+
+  devise_for :users
+
+  root :to => "home#index"
+
+  resources :conferences, :path => "" , :except => [:index, :new, :show, :edit, :update, :create, :destroy] do
+  end
 
 	# Assign & Unassign an abstract
 	match 'reviewer/:user_id/abstract/:id/assign' => "submission#assign", :as => "submission_assign", :method => :post
 	match 'abstract/:id/unassign' => "submission#unassign", :as => "submission_unassign", :method => :delete
 
-
-  resources :pagetypes
-
-	 resources :submissions, :only => [:new, :create], :path => :abstracts do
+	resources :submissions, :only => [:new, :create], :path => :abstracts do
   	resources :scores
   end
 
 
-  resources :attachments, :only => [:update, :destroy, :edit, :index]
-
   devise_for :users
 
-  root :to => "home#index"
   resources :conferences, :path => "" do
     resources :plenaries
     resources :workshops
@@ -30,6 +38,7 @@ Colloquy::Application.routes.draw do
   end
 
 
+  resources :submissions, :only => [:new, :create]
   resources :attachments, :only => [:update, :destroy, :edit, :index]
 
 # routes for workshops
@@ -37,7 +46,6 @@ Colloquy::Application.routes.draw do
   match ':conference_id/workshops/:workshop_id/unattend' => 'workshops#unattend', :as => 'unattend'
 
 
-  root :to => "home#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

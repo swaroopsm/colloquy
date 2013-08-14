@@ -1,3 +1,5 @@
+<h1>You are creating a new page</h1>
+
 <%= form_for([@conference, @page],:html => { :multipart => true }) do |f| %>
   <% if @page.errors.any? %>
     <div id="error_explanation">
@@ -12,7 +14,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :pagecat_id %>
+    <%# f.label :pagecat_id, :html=>"Page Category" %>
+    <label for="page_pagecat_id">Page Category</label>
     <%= f.collection_select(:pagecat_id, @xpagecats, :id, :title, :prompt=>true) %>
   </div>
 
@@ -31,6 +34,7 @@
     <%= tinymce %>
   </div>
   <%= fields_for :attachments do |form| %>
+    <%= form.label :pic %>
     <%= form.file_field :pic %>
   <% end %>
   <% @page.attachments.each do |a| %>
