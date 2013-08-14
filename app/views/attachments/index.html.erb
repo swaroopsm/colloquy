@@ -33,7 +33,7 @@
 	<% if @pages.any? -%>
 		<h3>Listing Images for Pages</h3><br />
 		<% @pages.each do |page| %>
-			<p>Images for <%= plenary[1].first.attachable.title %></p><hr />
+			<p>Images for <%= page[1].first.attachable.title %></p><hr />
 			<% page[1].each do |p| -%>
 				<%= image_tag p.pic.url(:thumb) %>
 				 | <%= link_to "Change", edit_attachment_path(p), :remote => true %>
