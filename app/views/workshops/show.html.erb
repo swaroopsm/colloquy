@@ -17,17 +17,33 @@
 
 <p>
   <b>Conference:</b>
-  <%= @workshop.conference_id %>
+  <%= @workshop.conference.title %>
 </p>
 
 <p>
-  <b>User:</b>
-  <%= @workshop.user_id %>
+  <b>Attendees:</b>
+  <% if @attendees.any? %>
+    <% @attendees_ids = [] %>
+    <% @attendees.each do |a| %>
+      <% @attendees_ids.push a.user %>
+      <%= a.user.email %>, 
+    <% end %>
+  <% else %>
+    There are no attendees for this workshop yet!
+  <% end %>
 </p>
 
-
+<br><br>
+<% if @attendees_ids and @attendees_ids.include? current_user %>
+  You are attending this workshop, <%= link_to "Unattend this workshop", unattend_path(@workshop), :remote => true %>
+<% else %>
+  You are not attending this workshop, <%= link_to "Attend this workshop", attend_path(@workshop), :remote => true %>
+<% end %>
+<br>
 <%= image_tag @workshop.attachments.first.pic.url %>
 
-
-<%= link_to 'Edit', edit_workshop_path(@workshop) %> |
+<br>
+<% if can? :edit, @workshop %>
+  <%= link_to 'Edit', edit_workshop_path(@workshop) %> |
+<% end %>
 <%= link_to 'Back', workshops_path %>

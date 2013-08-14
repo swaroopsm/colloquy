@@ -24,10 +24,6 @@
     <%= f.label :presenter %><br />
     <%= f.text_field :presenter %>
   </div>
-  <div class="field">
-    <%= f.label :conference_id %><br />
-    <%= f.text_field :conference_id %>
-  </div>
   <%= fields_for :attachments do |form| %>
     <%= form.file_field :pic %>
   <% end %>

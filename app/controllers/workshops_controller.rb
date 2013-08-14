@@ -19,6 +19,7 @@ class WorkshopsController < ApplicationController
   # GET /workshops/1.json
   def show
     @workshop = Workshop.find(params[:id])
+    @attendees = @workshop.attendees
 
     respond_to do |format|
       format.html # show.html.erb
@@ -49,6 +50,7 @@ class WorkshopsController < ApplicationController
     @workshop = Workshop.new(params[:workshop])
     @workshop.user = current_user
     @workshop.attachments.build(params[:attachments])
+    @workshop.conference = Conference.active
 
     respond_to do |format|
       if @workshop.save
@@ -89,6 +91,30 @@ class WorkshopsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # Attend the workshop
+  def attend
+    @workshop = Workshop.find(params[:workshop_id])
+    @workshop_attendee = WorkshopAttendee.new
+    @workshop_attendee.user = current_user
+    @workshop_attendee.workshop = @workshop
+    if @workshop_attendee.save
+      respond_to do |format|
+        format.js
+      end
+    end
+  end
+
+   # Unattend the workshop
+  def unattend
+    @workshop = Workshop.find(params[:workshop_id])
+    @workshop_attendee = WorkshopAttendee.where(:user_id => current_user, :workshop_id => @workshop)
+    @workshop_attendee[0].destroy
+      respond_to do |format|
+        format.js
+      end
+  end
+
 
 
   private

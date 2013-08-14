@@ -30,7 +30,7 @@ class SubmissionsController < ApplicationController
   # GET /submissions/new.json
   def new
     @submission = Submission.new
-
+		@submission.attachments.build
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @submission }
@@ -48,10 +48,11 @@ class SubmissionsController < ApplicationController
     @submission = Submission.new(params[:submission])
     @submission.user = current_user
     @submission.conference = Conference.active
+    @submission.attachments.build(params[:attachments]) if params[:attachments].present?
 
     respond_to do |format|
       if @submission.save
-        format.html { redirect_to @submission, notice: 'Submission was successfully created.' }
+        format.html { redirect_to conference_submission_path(Conference.active, @submission), notice: 'Submission was successfully created.' }
         format.json { render json: @submission, status: :created, location: @submission }
       else
         format.html { render action: "new" }
@@ -87,4 +88,21 @@ class SubmissionsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # This assigns a reviewer to an abstract
+  def assign
+		@reviewer = User.find(params[:user_id])
+		@submission = Submission.find(params[:id])
+		@assign = ReviewerSubmission.new
+		@assign.user = @reviewer
+		@assign.submission = @submission
+		@assign.save
+  end
+
+  # This unassigns a reviewer from an abstract
+  def unassign
+		@unassign = ReviewerSubmission.find(params[:id])
+		@unassign.destroy
+  end
+
 end

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  submission_id: 1
+  user_id: 1
+  conservation: 1
+  science: 1
+  recommendation: 1
+
+two:
+  submission_id: 1
+  user_id: 1
+  conservation: 1
+  science: 1
+  recommendation: 1
