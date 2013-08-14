@@ -1,10 +1,31 @@
-jQuery(document).ready(function($) {
-
-	close = function(){
+ close = function(){
     $(".close").click(function(){
       $(this).parent().remove();
     });
   }
+
+  message = function(messagetype, message) {
+    var messagediv = $('#messages');
+    messagediv.html('');
+    // console.log(messagediv);
+    if (messagetype=='error') {
+      messagediv.append('<div class="error"><i class="icon-warning messageleft" style="color: #f1c40f;"></i>'+message+'<div class="close">&times;</div></div>');
+    } else if (messagetype=='success') {
+      messagediv.append('<div class="success"><i class="icon-ok messageleft" style="color: #fff;"></i>'+message+'<div class="close">&times;</div></div>').delay(800, function(){
+        // setting window reload for the success
+      }, 3000);
+      // setting timeout for removal of message
+      setTimeout(function(){
+      messagediv.children().remove();
+      },5000);
+    } else if (messagetype=='loading') {
+      messagediv.append('<div class="loading"><i class="icon-spin animate-spin" style="color: #fff;"></i>'+message+'<div class="close">&times;</div></div>');
+    } else {
+      console.log(messagetype+" not recognised. Use 'error' or 'success' for better results");
+    };
+    close();
+  }
+
 
   modalload = function(modalContent) {
     var modaldiv = $("#modal");
@@ -24,6 +45,9 @@ jQuery(document).ready(function($) {
     $("#loaderwrap").empty();
     $("#loaderwrap").hide();
   }
+
+
+jQuery(document).ready(function($) {
 
   $(".closemodal").click(function() {
     var modaldiv = $("#modal");

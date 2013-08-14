@@ -1,3 +1,56 @@
+#messages {
+  width: 66.666666667%;
+  max-width: 800px;
+  position: fixed;
+  margin: 0 auto;
+  color: white;
+  left: 16.666666667%;
+  z-index: 100;
+  position: fixed;
+  top: 60px;
+  font-weight: 500;
+}
+
+.error {
+  background-color: #D35400;
+  padding: 10px;
+  text-align: center;
+   /* Webkit (Safari/Chrome) */ -webkit-box-shadow: 4px 3px 57px 5px #999;
+  /* Mozilla Firefox */ -moz-box-shadow: 4px 3px 57px 5px #999;
+  /* Proposed W3C Markup */ box-shadow: 4px 3px 57px 5px #999;
+  border: 1px solid white;
+  margin: 10px 0px;
+}
+
+.success {
+  background-color: #2ECC71;
+  padding: 10px;
+  text-align: center;
+   /* Webkit (Safari/Chrome) */ -webkit-box-shadow: 4px 3px 57px 5px #999;
+  /* Mozilla Firefox */ -moz-box-shadow: 4px 3px 57px 5px #999;
+  /* Proposed W3C Markup */ box-shadow: 4px 3px 57px 5px #999;
+  border: 1px solid white;
+  margin: 10px 0px;
+}
+
+.loading {
+  background-color: #9b59b6;
+  padding: 10px;
+  text-align: center;
+   /* Webkit (Safari/Chrome) */ -webkit-box-shadow: 4px 3px 57px 5px #999;
+  /* Mozilla Firefox */ -moz-box-shadow: 4px 3px 57px 5px #999;
+  /* Proposed W3C Markup */ box-shadow: 4px 3px 57px 5px #999;
+  border: 1px solid white;
+  margin: 10px 0px;
+}
+
+.close {
+  display: inline-block;
+  float: right;
+  cursor: pointer;
+}
+
+
 #modalwrap {
   position: fixed;
   z-index: 50;

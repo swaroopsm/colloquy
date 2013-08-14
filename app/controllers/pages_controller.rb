@@ -50,14 +50,8 @@ class PagesController < ApplicationController
     @page.user = current_user
     @page.attachments.build(params[:attachments])
 
-    respond_to do |format|
-      if @page.save
-        redirect_to conference_pages_path(@conference)
-        format.json { render json: @page, status: :created, location: @page }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @page.errors, status: :unprocessable_entity }
-      end
+    @page.save respond_to do |format|
+      format.js
     end
   end
 
@@ -66,15 +60,19 @@ class PagesController < ApplicationController
   def update
     @page = Page.find(params[:id])
 
-    respond_to do |format|
-      if @page.update_attributes(params[:page])
-        format.html { redirect_to @page, notice: 'Page was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @page.errors, status: :unprocessable_entity }
-      end
+    @page.update_attributes respond_to do |format|
+      format.js
     end
+
+    # respond_to do |format|
+    #   if @page.update_attributes(params[:page])
+    #     format.html { redirect_to @page, notice: 'Page was successfully updated.' }
+    #     format.json { head :no_content }
+    #   else
+    #     format.html { render action: "edit" }
+    #     format.json { render json: @page.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # DELETE /pages/1
