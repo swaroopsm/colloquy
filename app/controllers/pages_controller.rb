@@ -32,11 +32,10 @@ class PagesController < ApplicationController
   def new
     @page = Page.new
     @page.attachments.build
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @page }
-    end
+    # respond_to do |format|
+    #   format.html # new.html.erb
+    #   format.json { render json: @page }
+    # end
   end
 
   # GET /pages/1/edit

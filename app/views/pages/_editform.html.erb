@@ -12,7 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :pagecat_id %>
+    <%# f.label :pagecat_id, :html=>"Page Category" %>
+    <label for="page_pagecat_id">Page Category</label>
     <%= f.collection_select(:pagecat_id, @xpagecats, :id, :title, :prompt=>true) %>
   </div>
 
@@ -22,11 +23,11 @@
   </div>
 
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :content %><br />
+    <%= f.label :content %>
     <%= f.text_area :content, :class => "tinymce" %>
     <%= tinymce %>
   </div>
@@ -34,7 +35,7 @@
     <%= image_tag a.pic.url(:thumb) %>
   <% end %>
   <div class="field">
-    <%= f.label :active %><br />
+    <%= f.label :active %>
     <%= f.check_box :active %>
   </div>
   <div class="actions">
