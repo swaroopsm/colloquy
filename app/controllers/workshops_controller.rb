@@ -8,7 +8,7 @@ class WorkshopsController < ApplicationController
   # GET /workshops.json
   def index
     @workshops = Workshop.all
-
+    @conference = Conference.find(params[:conference_id])
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @workshops }

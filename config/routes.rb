@@ -3,7 +3,6 @@ Colloquy::Application.routes.draw do
   resources :submissions
 
 
-  resources :workshops
 
 
 	# Assign & Unassign an abstract
@@ -25,6 +24,7 @@ Colloquy::Application.routes.draw do
   root :to => "home#index"
   resources :conferences, :path => "" do
     resources :plenaries
+    resources :workshops
     resources :submissions, :except => [:new, :create], :path => :abstracts
     resources :pages, :path => ""
   end
@@ -32,8 +32,9 @@ Colloquy::Application.routes.draw do
 
   resources :attachments, :only => [:update, :destroy, :edit, :index]
 
-  match 'workshops/:workshop_id/attend' => 'workshops#attend', :as => 'attend'
-  match 'workshops/:workshop_id/unattend' => 'workshops#unattend', :as => 'unattend'
+# routes for workshops
+  match ':conference_id/workshops/:workshop_id/attend' => 'workshops#attend', :as => 'attend'
+  match ':conference_id/workshops/:workshop_id/unattend' => 'workshops#unattend', :as => 'unattend'
 
 
   root :to => "home#index"
