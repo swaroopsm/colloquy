@@ -1,0 +1,6 @@
+<% if @workshop.errors.any? %>
+	alert(" <%= @workshop.errors.full_messages.first %>");
+<% else %>
+	alert("Workshop has been updated successfully!");
+	location.reload();
+<% end %>

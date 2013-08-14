@@ -16,7 +16,7 @@
 		<li><a href="#">Programme</a>
 				<ul>
 					<li><%= link_to "Plenaries", conference_plenaries_path(@conference) %></li>
-					<li><%= link_to "Workshops", workshops_path %></li>
+					<li><%= link_to "Workshops", conference_workshops_path(@conference) %></li>
 				</ul>
 		</li>
 

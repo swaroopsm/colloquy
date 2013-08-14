@@ -1,9 +1,12 @@
 Colloquy::Application.routes.draw do
 
   resources :workshops
+
+  # boss paths
   resources :boss, :only => [:index]
 
   match "boss/pages" => "boss#pages", :as => "boss_pages"
+  match "boss/workshops" => 'boss#workshops', :as => 'boss_workshops'
 
   match "boss/plenaries" => "boss#plenaries", :as => "boss_plenaries"
   match "boss/attendees" => "boss#attendees", :as => "boss_attendees"
@@ -28,13 +31,11 @@ Colloquy::Application.routes.draw do
   end
 
 
-  resources :attachments, :only => [:update, :destroy, :edit, :index]
-
   devise_for :users
 
-  root :to => "home#index"
   resources :conferences, :path => "" do
     resources :plenaries
+    resources :workshops
     resources :submissions, :except => [:new, :create], :path => :abstracts
     resources :pages, :path => ""
   end
@@ -43,11 +44,11 @@ Colloquy::Application.routes.draw do
   resources :submissions, :only => [:new, :create]
   resources :attachments, :only => [:update, :destroy, :edit, :index]
 
-  match 'workshops/:workshop_id/attend' => 'workshops#attend', :as => 'attend'
-  match 'workshops/:workshop_id/unattend' => 'workshops#unattend', :as => 'unattend'
+# routes for workshops
+  match ':conference_id/workshops/:workshop_id/attend' => 'workshops#attend', :as => 'attend'
+  match ':conference_id/workshops/:workshop_id/unattend' => 'workshops#unattend', :as => 'unattend'
 
 
-  root :to => "home#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

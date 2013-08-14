@@ -22,6 +22,10 @@ class BossController < ApplicationController
     @attendees = User.where(:role => "attendee").where(:conference_id => Conference.active)
   end
 
+	def workshops
+		@workshops = Workshop.all
+	end
+
 	private
 
 	def onlyboss
