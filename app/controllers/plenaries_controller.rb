@@ -33,8 +33,7 @@ class PlenariesController < ApplicationController
     @plenary.attachments.build
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @plenary }
+      format.js
     end
   end
 
@@ -50,30 +49,21 @@ class PlenariesController < ApplicationController
     @plenary.user = current_user
     @plenary.attachments.build(params[:attachments])
 
+    @plenary.save
     respond_to do |format|
-      if @plenary.save
-        format.html { redirect_to @plenary, notice: 'Plenary was successfully created.' }
-        format.json { render json: @plenary, status: :created, location: @plenary }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @plenary.errors, status: :unprocessable_entity }
-      end
+      format.js
     end
+
   end
 
   # PUT /plenaries/1
   # PUT /plenaries/1.json
   def update
     @plenary = Plenary.find(params[:id])
+    @plenary.update_attributes(params[:plenary])
 
     respond_to do |format|
-      if @plenary.update_attributes(params[:plenary])
-        format.html { redirect_to @plenary, notice: 'Plenary was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @plenary.errors, status: :unprocessable_entity }
-      end
+      format.js
     end
   end
 
@@ -84,8 +74,7 @@ class PlenariesController < ApplicationController
     @plenary.destroy
 
     respond_to do |format|
-      format.html { redirect_to plenaries_url }
-      format.json { head :no_content }
+      format.js
     end
   end
 

@@ -5,6 +5,8 @@ Colloquy::Application.routes.draw do
 
   match "boss/pages" => "boss#pages", :as => "boss_pages"
 
+  match "boss/plenaries" => "boss#plenaries", :as => "boss_plenaries"
+
   resources :pagetypes
 
   resources :conferences, :only => [:index, :new, :show, :edit, :update, :create, :destroy]

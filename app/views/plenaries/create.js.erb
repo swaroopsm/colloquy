@@ -1,0 +1,10 @@
+<% if @plenary.errors.any? -%>
+  html = "";
+  <% @plenary.errors.full_messages.each do |error| -%>
+    html += '<%= error %>. '
+  <% end -%>
+  message("error", html);
+<% else -%>
+  closemodal();
+  message("success", "Your Plenary was created!");
+<% end -%>

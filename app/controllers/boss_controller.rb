@@ -14,12 +14,16 @@ class BossController < ApplicationController
 		@pages = Page.all
 	end
 
+  def plenaries
+    @plenaries = Plenary.all
+  end
+
 	private
-	
+
 	def onlyboss
 		raise CanCan::AccessDenied unless current_user.admin?
 	end
-	
+
 	def getallextras
     @xpagecats = Pagecat.all
     @cats = []

@@ -1,0 +1,27 @@
+<p class="instruction">
+  Click on the title link below to edit.
+</p>
+
+<table id="datatable">
+  <thead>
+    <tr>
+      <th>Plenary Name</th>
+      <th>Conference</th>
+      <th>Presenter</th>
+      <th>Plenary Slug</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @plenaries.each do |p| %>
+      <tr>
+        <td><%= link_to p.title, edit_conference_plenary_path(p.conference, p), :remote=>true  %></td>
+        <td><%= p.conference.title %></td>
+        <td><%= p.presenter %></td>
+        <td><%= p.slug %></td>
+        <td><%= link_to "Edit", edit_conference_plenary_path(p.conference, p), :remote=>true  %> &nbsp;&nbsp;&nbsp;
+            <%= link_to 'Delete', conference_plenary_path(p.conference, p), method: :delete, data: { confirm: 'Are you sure?' }, :remote => true %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
