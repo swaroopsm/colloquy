@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   has_many  :submissions
   has_many  :reviews, :class_name => "ReviewerSubmission"
   has_many	:scores
+  has_many  :comments
 
   has_many :workshop_attendees
   has_one	 :detail

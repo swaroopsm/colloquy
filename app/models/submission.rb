@@ -14,6 +14,7 @@ class Submission < ActiveRecord::Base
 	has_many 		:attachments, :as => :attachable
 	has_many		:reviewers, :class_name => "ReviewerSubmission"
 	has_many		:scores
+	has_many		:comments
 
   accepts_nested_attributes_for :attachments
 
