@@ -312,6 +312,10 @@ namespace :copy_db do
 		reviewers = Reviewer.all
 		reviewers.each do |r|
 			u = User.new(r)
+			if u.email == "vvinatha@gmail.com"
+				u.email = "contact@arjunashankar.com"
+			end
+			u.role = Role.find_by_title(:reviewer)
 			u.save
 			if u.errors.any?
 				puts "Error for #{u.email} - #{u.errors.full_messages}"
@@ -321,6 +325,55 @@ namespace :copy_db do
 	end
 
 	## End Reviewers Populate
+
+
+	## Assign Abstracts to Reviewers
+
+	class Assignment < ActiveRecord::Base
+
+		self.table_name = "abstracts"
+		establish_connection load_database
+
+		def self.assign(attendee)
+			attendee = Attendee.find_by_attendeeEmail(attendee.email)
+			ab = where(:attendeeID => attendee)
+			if ab.any?
+				ab = ab.first
+				reviewers = Reviewer.where("reviewerID IN (?)", [ab[:reviewer1], ab[:reviewer2], ab[:reviewer3]])
+				data = {:abstract => ab, :reviewers => reviewers}
+			else
+				nil
+			end
+		end
+
+	end
+
+	desc "Assigns abstracts to reviewers"
+	task :assign => :environment do
+		role = Role.find_by_title(:attendee)
+		users = User.where(:role_id => role)
+		users.each do |u|
+			ab = Assignment.assign(u)
+			unless ab.nil?
+				ab[:reviewers].each do |e|
+					r = ReviewerSubmission.new
+					if e.reviewerEmail == "vvinatha@gmail.com"
+						r.user = User.find_by_email("contact@arjunashankar.com")
+					else
+						r.user = User.find_by_email(e.reviewerEmail)
+					end
+					r.submission = u.active_submission
+					r.save
+					if r.errors.any?
+						p "Error for: #{r.user.email}"
+						p r.errors.full_messages
+					end
+				end
+			end
+		end
+	end
+
+	## End Abstract Assignment
 
 
 end
