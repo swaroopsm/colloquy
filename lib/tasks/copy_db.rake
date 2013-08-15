@@ -427,5 +427,57 @@ namespace :copy_db do
 	## End Populating Comments
 
 
+	## Populate Comments
+
+	class OldScore < ActiveRecord::Base
+
+		self.table_name = "scores"
+		establish_connection load_database
+
+		def self.score(r)
+			r = Reviewer.find_by_reviewerEmail(r.email)
+			score = where(:reviewerID => r)
+			scores = []
+			score.each do |s|
+				ab = OldAbstract.find(s.abstractID)
+				actual_score = JSON.parse(s.score)
+				scores << {
+											:conservation => actual_score["conservation"],
+											:science => actual_score["science"],
+											:recommendation => s.recommendation,
+											:finalized => s.reviewer_submitted,
+											:abstract => ab.abstractTitle,
+										}
+			end
+			scores
+		end
+
+	end
+
+	desc "Populates Scores"
+	task :score => :environment do
+
+	reviewers = User.where(:role_id => Role.find_by_title(:reviewer))
+	s = OldScore.score(reviewers.first)
+	reviewers.each do |r|
+		s = OldScore.score(r)
+		s.each do |ss|
+			abs = Submission.find_by_title(ss[:abstract])
+			ss.delete :abstract
+			score = Score.new(ss)
+			score.user = r
+			score.submission = abs
+			score.save
+			if score.errors.any?
+				puts score.errors.full_messages
+			end
+		end
+	end
+
+	end
+
+	## End Populating Scores
+
+
 
 end
