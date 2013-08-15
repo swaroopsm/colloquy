@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   has_many	:scores
 
   has_many :workshop_attendees
+  has_one	 :detail
   belongs_to :role
 
 	# Check role of a user
