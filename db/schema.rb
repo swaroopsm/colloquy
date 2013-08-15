@@ -11,15 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20130815073732) do
-=======
 ActiveRecord::Schema.define(:version => 20130915083641) do
->>>>>>> c68d13b563c543b8ae701013ff03450bc7510a93
-=======
-ActiveRecord::Schema.define(:version => 20130815094516) do
->>>>>>> 63bb83359df2a297ceea924e3fee6739fe33b33f
 
   create_table "attachments", :force => true do |t|
     t.string   "attachable_type"
