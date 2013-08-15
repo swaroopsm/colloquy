@@ -376,4 +376,56 @@ namespace :copy_db do
 	## End Abstract Assignment
 
 
+	## Populate Comments
+
+	class OldComment < ActiveRecord::Base
+
+		self.table_name = "comments"
+		establish_connection load_database
+
+		def self.comment(r)
+			r = Reviewer.find_by_reviewerEmail(r.email)
+			comment = where(:reviewerID => r)
+			comments = []
+			comment.each do |c|
+				ab = OldAbstract.find(c.abstractID)
+				comments << {
+											:content => c.commentContent,
+											:reviewer => r,
+											:abstract => ab.abstractTitle,
+											:category => c.commentType
+										}
+			end
+			comments
+		end
+
+	end
+
+	desc "Populates Comments"
+	task :comment => :environment do
+
+	reviewers = User.where(:role_id => Role.find_by_title(:reviewer))
+	reviewers.each do |r|
+		c = OldComment.comment(r)
+		ab = 0;
+		c.each do |cc|
+			abs = Submission.find_by_title(cc[:abstract])
+			comment = Comment.new
+			comment.content = cc[:content]
+			comment.user = r
+			comment.submission = abs
+			comment.category = cc[:category]
+			comment.save
+			if comment.errors.any?
+				puts comment.errors.full_messages
+			end
+		end
+	end
+
+	end
+
+	## End Populating Comments
+
+
+
 end
