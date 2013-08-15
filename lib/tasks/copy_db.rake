@@ -1,15 +1,19 @@
 namespace :copy_db do
 
+	# Change the below settings to the db which you wish to populate from
+
 	def load_database
 		config = {
 			:adapter => "mysql2",
 			:encoding => "utf8",
-			:username => "root",
-			:password => "swvist",
+			:username => "",
+			:password => "",
 			:host => "localhost",
-			:database => "sccs_bng_org"
+			:database => "sccs_bng_org" # Name the old db as sccs_bng_org
 		}
 	end
+
+	## End Default Settings
 
 	## Attendees Populate
 
@@ -50,6 +54,7 @@ namespace :copy_db do
 	desc "Copies and Migrates from attendees email and name database"
 	task :attendees => :environment do
 
+		puts "Populating Attendee Emails"
 		Attendee.all.each do |a|
 			u = User.new(a)
 			u.role = Role.find_by_title(:attendee)
@@ -64,7 +69,8 @@ namespace :copy_db do
 	desc "Copies and Migrates details of attendees"
 	task :attendee_details => :environment do
 
-		attendees = User.all
+		puts "Populating Attendee Details"
+		attendees = User.where(:role_id => Role.find_by_title(:attendee))
 		attendees.each do |a|
 			u = Attendee.detail(a)
 			d = Detail.new(u)
@@ -77,7 +83,8 @@ namespace :copy_db do
 	desc "Registers users for the current conference"
 	task :attendee_register => :environment do
 
-		attendees = User.all
+		puts "Populating Attendee Tickets & Finalizing Registration"
+		attendees = User.where(:role_id => Role.find_by_title(:attendee))
 		attendees.each do |a|
 			c = ConferenceUser.new
 			c.conference = Conference.active
@@ -116,6 +123,7 @@ namespace :copy_db do
 	desc "Populate all pages"
 	task :page => :environment do
 
+		puts "Populating Pages"
 		admin = Role.find_by_title(:admin)
 		pages = OldPage.all
 		pages.each do |p|
@@ -160,6 +168,7 @@ namespace :copy_db do
 	desc "Populate all plenaries"
 	task :plenary => :environment do
 
+		puts "Populating Plenaries"
 		admin = Role.find_by_title(:admin)
 		pages = OldPlenary.all
 		pages.each do |p|
@@ -203,6 +212,7 @@ namespace :copy_db do
 	desc "Populate all workshops"
 	task :workshop => :environment do
 
+		puts "Populating Workshops"
 		admin = Role.find_by_title(:admin)
 		pages = OldWorkshop.all
 		pages.each do |p|
@@ -260,7 +270,7 @@ namespace :copy_db do
 	desc "Populate all submissions"
 	task :abstract => :environment do
 
-
+		puts "Populating Abstracts"
 		OldAbstract.all_abstracts.each do |a|
 			attendee = a[:attendee]
 			attendee = User.find_by_email(attendee)
@@ -300,6 +310,7 @@ namespace :copy_db do
 	desc "Populate all reviewers"
 	task :reviewer => :environment do
 
+		puts "Populating Reviewers"
 		reviewers = Reviewer.all
 		reviewers.each do |r|
 			u = User.new(r)
@@ -341,6 +352,8 @@ namespace :copy_db do
 
 	desc "Assigns abstracts to reviewers"
 	task :assign => :environment do
+
+		puts "Assigning Abstracts to Reviewers"
 		role = Role.find_by_title(:attendee)
 		users = User.where(:role_id => role)
 		users.each do |u|
@@ -395,6 +408,7 @@ namespace :copy_db do
 	desc "Populates Comments"
 	task :comment => :environment do
 
+	puts "Populating Comments"
 	reviewers = User.where(:role_id => Role.find_by_title(:reviewer))
 	reviewers.each do |r|
 		c = OldComment.comment(r)
@@ -448,6 +462,7 @@ namespace :copy_db do
 	desc "Populates Scores"
 	task :score => :environment do
 
+	puts "Populating Scores"
 	reviewers = User.where(:role_id => Role.find_by_title(:reviewer))
 	s = OldScore.score(reviewers.first)
 	reviewers.each do |r|
