@@ -1,6 +1,6 @@
 class Submission < ActiveRecord::Base
 
-  attr_accessible :authors, :bursary_for, :bursary_why, :preference, :title,
+  attr_accessible :authors, :bursary_for, :bursary_why, :preference, :title, :accomodation,
   								:aim, :methods, :results, :conservation # Virtual Attributes
   attr_accessor   :aim, :methods, :results, :conservation # Virtual Attributes
 
