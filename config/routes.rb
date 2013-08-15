@@ -1,9 +1,12 @@
 Colloquy::Application.routes.draw do
 
+  get "attendee/index"
+
   resources :workshops
 
   # boss paths
   resources :boss, :only => [:index]
+  resources :attendee, :only => [:index]
 
   match "boss/pages" => "boss#pages", :as => "boss_pages"
   match "boss/workshops" => 'boss#workshops', :as => 'boss_workshops'
