@@ -12,10 +12,14 @@
 # It's strongly recommended to check this file into your version control system.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20130815073732) do
 =======
 ActiveRecord::Schema.define(:version => 20130915083641) do
 >>>>>>> c68d13b563c543b8ae701013ff03450bc7510a93
+=======
+ActiveRecord::Schema.define(:version => 20130815094516) do
+>>>>>>> 63bb83359df2a297ceea924e3fee6739fe33b33f
 
   create_table "attachments", :force => true do |t|
     t.string   "attachable_type"
@@ -46,6 +50,20 @@ ActiveRecord::Schema.define(:version => 20130915083641) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.string   "slug"
+  end
+
+  create_table "details", :force => true do |t|
+    t.string   "gender"
+    t.date     "dob"
+    t.string   "academic"
+    t.string   "institute_affiliation"
+    t.text     "address"
+    t.string   "phone"
+    t.string   "nationality"
+    t.string   "passport"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.integer  "user_id"
   end
 
   create_table "pagecats", :force => true do |t|
@@ -138,6 +156,8 @@ ActiveRecord::Schema.define(:version => 20130915083641) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.integer  "role_id",                :default => 3
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
