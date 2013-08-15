@@ -3,6 +3,7 @@ Colloquy::Application.routes.draw do
   get "attendee/index"
 
   resources :workshops
+  resources :schedules
 
   match "attendee/workshops" => "attendee#workshops", :as => "attendee_workshops"
 
@@ -15,6 +16,9 @@ Colloquy::Application.routes.draw do
   match "boss/conferences" => "boss#conferences", :as => "boss_conferences"
   match "boss/plenaries" => "boss#plenaries", :as => "boss_plenaries"
   match "boss/attendees" => "boss#attendees", :as => "boss_attendees"
+  match "boss/schedule/workshops" => "boss#schedule_workshops", :as => "schedule_workshops"
+  match "boss/schedule/plenaries" => "boss#schedule_plenaries", :as => "schedule_plenaries"
+  match "boss/schedule/workshop/:workshop_id" => "boss#schedule_workshop", :as => "schedule_workshop"
 
   resources :pagetypes
 

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  schedulable_id: 1
+  schedulable_type: MyString
+  starttime: 2013-09-15 14:06:42
+  minutes: 1
+  venue: MyString
+
+two:
+  schedulable_id: 1
+  schedulable_type: MyString
+  starttime: 2013-09-15 14:06:42
+  minutes: 1
+  venue: MyString
