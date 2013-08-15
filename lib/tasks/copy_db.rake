@@ -50,16 +50,13 @@ namespace :copy_db do
 	desc "Copies and Migrates from attendees email and name database"
 	task :attendees => :environment do
 
-		c = 1
 		Attendee.all.each do |a|
-			puts "Populating #{c}/#{Attendee.all.size}"
 			u = User.new(a)
 			u.role = Role.find_by_title(:attendee)
 			u.save
 			if u.errors.any?
 				puts "Error for: #{u.first_name}. #{u.errors.full_messages}"
 			end
-			c += 1
 		end
 
 	end
@@ -68,14 +65,11 @@ namespace :copy_db do
 	task :attendee_details => :environment do
 
 		attendees = User.all
-		c = 1
 		attendees.each do |a|
-			puts "Populating #{c}/#{attendees.size}"
 			u = Attendee.detail(a)
 			d = Detail.new(u)
 			d.user = a
 			d.save
-			c += 1
 		end
 
 	end
@@ -84,15 +78,12 @@ namespace :copy_db do
 	task :attendee_register => :environment do
 
 		attendees = User.all
-		count = 1
 		attendees.each do |a|
-			puts "Populating #{count}/#{attendees.size}"
 			c = ConferenceUser.new
 			c.conference = Conference.active
 			c.user = a
 			c.ticket = Attendee.ticket(a)
 			c.save
-			count += 1
 		end
 	end
 
