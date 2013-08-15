@@ -288,6 +288,39 @@ namespace :copy_db do
 
 	end
 
-	## End Page Populate
+	## End Abstracts Populate
+
+
+	## Reviewers Populate
+
+	class Reviewer < ActiveRecord::Base
+			# Load Database
+			establish_connection(load_database)
+
+			def self.all
+				reviewers = []
+				find_each do |a|
+					reviewers << {:first_name => a.reviewerFirstName, :last_name => a.reviewerLastName, :email => a.reviewerEmail, :password => Devise.friendly_token[1..8]}
+				end
+				reviewers
+			end
+	end
+
+	desc "Populate all reviewers"
+	task :reviewer => :environment do
+
+		reviewers = Reviewer.all
+		reviewers.each do |r|
+			u = User.new(r)
+			u.save
+			if u.errors.any?
+				puts "Error for #{u.email} - #{u.errors.full_messages}"
+			end
+		end
+
+	end
+
+	## End Reviewers Populate
+
 
 end
