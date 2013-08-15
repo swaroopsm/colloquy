@@ -1,0 +1,5 @@
+<% if @conference.errors.any? %>
+	message("error","<%= @conference.errors.full_messages.first %>");
+<% else %>
+	message("success","Conference has been updated successfully!");
+<% end %>

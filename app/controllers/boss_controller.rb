@@ -8,6 +8,7 @@ class BossController < ApplicationController
 	end
 
 	def conferences
+		@conferences = Conference.all
 	end
 
 	def pages

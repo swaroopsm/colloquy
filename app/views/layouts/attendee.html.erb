@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SCCS</title>
+  <link href='http://fonts.googleapis.com/css?family=Averia+Serif+Libre:300|Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    "attendee/attendee", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="menu-top">
+        <div class="attlinks">Hi <%= current_user.email %>!
+        <a href="#" class="absguide">Abstract Submission Guidelines</a>
+        <%= link_to "Register for Workshops", attendee_workshops_path  %>
+        <a href="#" class="my_account">My Account</a>
+        <%= link_to "Log Out", destroy_user_session_path, :method => :delete %>
+        </div>
+        <div class="clear"></div>
+    </div>
+<%= yield %>
+
+</body>
+</html>
