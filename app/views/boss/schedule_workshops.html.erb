@@ -20,8 +20,7 @@
 			    <td><%= workshop.content %></td>
 			    <td><%= workshop.presenter %></td>
 			    <td><%= workshop.conference.title %></td>
-			    <td><%= link_to 'Edit', edit_conference_workshop_path(@conference, workshop), :remote => true %>
-			    <%= link_to 'Destroy', conference_workshop_path(@conference, workshop), method: :delete, data: { confirm: 'Are you sure?' }, :remote => true %></td>
+			    <td><%= link_to "Schedule", schedule_workshop_path(workshop), :remote => true %></td>
 			  </tr>
 			<% end %>
 		<% else %>

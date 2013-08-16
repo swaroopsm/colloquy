@@ -15,18 +15,46 @@ class BossController < ApplicationController
 		@pages = Page.all
 	end
 
-  def plenaries
-    @plenaries = Plenary.all
-  end
+	def plenaries
+	    @plenaries = Plenary.all
+	end
 
-  def attendees
-    @attendees = User.where(:role => "attendee").where(:conference_id => Conference.active)
-  end
+	def attendees
+	    @attendees = User.where(:role => "attendee").where(:conference_id => Conference.active)
+	end
 
 	def workshops
 		@workshops = Workshop.all
 	end
 
+	# list workshops for scheduling
+	def schedule_workshops
+		@workshops = Workshop.all
+		@schedule = Schedule.new
+	end
+
+	# schedule the workshop
+	def schedule_workshop
+		@workshop = Workshop.find(params[:workshop_id])
+		@schedule = Schedule.new
+	end
+
+	# list plenaries for scheduling
+	def schedule_plenaries
+		@plenaries = Plenary.all
+	end
+
+	# schedule the plenary
+	def schedule_plenary
+		@plenary = Plenary.find(params[:plenary_id])
+		@schedule = Schedule.new
+	end
+
+	# list all the scheduled things
+	def schedules
+		@schedules = Schedule.all
+	end
+	
 	private
 
 	def onlyboss
