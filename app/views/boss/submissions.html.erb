@@ -1,0 +1,57 @@
+<table>
+  <thead>
+    <th>Abstract Name</th>
+    <th>Attendee</th>
+    <th>Average Conservation Score</th>
+    <th>Average Science Score</th>
+    <th>Assigned Reviewers</th>
+    <th>Approval Status</th>
+  </thead>
+  <tbody>
+  <% @submission.each do |s| %>
+    <tr>
+      <td><%= s.title %></td>
+      <td><%= s.user.first_name %> <%= s.user.last_name %></td>
+      <% cscore = 0 %>
+      <% sscore = 0 %>
+      <% sl = s.scores.length %>
+      <% s.scores.each do |sc| %>
+        <% cscore += sc.conservation %>
+        <% sscore += sc.science %>
+      <% end %>
+      <td><% if sl > 0 %>
+      <%= cscore / sl %>
+      <% end %></td>
+      <td><% if sl > 0 %>
+      <%= sscore / sl %>
+      <% end %></td>
+
+      <td>
+      <% s.reviewers.each do |r| %>
+        <%= r.user.first_name %> <%= r.user.last_name %>,
+      <% end %>
+      </td>
+      <td>
+      <%= "Talk" if s.approved == 1 %>
+      <%= "Poster" if s.approved == 2 %>
+      <%= "Rejected" if s.approved == nil %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+
+<br>
+<% @submission.each do |s| %>
+  <%= s.inspect %> <br>
+  <%= s.user.inspect %>
+  <br>
+  <br><br>
+<% end %>
+<br>
+<br>
+<hr>
+<br>
+<br>

@@ -56,7 +56,7 @@ class BossController < ApplicationController
 	end
 
   def submissions
-    @submissions = Submission.where(:conference_id => @conference).includes({:submission => :user})
+    @submission = Submission.where(:conference_id => Conference.active).includes(:user).includes(:scores).includes({:reviewers => :user})
   end
 
 
