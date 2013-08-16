@@ -6,8 +6,8 @@ namespace :copy_db do
 		config = {
 			:adapter => "mysql2",
 			:encoding => "utf8",
-			:username => "",
-			:password => "",
+			:username => "root",
+			:password => "root",
 			:host => "localhost",
 			:database => "sccs_bng_org" # Name the old db as sccs_bng_org
 		}
