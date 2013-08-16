@@ -44,5 +44,10 @@ namespace :populate do
 		Rake::Task["copy_db:score"].invoke
 
 	end
+	
+	desc "Download and Save Abstract Images"
+	task :download => :environment do
+		Rake::Task["copy_db:download"].invoke
+	end
 
 end

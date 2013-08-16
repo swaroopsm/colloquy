@@ -6,11 +6,20 @@ namespace :copy_db do
 		config = {
 			:adapter => "mysql2",
 			:encoding => "utf8",
-			:username => "",
+			:username => "root",
 			:password => "",
 			:host => "localhost",
 			:database => "sccs_bng_org" # Name the old db as sccs_bng_org
 		}
+	end
+	
+	# Change the below to the URL which you want to fetch the Abstract Images from
+	# You can use the live site's URL
+	# If you have clone the folders of the live site into your localhost
+	# Consider using localhost for faster downloads and processing
+
+	def image_download
+		"http://127.0.0.1/new_sccs/sccs-bng.org/uploads/" # From live site: http://www.sccs-bng.org/uploads/
 	end
 
 	## End Default Settings
@@ -483,7 +492,49 @@ namespace :copy_db do
 	end
 
 	## End Populating Scores
+	
 
+	## Download and populate images
+	
+	class Image < ActiveRecord::Base
+		
+		establish_connection load_database
 
+		def self.download(a)
+			
+			abs = OldAbstract.find_by_abstractTitle(a.title)
+			begin
+			d = open(image_download+abs.abstractImageFolder) unless abs.abstractImageFolder.nil? or abs.abstractImageFolder.empty?
+			rescue OpenURI::HTTPError
+				nil
+			else
+				d
+			end
+		end
+
+	end
+
+	desc "Downloads images from the web and uses paperclip to populate it"
+	task :download => :environment do
+		
+		p "Preparing to download Abstract Images"
+		c = 1
+		submissions = Submission.all
+		submissions.each do |s|
+			p "Downloading #{c}/#{submissions.size}"
+			i = Image.download(s)
+			unless i.nil?
+				a = Attachment.new(:pic => i)
+				a.attachable = s
+				a.save
+				if a.errors.any?
+					p "Error for #{s.title}: #{a.errors.full_messages}"
+				end
+			else
+				p "Image not found for #{s.title}"
+			end
+			c += 1
+		end
+	end
 
 end
