@@ -17,13 +17,14 @@ class User < ActiveRecord::Base
   has_many  :submissions
   has_many  :reviews, :class_name => "ReviewerSubmission"
   has_many	:scores
+  has_many  :comments
 
   has_many :workshop_attendees
   has_one	 :detail
   belongs_to :role
 
 	# Check role of a user
-		def admin?
+	def admin?
 		self.role.title == "admin"
 	end
 
@@ -45,4 +46,10 @@ class User < ActiveRecord::Base
 	def registered?
 		ConferenceUser.where(:user_id => self, :conference_id => Conference.active).size > 0
 	end
+
+	# Get abstract of the current conference of an attendee
+	def active_submission
+		s = Submission.where(:user_id => self, :conference_id => Conference.active).first
+	end
+
 end

@@ -11,7 +11,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130915083641) do
+ActiveRecord::Schema.define(:version => 20130815163929) do
+
 
   create_table "attachments", :force => true do |t|
     t.string   "attachable_type"
@@ -22,6 +23,15 @@ ActiveRecord::Schema.define(:version => 20130915083641) do
     t.string   "pic_content_type"
     t.integer  "pic_file_size"
     t.datetime "pic_updated_at"
+  end
+
+  create_table "comments", :force => true do |t|
+    t.text     "content"
+    t.integer  "submission_id"
+    t.integer  "user_id"
+    t.integer  "category"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "conference_users", :force => true do |t|
@@ -116,8 +126,9 @@ ActiveRecord::Schema.define(:version => 20130915083641) do
     t.integer  "conservation"
     t.integer  "science"
     t.integer  "recommendation"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.boolean  "finalized",      :default => false
   end
 
   create_table "submissions", :force => true do |t|
@@ -132,6 +143,7 @@ ActiveRecord::Schema.define(:version => 20130915083641) do
     t.text     "bursary_why"
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
+    t.boolean  "accomodation"
   end
 
   create_table "users", :force => true do |t|

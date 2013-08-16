@@ -1,6 +1,6 @@
 class Submission < ActiveRecord::Base
 
-  attr_accessible :authors, :bursary_for, :bursary_why, :preference, :title,
+  attr_accessible :authors, :bursary_for, :bursary_why, :preference, :title, :accomodation,
   								:aim, :methods, :results, :conservation # Virtual Attributes
   attr_accessor   :aim, :methods, :results, :conservation # Virtual Attributes
 
@@ -14,6 +14,7 @@ class Submission < ActiveRecord::Base
 	has_many 		:attachments, :as => :attachable
 	has_many		:reviewers, :class_name => "ReviewerSubmission"
 	has_many		:scores
+	has_many		:comments
 
   accepts_nested_attributes_for :attachments
 
