@@ -41,14 +41,14 @@ class PagecatsController < ApplicationController
   # POST /pagetypes
   # POST /pagetypes.json
   def create
-    @pagecat = Pagecat.new(params[:pagetype])
+    @pagecat = Pagecat.new(params[:pagecat])
 
     respond_to do |format|
       if @pagecat.save
-        format.html { redirect_to @pagecat, notice: 'Pagetype was successfully created.' }
+        format.js
         format.json { render json: @pagecat, status: :created, location: @pagecat }
       else
-        format.html { render action: "new" }
+        format.js { render action: "new" }
         format.json { render json: @pagecat.errors, status: :unprocessable_entity }
       end
     end

@@ -1,5 +1,5 @@
 class Pagecat < ActiveRecord::Base
-  attr_accessible :type
+  attr_accessible :title
 
   # disable STI
   self.inheritance_column = :_type_disabled

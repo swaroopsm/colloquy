@@ -1,0 +1,29 @@
+html = '';
+// html += '<%= @submission.inspect %>';
+// html += '<hr><br>';
+html += '<h1><%= @submission[0].title %></h1>';
+html += '<%= @submission[0].authors %>';
+html += '<hr><br>';
+html += "<%=raw @submission[0].content %>";
+html += '<br><hr><br>';
+html += '<h3>COMMENTS</h3>';
+<% @submission[0].comments.each do |c| %>
+  <% unless c.content == "" %>
+    <% if c.category == 1 %>
+      html += '<strong>Comment from <%= c.user.first_name %> to Attendee</strong><br>';
+    <% else %>
+      html += '<strong>Comment from <%= c.user.first_name %> to OC</strong><br>';
+    <% end %>
+    html += '<%= c.content %><br><br>';
+  <% end %>
+<% end %>
+html += '<br><hr><br>';
+html += '<h3>SCORES & RECOMMENDATION</h3>';
+<% @submission[0].scores.each do |s| %>
+html += '<strong><%= s.user.first_name %> <%= s.user.last_name %></strong> :'
+html += '<strong>CONSERVATION SCORE</strong> : <%= s.conservation %> | <strong>SCIENCE SCORE</strong> : <%= s.science %> | ';
+html += '<strong>RECOMMENDED FOR A <%= "TALK" if s.recommendation ==1 %><%= "POSTER" if s.recommendation ==2 %><%= "REJECT" if s.recommendation ==3 %></strong><br>';
+<% end %>
+html += '<br><hr><br><br>';
+
+modalload(html);

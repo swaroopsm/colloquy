@@ -18,10 +18,11 @@ class SubmissionsController < ApplicationController
   # GET /submissions/1
   # GET /submissions/1.json
   def show
-    @submission = Submission.find(params[:id])
+    @submission = Submission.where(:id => params[:id]).includes(:user).includes({:scores => [:user]}).includes(:comments)
 
     respond_to do |format|
       format.html # show.html.erb
+      format.js
       format.json { render json: @submission }
     end
   end

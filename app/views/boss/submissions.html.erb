@@ -1,4 +1,4 @@
-<table>
+<table id="datatable">
   <thead>
     <th>Abstract Name</th>
     <th>Attendee</th>
@@ -10,7 +10,7 @@
   <tbody>
   <% @submission.each do |s| %>
     <tr>
-      <td><%= s.title %></td>
+      <td><%= link_to s.title, conference_submission_path(s.conference, s), :remote=>true %></td>
       <td><%= s.user.first_name %> <%= s.user.last_name %></td>
       <% cscore = 0 %>
       <% sscore = 0 %>
@@ -40,18 +40,3 @@
   <% end %>
   </tbody>
 </table>
-
-
-
-<br>
-<% @submission.each do |s| %>
-  <%= s.inspect %> <br>
-  <%= s.user.inspect %>
-  <br>
-  <br><br>
-<% end %>
-<br>
-<br>
-<hr>
-<br>
-<br>
