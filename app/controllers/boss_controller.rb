@@ -62,12 +62,19 @@ class BossController < ApplicationController
 
   # This will actually send the mail
   def sendemailtoattendees
-  	@users = User.all
-
+  	@users = ConferenceUser.where(:conference_id => Conference.active)
   	@sub = params[:emailbody]
-  	@getname = @sub.sub("@@Name@@", "blah" )
 
-  	render :text => @getname.to_json
+    @array = []
+
+    @users.each do |u|
+      @getname = @sub.sub("@@Name@@", "#{u.user[:first_name]} #{u.user[:last_name]}" )
+      @array << @getname
+    end
+
+    render :text => @array.to_json
+
+
 
   end
 

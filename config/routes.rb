@@ -25,7 +25,7 @@ Colloquy::Application.routes.draw do
   match "boss/sendemailtoattendees" => "boss#sendemailtoattendees", :as => "send_email_attendees", :method => :post
   match "boss/emailform" => "boss#emailform", :as => "boss_email_attendees"
 
-  resources :pagetypes
+  resources :pagecats
 
   resources :conferences, :only => [:index, :new, :show, :edit, :update, :create, :destroy]
 
