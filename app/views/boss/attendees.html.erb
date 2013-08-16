@@ -1,1 +1,28 @@
-<%= @attendee.inspect %>
+<table id="datatable">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Affiliation</th>
+      <th>Academic Status</th>
+      <th>Address</th>
+      <th>Phone</th>
+      <th>Nationality</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @attendees.each do |a| %>
+  <tr>
+      <td><%= a.user.first_name %> <%= a.user.last_name %></td>
+      <td><%= a.user.detail.gender %></td>
+      <td><%= a.user.detail.institute_affiliation %> </td>
+      <td><%= a.user.detail.academic %></td>
+      <td><%= a.user.detail.address %></td>
+      <td><%= a.user.detail.phone %></td>
+      <td><%= a.user.detail.nationality %></td>
+    </tr>
+  <% end %>
+
+  </tbody>
+</table>
+

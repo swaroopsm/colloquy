@@ -20,7 +20,7 @@ class BossController < ApplicationController
 	end
 
 	def attendees
-	    @attendees = User.where(:role => "attendee").where(:conference_id => Conference.active)
+	    @attendees = ConferenceUser.where(:conference_id => Conference.active).includes({:user => :detail})
 	end
 
 	def workshops
@@ -54,6 +54,10 @@ class BossController < ApplicationController
 	def schedules
 		@schedules = Schedule.all
 	end
+
+  def submissions
+    @submissions = Submission.where(:conference_id => @conference).includes({:submission => :user})
+  end
 
 
   # This will render the email form
