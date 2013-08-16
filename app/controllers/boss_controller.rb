@@ -54,7 +54,23 @@ class BossController < ApplicationController
 	def schedules
 		@schedules = Schedule.all
 	end
-	
+
+
+  # This will render the email form
+  def emailform
+  end
+
+  # This will actually send the mail
+  def sendemailtoattendees
+  	@users = User.all
+
+  	@sub = params[:emailbody]
+  	@getname = @sub.sub("@@Name@@", "blah" )
+
+  	render :text => @getname.to_json
+
+  end
+
 	private
 
 	def onlyboss
@@ -69,7 +85,6 @@ class BossController < ApplicationController
     end
     @xpages = Page.where("pagecat_id IN (?)", @cats ).where(:conference_id => Conference.active).group_by{ |c| c[:pagecat_id] }
     @conference = Conference.active
-
   end
 
   def allconferences
