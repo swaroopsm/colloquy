@@ -1,0 +1,20 @@
+<%= form_tag send_email_attendees_path do %>
+  <%# if @sendmail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%# pluralize(@conference.errors.count, "error") %> <!-- prohibited this conference from being saved: --></h2>
+
+      <ul>
+      <%# @sendmail.errors.full_messages.each do |msg| %>
+        <li><%# msg %></li>
+      <%# end %>
+      </ul>
+    </div>
+  <%# end %>
+  <p>Please enter the text that you would like in the body of the email. You can type @@Name@@ for rendering the users name. @@abstract@@ to render the abstract title.</p>
+  <div class="field">
+    <%= text_area_tag :emailbody %>
+  </div>
+  <div class="actions">
+    <%= submit_tag %>
+  </div>
+<% end %>
