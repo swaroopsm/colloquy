@@ -6,6 +6,7 @@
     <th>Average Science Score</th>
     <th>Assigned Reviewers</th>
     <th>Approval Status</th>
+    <th>Actions</th>
   </thead>
   <tbody>
   <% @submission.each do |s| %>
@@ -35,6 +36,9 @@
       <%= "Talk" if s.approved == 1 %>
       <%= "Poster" if s.approved == 2 %>
       <%= "Rejected" if s.approved == nil %>
+      </td>
+      <td>
+      Edit Comments | Edit Abstract | Edit
       </td>
     </tr>
   <% end %>
