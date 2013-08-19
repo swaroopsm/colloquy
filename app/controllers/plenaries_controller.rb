@@ -61,6 +61,7 @@ class PlenariesController < ApplicationController
   # PUT /plenaries/1.json
   def update
     @plenary = Plenary.find(params[:id])
+    # @plenary.attachments.build(params[:attachments])
     @plenary.update_attributes(params[:plenary])
 
     respond_to do |format|

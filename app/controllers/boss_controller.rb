@@ -16,7 +16,7 @@ class BossController < ApplicationController
 	end
 
 	def plenaries
-	    @plenaries = Plenary.all
+	    @plenaries = Plenary.includes(:attachments).all
 	end
 
 	def attendees

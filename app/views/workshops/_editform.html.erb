@@ -27,9 +27,6 @@
   <% @workshop.attachments.each do |a| %>
     <%= image_tag a.pic.url(:thumb) %>
   <% end %>
-   <%= fields_for :attachments do |form| %>
-    <%= form.file_field :pic %>
-  <% end %>
   <p>To change the image, simply upload a new file.</p>
   <div class="actions">
     <%= f.submit %>

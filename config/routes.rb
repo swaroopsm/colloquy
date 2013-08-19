@@ -28,14 +28,9 @@ Colloquy::Application.routes.draw do
 
   resources :pagecats
 
-  resources :conferences, :only => [:index, :new, :show, :edit, :update, :create, :destroy]
-
   devise_for :users
 
   root :to => "home#index"
-
-  resources :conferences, :path => "" , :except => [:index, :new, :show, :edit, :update, :create, :destroy] do
-  end
 
 	# Assign & Unassign an abstract
 	match 'reviewer/:user_id/abstract/:id/assign' => "submission#assign", :as => "submission_assign", :method => :post
@@ -55,14 +50,6 @@ Colloquy::Application.routes.draw do
       resources :schedules
     end
 
-  resources :conferences, :path => "" do
-    resources :plenaries
-    resources :workshops
-    resources :submissions, :except => [:new, :create], :path => :abstracts
-    resources :pages, :path => ""
-  end
-
-
   resources :submissions, :only => [:new, :create]
   resources :attachments, :only => [:update, :destroy, :edit, :index]
 
@@ -70,6 +57,17 @@ Colloquy::Application.routes.draw do
   match ':conference_id/workshops/:workshop_id/attend' => 'workshops#attend', :as => 'attend'
   match ':conference_id/workshops/:workshop_id/unattend' => 'workshops#unattend', :as => 'unattend'
 
+  resources :conferences, :path => "" do
+    resources :plenaries
+    resources :workshops
+    resources :submissions, :except => [:new, :create], :path => :abstracts
+    resources :pages, :path => ""
+  end
+
+  resources :conferences, :only => [:index, :new, :show, :edit, :update, :create, :destroy]
+
+  resources :conferences, :path => "" , :except => [:index, :new, :show, :edit, :update, :create, :destroy] do
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

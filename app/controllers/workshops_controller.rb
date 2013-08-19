@@ -74,7 +74,7 @@ class WorkshopsController < ApplicationController
         format.js
       end
     end
-    
+
   end
 
   # DELETE /workshops/1

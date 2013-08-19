@@ -2,7 +2,8 @@ class HomeController < ApplicationController
 	before_filter :getallextras
 
   def index
-  	
+  	@workshops = Workshop.order('RAND()').includes(:attachments).all
+    @plenaries = Plenary.order('RAND()').all
   end
 
 

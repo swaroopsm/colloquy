@@ -19,7 +19,6 @@ class AttachmentsController < ApplicationController
 	def update
 		@attachment = Attachment.find(params[:id])
 		@attachment.update_attributes(params[:attachment])
-		
 	end
 
 	def destroy

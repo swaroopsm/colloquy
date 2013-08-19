@@ -1,2 +1,32 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div id="gals">
+<div id="gallery">
+<div class="galwrap1">
+<% @plenaries.each do |p| %>
+<div class="slide" style="background-image:url(<%= p.attachments[0].pic.url %>)">
+  <div class="slide_overlay plen"></div>
+  <div class="slide_content">
+    <div class="plenary greenback">P L E N A R Y →</div>
+    <div class="speaker orangeback"><%= p.presenter %></div>
+    <br>
+    <div class="plenary_title"><%= p.title %></div>
+  </div>
+</div>
+<% end %>
+</div>
+</div>
+<div id="wshopgall">
+<div class="galwrap2">
+<% @workshops.each do |w| %>
+<div class="workslide" style="background-image: url(<%= w.attachments[0].pic.url %>)">
+  <div class="slide_overlay work"></div>
+  <div class="slide_content">
+    <div class="plenary yellowback">W O R K S H O P →</div>
+    <div class="speaker blueback"><%= w.presenter %></div>
+    <br>
+    <div class="plenary_title"><%= w.title %></div>
+  </div>
+</div>
+<% end %>
+</div>
+</div>
+</div>
