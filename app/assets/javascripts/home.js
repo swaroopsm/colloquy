@@ -35,11 +35,11 @@ $(document).ready(function() {
   });
 
   $(".workslide").click(function(){
-    window.location.href = "sccs-bng-2013/workshops/";
+    window.location.href = "2013/workshops/";
   });
 
   $(".slide").click(function(){
-    window.location.href = "sccs-bng-2013/plenaries/";
+    window.location.href = "2013/plenaries/";
   });
 
 });
