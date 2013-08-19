@@ -7,7 +7,7 @@ class PlenariesController < ApplicationController
   # GET /plenaries
   # GET /plenaries.json
   def index
-    @plenaries = Plenary.all
+    @plenaries = Plenary.includes(:attachments).all
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,31 +1,16 @@
-<h1>Listing plenaries</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Content</th>
-    <th>Presenter</th>
-    <th>Conference</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<div id="content">
 <% @plenaries.each do |plenary| %>
-  <tr>
-    <td><%= plenary.title %></td>
-    <td><%= plenary.content %></td>
-    <td><%= plenary.presenter %></td>
-    <td><%= plenary.conference_id %></td>
-    <td><%= plenary.user_id %></td>
-    <td><%= link_to 'Show', conference_plenary_path(@conference, plenary) %></td>
-    <td><%= link_to 'Edit', edit_conference_plenary_path(@conference, plenary) %></td>
-    <td><%= link_to 'Destroy', conference_plenary_path(@conference, plenary), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<div class="item plenitem" style="background-image: url(<%= plenary.attachments[0].pic.url %>);">
+    <br>
+    <div class="speaker" style="background-color: #F99C1C; font-size: 150%; font-weight:900;"><%= plenary.presenter %></div>
+    <br><br>
+    <h1>
+        <%= link_to plenary.title, plenary_path(plenary.id)  %>
+    </h1>
+    <br>
+    <!-- <div class="plenary yellowback">Plenaries &rarr;</div> -->
+
+    <!-- <div class="plenary greenback">DATE: T.B.A. &nbsp; Max Participation : 30 students</div> -->
+</div>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Plenary', new_conference_plenary_path(@conference) %>
+</div>
