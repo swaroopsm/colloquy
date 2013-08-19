@@ -4,6 +4,7 @@ html = '';
 html += '<h1><%= @submission[0].title %></h1>';
 html += '<%= @submission[0].authors %>';
 html += '<hr><br>';
+html += '<%= image_tag @submission[0].attachments[0].pic, :class=>"abstractimage" %>'
 html += "<%=raw @submission[0].content %>";
 html += '<br><hr><br>';
 html += '<h3>COMMENTS</h3>';
@@ -25,5 +26,7 @@ html += '<strong>CONSERVATION SCORE</strong> : <%= s.conservation %> | <strong>S
 html += '<strong>RECOMMENDED FOR A <%= "TALK" if s.recommendation ==1 %><%= "POSTER" if s.recommendation ==2 %><%= "REJECT" if s.recommendation ==3 %></strong><br>';
 <% end %>
 html += '<br><hr><br><br>';
+
+// html += '<%=j @submission[0].attachments.inspect  %>'
 
 modalload(html);
