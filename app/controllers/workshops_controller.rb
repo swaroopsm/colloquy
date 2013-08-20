@@ -19,7 +19,6 @@ class WorkshopsController < ApplicationController
   # GET /workshops/1.json
   def show
     @workshop = Workshop.find(params[:id])
-    @attendees = @workshop.attendees
     @conference = Conference.find(params[:conference_id])
     respond_to do |format|
       format.html # show.html.erb

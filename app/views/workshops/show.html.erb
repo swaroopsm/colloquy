@@ -1,3 +1,12 @@
+<div class="plenary yellowback">W O R K S H O P S</div>
+<h1><%= @workshop.title %></h1>
+<div class="plenary yellowback"><%= @workshop.presenter %></div>
+
+<div class="pageview">
+  <%=raw @workshop.content %>
+</div>
+
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -19,31 +28,3 @@
   <b>Conference:</b>
   <%= @workshop.conference.title %>
 </p>
-
-<p>
-  <b>Attendees:</b>
-  <% if @attendees.any? %>
-    <% @attendees_ids = [] %>
-    <% @attendees.each do |a| %>
-      <% @attendees_ids.push a.user %>
-      <%= a.user.email %>, 
-    <% end %>
-  <% else %>
-    There are no attendees for this workshop yet!
-  <% end %>
-</p>
-
-<br><br>
-<% if @attendees_ids and @attendees_ids.include? current_user %>
-  You are attending this workshop, <%= link_to "Unattend this workshop", unattend_path(@conference, @workshop), :remote => true %>
-<% else %>
-  You are not attending this workshop, <%= link_to "Attend this workshop", attend_path(@conference, @workshop), :remote => true %>
-<% end %>
-<br>
-<%= image_tag @workshop.attachments.first.pic.url %>
-
-<br>
-<% if can? :edit, @workshop %>
-  <%= link_to 'Edit', edit_conference_workshop_path(@conference, @workshop) %> |
-<% end %>
-<%= link_to 'Back', conference_workshops_path(@conference) %>
