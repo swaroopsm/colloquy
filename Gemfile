@@ -42,6 +42,9 @@ gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-ra
 # For ajax file uploads..
 gem "remotipart"
 
+# Rest Client to interact with external urls
+gem 'rest-client'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -102,6 +102,8 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     remotipart (1.0.5)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -135,5 +137,6 @@ DEPENDENCIES
   paperclip
   rails (= 3.2.13)
   remotipart
+  rest-client
   tinymce-rails
   uglifier (>= 1.0.3)
