@@ -15,6 +15,7 @@ class Ability
       can :manage, Pagecat
       can :manage, Plenary
       can :manage, Workshop
+      can :manage, Topic
 
       can :manage, Submission
     elsif user.attendee?

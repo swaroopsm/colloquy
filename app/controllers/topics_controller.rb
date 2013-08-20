@@ -1,4 +1,10 @@
 class TopicsController < ApplicationController
+
+	before_filter :getallextras
+	before_filter :authenticate_user!, :except => [:show, :index]
+	load_and_authorize_resource :conference, :except => [:show, :index]
+	load_and_authorize_resource :topic, :through => :conference, :except => [:show, :index]
+
   # GET /topics
   # GET /topics.json
   def index
@@ -79,5 +85,20 @@ class TopicsController < ApplicationController
       format.html { redirect_to topics_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+  def getallextras
+    @xpagecats = Pagecat.all
+    @cats = []
+    @xpagecats.each do | p |
+      @cats << p.id
+    end
+    @xpages = Page.where("pagecat_id IN (?)", @cats ).where(:conference_id => Conference.active).group_by{ |c| c[:pagecat_id] }
+    @conference = Conference.active
+  end
+
+  def allconferences
+    @xconfs = Conference.all
   end
 end
