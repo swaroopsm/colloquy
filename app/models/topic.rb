@@ -1,3 +1,8 @@
 class Topic < ActiveRecord::Base
-  attr_accessible :conference_id, :description, :title, :user_id
+
+  attr_accessible :description, :title
+
+  belongs_to :conference
+  belongs_to :user
+
 end

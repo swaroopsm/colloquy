@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   has_many	:scores
   has_many  :comments
   has_many	:ideas
+  has_many	:topics
 
   has_many :workshop_attendees
   has_one	 :detail
