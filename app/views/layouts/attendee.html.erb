@@ -10,6 +10,7 @@
 <body>
 <div class="menu-top">
         <div class="attlinks">Hi <%= current_user.email %>!
+        <%= link_to "Abstract Submission Guidelines", conference_page_path(@conference, 'abstract-submission-guidelines')  %>
         <a href="#" class="absguide">Abstract Submission Guidelines</a>
         <% unless @submission.empty? %>
         <%= link_to "My Abstract", conference_submission_path(@conference, @submission[0]), :remote => true  %>
