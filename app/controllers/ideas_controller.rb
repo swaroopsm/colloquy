@@ -34,8 +34,7 @@ class IdeasController < ApplicationController
     @idea = Idea.new
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @idea }
+      format.js
     end
   end
 
