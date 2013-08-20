@@ -4,6 +4,7 @@ class AttendeeController < ApplicationController
   before_filter :getallextras
   layout "attendee"
   def index
+
   end
 
   def workshops
@@ -27,6 +28,7 @@ class AttendeeController < ApplicationController
     end
     @xpages = Page.where("pagecat_id IN (?)", @cats ).where(:conference_id => Conference.active).group_by{ |c| c[:pagecat_id] }
     @conference = Conference.active
+    @submission = Submission.where(:user_id => current_user)
 
   end
 

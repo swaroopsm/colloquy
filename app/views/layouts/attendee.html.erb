@@ -11,6 +11,9 @@
 <div class="menu-top">
         <div class="attlinks">Hi <%= current_user.email %>!
         <a href="#" class="absguide">Abstract Submission Guidelines</a>
+        <% unless @submission.empty? %>
+        <%= link_to "My Abstract", conference_submission_path(@conference, @submission[0]), :remote => true  %>
+        <% end %>
         <%= link_to "Register for Workshops", attendee_workshops_path  %>
         <%= link_to "My Account", edit_user_registration_path  %>
         <%= link_to "Log Out", destroy_user_session_path, :method => :delete %>
@@ -19,10 +22,20 @@
     </div>
 <%= yield %>
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<%= @submission.inspect %>
 
 
 <div id="messages"></div>
-
 
 <div id="modalwrap">
   <div class="closemodal">&times; CLOSE</div>
