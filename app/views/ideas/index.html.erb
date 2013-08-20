@@ -26,4 +26,4 @@
 
 <br />
 
-<%= link_to 'New Idea', new_idea_path %>
+<%= link_to 'New Idea', new_conference_idea_path(@conference), :remote => true if can? :create, Idea %>
