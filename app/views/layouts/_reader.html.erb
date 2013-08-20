@@ -18,6 +18,13 @@
 <div id="signedin">
 	<% if user_signed_in? %>
 		Hi <%= current_user.email %>! <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %><%=  %>
+    <% if current_user.role_id == 1 %>
+      <%= link_to "Manage the site", boss_path  %>
+    <% elsif current_user.role_id == 2 %>
+      <%# link_to "Manage the site", boss_path  %>
+    <% elsif current_user.role_id ==3 %>
+      <%= link_to "Registrations and Submission Manager", attendee_index_path  %>
+    <% end %>
 	<% end %>
 </div>
 
