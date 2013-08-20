@@ -17,15 +17,17 @@
 <div id="wshopgall">
 <div class="galwrap2">
 <% @workshops.each do |w| %>
-<div class="workslide" style="background-image: url(<%= w.attachments[0].pic.url if w.attachments.any? %>)">
-  <div class="slide_overlay work"></div>
-  <div class="slide_content">
-    <div class="plenary yellowback">W O R K S H O P →</div>
-    <div class="speaker blueback"><%= w.presenter %></div>
-    <br>
-    <div class="plenary_title"><%= w.title %></div>
+  <% unless w.repeat == true %>
+  <div class="workslide" style="background-image: url(<%= w.attachments[0].pic.url %>)">
+    <div class="slide_overlay work"></div>
+    <div class="slide_content">
+      <div class="plenary yellowback">W O R K S H O P →</div>
+      <div class="speaker blueback"><%= w.presenter %></div>
+      <br>
+      <div class="plenary_title"><%= w.title %></div>
+    </div>
   </div>
-</div>
+  <% end %>
 <% end %>
 </div>
 </div>

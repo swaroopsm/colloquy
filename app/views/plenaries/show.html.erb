@@ -1,30 +1,7 @@
-<p id="notice"><%= notice %></p>
+<div class="plenary yellowback">P L E N A R Y</div>
+<h1><%= @plenary.title %></h1>
+<div class="plenary yellowback"><%= @plenary.presenter %></div>
 
-<p>
-  <b>Title:</b>
-  <%= @plenary.title %>
-</p>
-
-<p>
-  <b>Content:</b>
-  <%= @plenary.content %>
-</p>
-
-<p>
-  <b>Presenter:</b>
-  <%= @plenary.presenter %>
-</p>
-
-<p>
-  <b>Conference:</b>
-  <%= @plenary.conference_id %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @plenary.user_id %>
-</p>
-
-<div id="adminfuncs">
-  <%= link_to 'Edit', edit_conference_plenary_path(@conference, @plenary) if can? :manage, @plenary %>
+<div class="pageview">
+  <%=raw @plenary.content %>
 </div>

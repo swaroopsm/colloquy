@@ -57,8 +57,11 @@ Colloquy::Application.routes.draw do
   match ':conference_id/workshops/:workshop_id/unattend' => 'workshops#unattend', :as => 'unattend'
 
   match ':conference_id/talks/' => 'submissions#talks', :as => 'conference_talks'
+  match ':conference_id/posters/' => 'submissions#posters', :as => 'conference_posters'
 
-  resources :conferences, :path => "" do
+  resources :conferences, :only=> [:edit, :destroy, :update]
+
+  resources :conferences, :except=> [:edit, :destroy, :update], :path => "" do
     resources :plenaries
     resources :workshops
     resources :submissions, :except => [:new, :create], :path => :abstracts

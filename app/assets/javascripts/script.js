@@ -78,6 +78,7 @@ jQuery(document).ready(function($) {
 
   $(".closemodal").click(function() {
     closemodal();
+    closeloader();
 
   });
 

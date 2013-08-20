@@ -9,6 +9,7 @@
 		    <th>Content</th>
 		    <th>Presenter</th>
 		    <th>Conference</th>
+		    <th>Type</th>
 		    <th>Actions</th>
 		  </tr>
 	</thead>
@@ -20,6 +21,7 @@
 			    <td><%= workshop.content %></td>
 			    <td><%= workshop.presenter %></td>
 			    <td><%= workshop.conference.title %></td>
+			    <td><%= "Long" if workshop.long? %> <%= "Short" unless workshop.long? %></td>
 			    <td><%= link_to 'Edit', edit_conference_workshop_path(@conference, workshop), :remote => true %>
 			    <%= link_to 'Destroy', conference_workshop_path(@conference, workshop), method: :delete, data: { confirm: 'Are you sure?' }, :remote => true %></td>
 			  </tr>

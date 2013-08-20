@@ -1,4 +1,4 @@
-<% 
+<%
 if @plenary
 	@main_action = @plenary
 elsif @workshop
@@ -8,7 +8,11 @@ end
 <%= form_for [@main_action, Schedule.new], :remote => true do |f| %>
 	<p>
 		<%= f.label "Start time" %>
-		<%= f.date_select :starttime %> | <%= f.time_select :starttime, :ignore_date => true, :ampm => true %>
+		<%= f.time_select :starttime %>
+	</p>
+	<p>
+		<%= f.label :day %>
+		<%= f.number_field :day %>
 	</p>
 	<p>
 		<%= f.label "Session length (in minutes)" %>

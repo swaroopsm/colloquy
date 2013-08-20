@@ -20,6 +20,30 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
+    <%= f.label :early_bird_close %><br />
+    <%= f.date_select :early_bird_close %>
+  </div>
+  <div class="field">
+    <%= f.label :abstract_submission_start %><br />
+    <%= f.date_select :abstract_submission_start %>
+  </div>
+  <div class="field">
+    <%= f.label :abstract_submission_close %><br />
+    <%= f.date_select :abstract_submission_close %>
+  </div>
+  <div class="field">
+    <%= f.label :workshop_registration_start %><br />
+    <%= f.date_select :workshop_registration_start %>
+  </div>
+  <div class="field">
+    <%= f.label :workshop_registration_close %><br />
+    <%= f.date_select :workshop_registration_close %>
+  </div>
+  <div class="field">
+    <%= f.label :online_registration_close %><br />
+    <%= f.date_select :online_registration_close %>
+  </div>
+    <div class="field">
     <%= f.label :start_date %><br />
     <%= f.date_select :start_date %>
   </div>

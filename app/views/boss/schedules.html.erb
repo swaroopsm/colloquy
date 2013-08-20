@@ -5,6 +5,7 @@
 		    <th>Event</th>
 		    <th>Title</th>
 		    <th>Presenter</th>
+		    <th>Day</th>
 		    <th>Start time</th>
 		    <th>Session Length (in minutes)</th>
 		    <th>Venue</th>
@@ -18,7 +19,8 @@
 			   	<td><%= schedule.schedulable_type %></td>
 			    <td><%= schedule.schedulable.title %></td>
 			    <td><%= schedule.schedulable.presenter %></td>
-			    <td><%= schedule.starttime %></td>
+			    <td><%= schedule.day %></td>
+			    <td><%= schedule.starttime.strftime("%H : %M") %></td>
 			    <td><%= schedule.minutes %></td>
 			    <td><%= schedule.venue%></td>
 			  </tr>
@@ -32,7 +34,7 @@
 				<td></td>
 				<td></td>
 				<td></td>
-				
+
 			</tr>
 		<% end %>
 	</tbody>

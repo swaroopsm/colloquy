@@ -4,11 +4,25 @@ class AttendeeController < ApplicationController
   before_filter :getallextras
   layout "attendee"
   def index
+
   end
 
   def workshops
     # @workshops = Workshop.all
-    @workshops = Workshop.where(:conference_id => Conference.active).includes(:workshop_attendees)
+    @scheduled_w = Schedule.where(:schedulable_type => 'Workshop').includes({:schedulable => :workshop_attendees})
+
+    @attendeeworkshops = WorkshopAttendee.where(:user_id => current_user).includes(:workshop)
+
+    days = @conference.number_of_days
+
+    @days = []
+    while days > 0
+      @days << Workshop.has_registered_for_day(current_user, days)
+      days -= 1
+    end
+
+    @grouped = @scheduled_w.group_by{|d| d[:day]}
+    # @workshops = Workshop.where(:conference_id => Conference.active).includes(:workshop_attendees)
   end
 
 
@@ -20,13 +34,14 @@ class AttendeeController < ApplicationController
   end
 
   def getallextras
-    @xpagecats = Pagecat.all
-    @cats = []
-    @xpagecats.each do | p |
-      @cats << p.id
-    end
-    @xpages = Page.where("pagecat_id IN (?)", @cats ).where(:conference_id => Conference.active).group_by{ |c| c[:pagecat_id] }
+    # @xpagecats = Pagecat.all
+    # @cats = []
+    # @xpagecats.each do | p |
+    #   @cats << p.id
+    # end
+    # @xpages = Page.where("pagecat_id IN (?)", @cats ).where(:conference_id => Conference.active).group_by{ |c| c[:pagecat_id] }
     @conference = Conference.active
+    @submission = Submission.where(:user_id => current_user)
 
   end
 

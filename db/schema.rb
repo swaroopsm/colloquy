@@ -50,9 +50,15 @@ ActiveRecord::Schema.define(:version => 20130915083646) do
     t.integer  "number_of_days"
     t.string   "venue"
     t.boolean  "active"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
     t.string   "slug"
+    t.date     "early_bird_close"
+    t.date     "abstract_submission_start"
+    t.date     "abstract_submission_close"
+    t.date     "workshop_registration_start"
+    t.date     "workshop_registration_close"
+    t.date     "online_registration_close"
   end
 
   create_table "details", :force => true do |t|
@@ -123,11 +129,12 @@ ActiveRecord::Schema.define(:version => 20130915083646) do
   create_table "schedules", :force => true do |t|
     t.integer  "schedulable_id"
     t.string   "schedulable_type"
-    t.datetime "starttime"
+    t.time     "starttime"
     t.integer  "minutes"
     t.string   "venue"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.integer  "day"
   end
 
   create_table "scores", :force => true do |t|
@@ -206,6 +213,7 @@ ActiveRecord::Schema.define(:version => 20130915083646) do
     t.datetime "updated_at",    :null => false
     t.boolean  "long"
     t.integer  "seats"
+    t.boolean  "repeat"
   end
 
 end

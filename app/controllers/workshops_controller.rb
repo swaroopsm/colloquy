@@ -19,10 +19,10 @@ class WorkshopsController < ApplicationController
   # GET /workshops/1.json
   def show
     @workshop = Workshop.find(params[:id])
-    @attendees = @workshop.attendees
     @conference = Conference.find(params[:conference_id])
     respond_to do |format|
       format.html # show.html.erb
+      format.js
       format.json { render json: @workshop }
     end
   end
@@ -94,6 +94,8 @@ class WorkshopsController < ApplicationController
     @workshop_attendee = WorkshopAttendee.new
     @workshop_attendee.user = current_user
     @workshop_attendee.workshop = @workshop
+
+
     @workshop_attendee.save
 
     respond_to do |format|
