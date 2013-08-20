@@ -4,6 +4,6 @@ class ConferenceUser < ActiveRecord::Base
   belongs_to :conference
   belongs_to :user
 
-  validates_uniqueness_of :ticket
+#  validates_uniqueness_of :ticket
 
 end
