@@ -47,6 +47,8 @@ class IdeasController < ApplicationController
   # POST /ideas.json
   def create
     @idea = Idea.new(params[:idea])
+    @idea.conference = @conference
+    @idea.user = current_user
 
     respond_to do |format|
       if @idea.save

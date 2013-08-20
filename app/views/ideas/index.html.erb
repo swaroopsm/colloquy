@@ -6,9 +6,6 @@
     <th>Description</th>
     <th>Conference</th>
     <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @ideas.each do |idea| %>
@@ -17,9 +14,6 @@
     <td><%= idea.description %></td>
     <td><%= idea.conference_id %></td>
     <td><%= idea.user_id %></td>
-    <td><%= link_to 'Show', idea %></td>
-    <td><%= link_to 'Edit', edit_idea_path(idea) %></td>
-    <td><%= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
