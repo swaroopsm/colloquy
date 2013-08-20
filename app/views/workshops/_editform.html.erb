@@ -28,6 +28,10 @@
     <%= image_tag a.pic.url(:thumb) %>
   <% end %>
   <div class="field">
+    <%= f.label :seats %><br />
+    <%= f.number_field :seats %>
+  </div>
+  <div class="field">
     <%= f.label :long %><br />
     <%= f.check_box :long %>
   </div>
