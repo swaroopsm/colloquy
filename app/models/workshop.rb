@@ -1,5 +1,5 @@
 class Workshop < ActiveRecord::Base
-  attr_accessible :content, :presenter, :title
+  attr_accessible :content, :presenter, :title, :long
   belongs_to :conference
   belongs_to :user
   has_many :workshop_attendees

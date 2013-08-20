@@ -27,6 +27,10 @@
   <% @workshop.attachments.each do |a| %>
     <%= image_tag a.pic.url(:thumb) %>
   <% end %>
+  <div class="field">
+    <%= f.label :long %><br />
+    <%= f.check_box :long %>
+  </div>
   <p>To change the image, simply upload a new file.</p>
   <div class="actions">
     <%= f.submit %>
