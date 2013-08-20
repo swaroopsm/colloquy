@@ -45,6 +45,9 @@ gem "remotipart"
 # Rest Client to interact with external urls
 gem 'rest-client'
 
+# Mass-insertion of records
+gem 'activerecord-import'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
