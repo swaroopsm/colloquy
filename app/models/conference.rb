@@ -1,5 +1,5 @@
 class Conference < ActiveRecord::Base
-  attr_accessible :active, :description, :number_of_days, :start_date, :title, :venue
+  attr_accessible :active, :description, :number_of_days, :start_date, :title, :venue, :online_registration_close, :workshop_registration_close, :workshop_registration_start, :abstract_submission_close, :abstract_submission_start, :early_bird_close
 
   extend FriendlyId
   friendly_id :title, use: :slugged
