@@ -4,12 +4,14 @@ class SchedulesController < ApplicationController
 		@schedule = Schedule.new(params[:schedule])
 		@schedule.schedulable = find_schedulable
 
+		# render :text => find_schedulable
+
 		if @schedule.save
 			respond_to do |format|
-				format.js 
+				format.js
 			end
 		end
-	end	
+	end
 
 	private
 	def find_schedulable
