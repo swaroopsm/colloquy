@@ -1,16 +1,7 @@
 Colloquy::Application.routes.draw do
 
-  get "attendee/index"
-
-  resources :workshops
-
-
-  match "attendee/workshops" => "attendee#workshops", :as => "attendee_workshops"
-
   # boss paths
   resources :boss, :only => [:index]
-  resources :attendee, :only => [:index]
-
   match "boss/pages" => "boss#pages", :as => "boss_pages"
   match "boss/workshops" => 'boss#workshops', :as => 'boss_workshops'
   match "boss/conferences" => "boss#conferences", :as => "boss_conferences"
@@ -22,9 +13,12 @@ Colloquy::Application.routes.draw do
   match "boss/schedule/workshop/:workshop_id" => "boss#schedule_workshop", :as => "schedule_workshop"
   match "boss/schedule/plenary/:plenary_id" => "boss#schedule_plenary", :as => "schedule_plenary"
   match "boss/schedules" => "boss#schedules", :as => "boss_schedules"
-
   match "boss/sendemailtoattendees" => "boss#sendemailtoattendees", :as => "send_email_attendees", :method => :post
   match "boss/emailform" => "boss#emailform", :as => "boss_email_attendees"
+
+  # Attendee Paths
+  resources :attendee, :only => [:index]
+  match "attendee/workshops" => "attendee#workshops", :as => "attendee_workshops"
 
   resources :pagecats
 
@@ -43,14 +37,15 @@ Colloquy::Application.routes.draw do
 
   devise_for :users
 
-    resources :plenaries do
-      resources :schedules
-    end
-    resources :workshops do
-      resources :schedules
-    end
+  resources :plenaries do
+    resources :schedules
+  end
 
-  resources :submissions, :only => [:new, :create]
+  resources :workshops do
+    resources :schedules
+  end
+
+  # resources :submissions, :only => [:new, :create]
   resources :attachments, :only => [:update, :destroy, :edit, :index]
 
 # routes for workshops
@@ -64,11 +59,6 @@ Colloquy::Application.routes.draw do
     resources :workshops
     resources :submissions, :except => [:new, :create], :path => :abstracts
     resources :pages, :path => ""
-  end
-
-  resources :conferences, :only => [:index, :new, :show, :edit, :update, :create, :destroy]
-
-  resources :conferences, :path => "" , :except => [:index, :new, :show, :edit, :update, :create, :destroy] do
   end
 
   # The priority is based upon order of creation:
