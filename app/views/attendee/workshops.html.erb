@@ -3,10 +3,9 @@
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-<%= @workshops.inspect %>
+<% @workshops.each do |w| -%>
+  <div class="wcard">
+    <h3><%= w.title %></h3>
+    <p><%= w.presenter %></p>
+  </div>
+<% end %>
