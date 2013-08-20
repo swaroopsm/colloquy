@@ -22,11 +22,14 @@ class Ability
     		!user.submitted? and user.registered?
     	end
        # Workshop abilities for attendee
-        can [:read,:attend, :unattend], Workshop
+      can [:read,:attend, :unattend], Workshop
     	can :read, Conference
     	can :read, Submission do |s|
     		s.user == user || s.approved?
     	end
+
+    	# Propose an idea
+    	can [:create], Idea if user.registered?
     elsif user.reviewer?
     	# Write permissions for reviewer here
     	can :read, Submission do |s|
