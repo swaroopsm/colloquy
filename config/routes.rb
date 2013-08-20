@@ -1,5 +1,8 @@
 Colloquy::Application.routes.draw do
 
+	# Participate path
+	match "participate" => "home#participate", :as => "participate"
+
   # boss paths
   resources :boss, :only => [:index]
   match "boss/pages" => "boss#pages", :as => "boss_pages"

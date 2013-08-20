@@ -6,7 +6,9 @@ class HomeController < ApplicationController
     @plenaries = Plenary.order('RAND()').all
   end
 
+	def participate
 
+	end
 
   private
   def getallextras
