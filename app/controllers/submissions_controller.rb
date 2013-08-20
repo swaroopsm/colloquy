@@ -1,8 +1,8 @@
 class SubmissionsController < ApplicationController
-
-	before_filter :authenticate_user!
-	load_and_authorize_resource :conference, :except => [:new, :create]
-	load_and_authorize_resource :submission, :through => :conference, :shallow => true
+  before_filter :getallextras
+	before_filter :authenticate_user!, :except => [:show, :index, :talks, :posters]
+	load_and_authorize_resource :conference, :except => [:new, :create, :talks, :posters]
+	load_and_authorize_resource :submission, :through => :conference, :shallow => true,  :except => [:talks, :posters]
 
   # GET /submissions
   # GET /submissions.json
@@ -90,6 +90,22 @@ class SubmissionsController < ApplicationController
     end
   end
 
+  def talks
+    @submissions = Submission.where(:conference_id => Conference.active).where(:approved => '1')
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @submissions }
+    end
+  end
+
+  def posters
+    @submissions = Submission.where(:conference_id => Conference.active).where(:approved => '2')
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @submissions }
+    end
+  end
+
   # This assigns a reviewer to an abstract
   def assign
 		@reviewer = User.find(params[:user_id])
@@ -104,6 +120,21 @@ class SubmissionsController < ApplicationController
   def unassign
 		@unassign = ReviewerSubmission.find(params[:id])
 		@unassign.destroy
+  end
+
+  private
+  def getallextras
+    @xpagecats = Pagecat.all
+    @cats = []
+    @xpagecats.each do | p |
+      @cats << p.id
+    end
+    @xpages = Page.where("pagecat_id IN (?)", @cats ).where(:conference_id => Conference.active).group_by{ |c| c[:pagecat_id] }
+    @conference = Conference.active
+  end
+
+  def allconferences
+    @xconfs = Conference.all
   end
 
 end

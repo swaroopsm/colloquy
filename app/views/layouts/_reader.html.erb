@@ -12,8 +12,9 @@
 	<p class="alert"><%= alert %></p>
 
 	<%= render 'layouts/mainmenu' if @xpagecats %>
+<div id="content">
 <%= yield %>
-
+</div>
 <div id="signedin">
 	<% if user_signed_in? %>
 		Hi <%= current_user.email %>! <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %><%=  %>

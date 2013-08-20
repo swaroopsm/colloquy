@@ -5,7 +5,7 @@
     <div class="speaker" style="background-color: #F99C1C; font-size: 150%; font-weight:900;"><%= w.presenter %></div>
     <br><br>
     <h1>
-        <%= link_to w.title, workshop_path("sccs-bng-2013", w.id)  %>
+        <%= link_to w.title, conference_workshop_path(@conference, w)  %>
     </h1>
     <br>
     <!-- <div class="plenary yellowback">Plenaries &rarr;</div> -->
