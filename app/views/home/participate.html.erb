@@ -1,6 +1,6 @@
 <h1>Participate</h1>
 
-<%= form_tag participate_path do %>
+<%= form_tag participate_path, :remote => true do %>
 	<div>
 		<%= label :participate, :ticket %>
 		<%= text_field :participate, :ticket %>
