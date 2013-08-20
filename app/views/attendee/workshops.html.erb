@@ -1,25 +1,41 @@
-<b@r>
 <br>
 <br>
 <br>
 <br>
-<% @workshops.each do |w| -%>
-  <div class="wcard">
-    <h3><%= w.title %></h3>
-    <p><%= w.presenter %></p>
+<p>Below is a list of workshops that you can apply to for this years conference sorted by day. You can only apply to one workshop per day, and only apply to one repeat workshop per conference.</p>
 
-    <% registered = false %>
-    <% w.workshop_attendees.each do |a| %>
-      <% if a.user_id == current_user.id %>
-        <% registered = true %>
-      <% else %>
-      <% end %>
-    <% end %>
-    <% seatsleft = w.seats - w.workshop_attendees.count %> <%= seatsleft %> Seats left
-    <br>
-    <div class="wactions">
-      <%= link_to "Register", attend_path(@conference, w), :remote => true if registered == false && seatsleft > 0 %>
-      <%= link_to "Unregister", unattend_path(@conference, w), :remote => true if registered == true %>
-    </div>
-  </div>
+<% @days = @days.reverse %>
+<br>
+<% @grouped.each do |g| %>
+
+<div class="day">
+<h3>Day <%= g[0] %></h3>
+<hr>
+<% g[1].each do |w| %>
+
+<% registered = false %>
+
+<% w.schedulable.workshop_attendees.each do |a| %>
+  <% registered = true if a.user_id = current_user %>
 <% end %>
+<div class="wcard <%= 'dayreg' if registered == true  %>">
+  <h3><%= w.schedulable.title %></h3>
+  <% seatsleft = w.schedulable.seats - w.schedulable.workshop_attendees.size %>
+  <%= seatsleft %> Seats Left.
+  <br>
+  <%= link_to "Register", attend_path(@conference, w.schedulable), :remote => true if @days[ g[0] - 1 ] == true %>
+  <%= link_to "Unregister", unattend_path(@conference, w.schedulable), :remote => true  if registered == true %>
+</div>
+<% end %>
+<br><br>
+</div>
+<% end %>
+
+
+
+
+
+
+
+
+

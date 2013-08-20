@@ -21,8 +21,12 @@ class Ability
     	can [:new, :create], Submission do |s|
     		!user.submitted? and user.registered?
     	end
+
        # Workshop abilities for attendee
-        can [:read,:attend, :unattend], Workshop
+        can :attend, Workshop do |w|
+            w.has_registered_for_day? user
+        end
+        can [:read, :unattend], Workshop
     	can :read, Conference
     	can :read, Submission do |s|
     		s.user == user || s.approved?

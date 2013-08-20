@@ -9,7 +9,17 @@ class AttendeeController < ApplicationController
 
   def workshops
     # @workshops = Workshop.all
-    @workshops = Workshop.where(:conference_id => Conference.active).includes(:workshop_attendees)
+    @scheduled_w = Schedule.where(:schedulable_type => 'Workshop').includes({:schedulable => :workshop_attendees})
+    days = @conference.number_of_days
+
+    @days = []
+    while days > 0
+      @days << Workshop.has_registered_for_day(current_user, days)
+      days -= 1
+    end
+
+    @grouped = @scheduled_w.group_by{|d| d[:day]}
+    # @workshops = Workshop.where(:conference_id => Conference.active).includes(:workshop_attendees)
   end
 
 
