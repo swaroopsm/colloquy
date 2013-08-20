@@ -35,7 +35,7 @@
 <% end %>
 
 <div class="wcard <%= 'dayreg' if registered == true  %>">
-  <h3><%= w.schedulable.title %></h3>
+  <h3><%= link_to w.schedulable.title, conference_workshop_path(@conference, w.schedulable), :remote => true %></h3>
   <%# CHECK FOR DUPLICATES %>
   <% registeredforworkshop = false %>
   <% registeredforworkshop = true if registeredfor.include? w.schedulable.title %>

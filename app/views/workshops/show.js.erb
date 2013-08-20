@@ -1,0 +1,6 @@
+html = "<h1><%= @workshop.title %></h1>";
+html += "<%= @workshop.presenter %>";
+html += "<br><hr><br>";
+html += "<%=j sanitize @workshop.content, :tags => %w(table tr td p div ul li ol blockquote) %>";
+html += "<%= 'This is a long workshop' if @workshop.long == true %>";
+modalload(html);
