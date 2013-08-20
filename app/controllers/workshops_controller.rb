@@ -94,6 +94,8 @@ class WorkshopsController < ApplicationController
     @workshop_attendee = WorkshopAttendee.new
     @workshop_attendee.user = current_user
     @workshop_attendee.workshop = @workshop
+
+
     @workshop_attendee.save
 
     respond_to do |format|

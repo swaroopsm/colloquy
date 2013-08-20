@@ -59,6 +59,10 @@ class BossController < ApplicationController
     @submission = Submission.where(:conference_id => Conference.active).includes(:user).includes(:scores).includes({:reviewers => :user})
   end
 
+  def makerepeatableworkshop
+
+  end
+
 
   # This will render the email form
   def emailform

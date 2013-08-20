@@ -10,6 +10,9 @@ class AttendeeController < ApplicationController
   def workshops
     # @workshops = Workshop.all
     @scheduled_w = Schedule.where(:schedulable_type => 'Workshop').includes({:schedulable => :workshop_attendees})
+
+    @attendeeworkshops = WorkshopAttendee.where(:user_id => current_user).includes(:workshop)
+
     days = @conference.number_of_days
 
     @days = []
@@ -31,12 +34,12 @@ class AttendeeController < ApplicationController
   end
 
   def getallextras
-    @xpagecats = Pagecat.all
-    @cats = []
-    @xpagecats.each do | p |
-      @cats << p.id
-    end
-    @xpages = Page.where("pagecat_id IN (?)", @cats ).where(:conference_id => Conference.active).group_by{ |c| c[:pagecat_id] }
+    # @xpagecats = Pagecat.all
+    # @cats = []
+    # @xpagecats.each do | p |
+    #   @cats << p.id
+    # end
+    # @xpages = Page.where("pagecat_id IN (?)", @cats ).where(:conference_id => Conference.active).group_by{ |c| c[:pagecat_id] }
     @conference = Conference.active
     @submission = Submission.where(:user_id => current_user)
 

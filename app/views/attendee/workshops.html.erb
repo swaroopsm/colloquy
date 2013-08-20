@@ -2,7 +2,22 @@
 <br>
 <br>
 <br>
+<br>
+<% registeredfor = [] %>
+<% if @attendeeworkshops.empty? %>
+  <% registeredfor = [] %>
+<% else %>
+  <% @attendeeworkshops.each do |aw| %>
+    <% registeredfor << aw.workshop.title %>
+  <% end %>
+<% end %>
+
+<%= registeredfor %>
+
+
+
 <p>Below is a list of workshops that you can apply to for this years conference sorted by day. You can only apply to one workshop per day, and only apply to one repeat workshop per conference.</p>
+
 
 <% @days = @days.reverse %>
 <br>
@@ -18,21 +33,31 @@
 <% w.schedulable.workshop_attendees.each do |a| %>
   <% registered = true if a.user_id = current_user %>
 <% end %>
+
 <div class="wcard <%= 'dayreg' if registered == true  %>">
   <h3><%= w.schedulable.title %></h3>
+  <%# CHECK FOR DUPLICATES %>
+  <% registeredforworkshop = false %>
+  <% registeredforworkshop = true if registeredfor.include? w.schedulable.title %>
+
   <% seatsleft = w.schedulable.seats - w.schedulable.workshop_attendees.size %>
   <%= seatsleft %> Seats Left.
+  <%=raw "<br><br>You have already applied for this workshop on another day</br>" if registeredforworkshop == true %>
   <br>
-  <%= link_to "Register", attend_path(@conference, w.schedulable), :remote => true if @days[ g[0] - 1 ] == true %>
+  <%= link_to "Register", attend_path(@conference, w.schedulable), :remote => true if @days[ g[0] - 1 ] == true && registeredforworkshop == false %>
   <%= link_to "Unregister", unattend_path(@conference, w.schedulable), :remote => true  if registered == true %>
 </div>
 <% end %>
-<br><br>
 </div>
+<div class="clear"></div>
+<br><br><br>
 <% end %>
 
-
-
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
 
