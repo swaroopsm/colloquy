@@ -2,6 +2,7 @@ Colloquy::Application.routes.draw do
 
 	# Participate path
 	match "participate" => "home#participate", :as => "participate"
+	match "signup" => "users#participate", :as => "participate", :method => :post
 
   # boss paths
   resources :boss, :only => [:index]

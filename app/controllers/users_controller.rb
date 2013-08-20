@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
 	before_filter :getallextras
 
+	def participate
+
+	end
 
   private
   def getallextras
