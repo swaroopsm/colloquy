@@ -1,21 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Title:</b>
-  <%= @topic.title %>
+  <strong><%= @topic.title %></strong>
 </p>
 
 <p>
-  <b>Description:</b>
+	<strong>Created By: <%= @topic.user.first_name %> <%= @topic.user.last_name %></strong>
+</p>
+
+<p>
   <%= @topic.description %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @topic.user_id %>
-</p>
-
-<p>
-  <b>Conference:</b>
-  <%= @topic.conference_id %>
 </p>
