@@ -33,8 +33,7 @@ class TopicsController < ApplicationController
     @topic = Topic.new
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @topic }
+      format.js
     end
   end
 
