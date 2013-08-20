@@ -1,6 +1,9 @@
 class IdeasController < ApplicationController
 
 	before_filter :getallextras
+	before_filter :authenticate_user!, :except => [:index, :show]
+	load_and_authorize_resource :conference
+	load_and_authorize_resource :idea, :except => [:index, :show]
 
   # GET /ideas
   # GET /ideas.json
@@ -27,6 +30,7 @@ class IdeasController < ApplicationController
   # GET /ideas/new
   # GET /ideas/new.json
   def new
+  	@conference = Conference.find(params[:conference_id])
     @idea = Idea.new
 
     respond_to do |format|
