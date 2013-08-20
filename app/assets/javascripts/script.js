@@ -59,6 +59,21 @@
     });
   }
 
+    showloader = function() {
+    var loader = $(".loaderoverlay");
+    loader.css({'display': 'block'});
+    loader.animate({'opacity': '1'}, 1000, function() {
+      /* stuff to do after animation is complete */
+    });
+  }
+
+  closeloader = function() {
+    var loader = $('.loaderoverlay');
+    loader.animate({'opacity': '0'}, 1000, function() {
+      loader.css('display', 'none');
+    });
+  }
+
 jQuery(document).ready(function($) {
 
   $(".closemodal").click(function() {

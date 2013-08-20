@@ -94,11 +94,12 @@ class WorkshopsController < ApplicationController
     @workshop_attendee = WorkshopAttendee.new
     @workshop_attendee.user = current_user
     @workshop_attendee.workshop = @workshop
-    if @workshop_attendee.save
-      respond_to do |format|
-        format.js
-      end
+    @workshop_attendee.save
+
+    respond_to do |format|
+      format.js
     end
+
   end
 
    # Unattend the workshop

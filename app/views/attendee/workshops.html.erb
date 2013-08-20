@@ -1,4 +1,4 @@
-<br>
+<b@r>
 <br>
 <br>
 <br>
@@ -7,5 +7,19 @@
   <div class="wcard">
     <h3><%= w.title %></h3>
     <p><%= w.presenter %></p>
+
+    <% registered = false %>
+    <% w.workshop_attendees.each do |a| %>
+      <% if a.user_id == current_user.id %>
+        <% registered = true %>
+      <% else %>
+      <% end %>
+    <% end %>
+    <% seatsleft = w.seats - w.workshop_attendees.count %> <%= seatsleft %> Seats left
+    <br>
+    <div class="wactions">
+      <%= link_to "Register", attend_path(@conference, w), :remote => true if registered == false && seatsleft > 0 %>
+      <%= link_to "Unregister", unattend_path(@conference, w), :remote => true if registered == true %>
+    </div>
   </div>
 <% end %>

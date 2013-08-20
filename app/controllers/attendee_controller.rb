@@ -8,7 +8,7 @@ class AttendeeController < ApplicationController
 
   def workshops
     # @workshops = Workshop.all
-    @workshops = Workshop.where(:conference_id => Conference.active)
+    @workshops = Workshop.where(:conference_id => Conference.active).includes(:workshop_attendees)
   end
 
 
