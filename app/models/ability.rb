@@ -15,7 +15,7 @@ class Ability
       can :manage, Pagecat
       can :manage, Plenary
       can :manage, Workshop
-      can :manage, Topic
+#      can :manage, Topic
 
       can :manage, Submission
     elsif user.attendee?
@@ -34,7 +34,7 @@ class Ability
     	end
 
     	# Propose an idea
-    	can [:create], Idea if user.registered?
+#    	can [:create], Idea if user.registered?
     elsif user.reviewer?
     	# Write permissions for reviewer here
     	can :read, Submission do |s|
