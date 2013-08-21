@@ -20,6 +20,9 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'therubyracer'
+gem 'execjs'
+
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 

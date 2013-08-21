@@ -50,9 +50,15 @@ ActiveRecord::Schema.define(:version => 20130915083647) do
     t.integer  "number_of_days"
     t.string   "venue"
     t.boolean  "active"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
     t.string   "slug"
+    t.date     "early_bird_close"
+    t.date     "abstract_submission_start"
+    t.date     "abstract_submission_close"
+    t.date     "workshop_registration_start"
+    t.date     "workshop_registration_close"
+    t.date     "online_registration_close"
   end
 
   create_table "details", :force => true do |t|
@@ -67,15 +73,6 @@ ActiveRecord::Schema.define(:version => 20130915083647) do
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
     t.integer  "user_id"
-  end
-
-  create_table "ideas", :force => true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.integer  "conference_id"
-    t.integer  "user_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
   end
 
   create_table "pagecats", :force => true do |t|
@@ -123,11 +120,12 @@ ActiveRecord::Schema.define(:version => 20130915083647) do
   create_table "schedules", :force => true do |t|
     t.integer  "schedulable_id"
     t.string   "schedulable_type"
-    t.datetime "starttime"
+    t.time     "starttime"
     t.integer  "minutes"
     t.string   "venue"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.integer  "day"
   end
 
   create_table "scores", :force => true do |t|
@@ -155,18 +153,6 @@ ActiveRecord::Schema.define(:version => 20130915083647) do
     t.datetime "updated_at",                          :null => false
     t.boolean  "accomodation"
   end
-
-  create_table "topics", :force => true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.integer  "user_id"
-    t.integer  "conference_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.string   "slug"
-  end
-
-  add_index "topics", ["slug"], :name => "index_topics_on_slug", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
