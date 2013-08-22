@@ -18,7 +18,7 @@
 			<tr>
 				<td><%= link_to p.title, edit_conference_page_path(p.conference, p), :remote => true %></td>
 				<td><%= p.conference.title %></td>
-				<td><%= p.pagecat.title %></td>
+				<td><%= p.pagecat.title unless p.pagecat == nil %></td>
 				<td><%= p.active %></td>
 				<td><%= p.slug %></td>
 				<td><%= link_to "Edit", edit_conference_page_path(p.conference, p), :remote => true %> &nbsp;&nbsp;&nbsp;

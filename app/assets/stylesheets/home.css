@@ -598,11 +598,11 @@ p.timerto {
 	font-size: 120%;
 }
 
-.pageview b {
-	font-weight: 900;
+.pageview b, .pageview strong {
+	font-weight: 700;
 }
 
-.pageview i {
+.pageview i, .pageview em {
 	font-style: italic;
 }
 

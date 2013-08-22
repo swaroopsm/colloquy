@@ -1,6 +1,10 @@
 <div id="content">
+<br><br>
+<h1>LONG WORKSHOPS</h1>
+<br><br>
 <% @workshops.each do |w| %>
     <% unless w.repeat == true %>
+    <% if w.long == true %>
         <div class="item plenitem" style="background-image: url(<%= w.attachments[0].pic.url %>);">
             <br>
             <div class="speaker" style="background-color: #F99C1C; font-size: 150%; font-weight:900;"><%= w.presenter %></div>
@@ -13,6 +17,30 @@
 
             <!-- <div class="plenary greenback">DATE: T.B.A. &nbsp; Max Participation : 30 students</div> -->
         </div>
+    <% end %>
+    <% end %>
+
+<% end %>
+<div class="clear"></div>
+<br><br><br>
+<h1>SHORT WORKSHOPS</h1>
+<br><br>
+<% @workshops.each do |w| %>
+    <% unless w.repeat == true %>
+    <% unless w.long == true %>
+        <div class="item plenitem" style="background-image: url(<%= w.attachments[0].pic.url %>);">
+            <br>
+            <div class="speaker" style="background-color: #F99C1C; font-size: 150%; font-weight:900;"><%= w.presenter %></div>
+            <br><br>
+            <h1>
+                <%= link_to w.title, conference_workshop_path(@conference, w)  %>
+            </h1>
+            <br>
+            <!-- <div class="plenary yellowback">Plenaries &rarr;</div> -->
+
+            <!-- <div class="plenary greenback">DATE: T.B.A. &nbsp; Max Participation : 30 students</div> -->
+        </div>
+    <% end %>
     <% end %>
 
 <% end %>
