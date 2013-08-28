@@ -1,4 +1,8 @@
 class BoardsController < ApplicationController
+
+	before_filter :authenticate_user!, :except => [:index, :show]
+	load_and_authorize_resource :except => [:index, :show]
+
   # GET /boards
   # GET /boards.json
   def index
