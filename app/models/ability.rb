@@ -15,13 +15,17 @@ class Ability
       can :manage, Pagecat
       can :manage, Plenary
       can :manage, Workshop
-#      can :manage, Topic
+      can :manage, Board
 
       can :manage, Submission
     elsif user.attendee?
     	can [:new, :create], Submission do |s|
     		!user.submitted? and user.registered?
     	end
+
+			can :create, Board do |b|
+				user.registered?
+			end
 
        # Workshop abilities for attendee
         can :attend, Workshop do |w|
