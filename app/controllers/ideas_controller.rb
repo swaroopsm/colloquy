@@ -10,6 +10,17 @@ class IdeasController < ApplicationController
 		end
 	end
 
+	def create
+		@idea = Idea.new(params[:idea])
+		@idea.board = @board
+		@idea.user = current_user
+
+		@idea.save
+		respond_to do |format|
+			format.js
+		end
+	end
+
 	private
 	def load_board
 		@board = Board.find(params[:board_id])
