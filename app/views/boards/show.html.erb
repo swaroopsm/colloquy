@@ -20,4 +20,15 @@
 		<%=raw @board.description %>
 	</div>
 
+	<% if @board.ideas.any? -%>
+		<div class="plenary yellowback">I D E A S</div>
+		<div class="pageview">
+		<% 0.upto(@board.ideas.length - 1) do |i| %>
+			<strong><%= i + 1 %>. <%= @board.ideas[i].user.full_name %></strong>
+			<p><%= @board.ideas[i].description %></p>
+			<br />
+		<% end -%>
+		</div>
+	<% end -%>
+
 </div>

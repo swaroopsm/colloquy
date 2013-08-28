@@ -18,7 +18,7 @@ class BoardsController < ApplicationController
   # GET /boards/1
   # GET /boards/1.json
   def show
-    @board = Board.find(params[:id])
+    @board = Board.includes({:ideas => :user}).find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
