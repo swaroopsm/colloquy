@@ -1,0 +1,6 @@
+<br> Change Image <br />
+<%= form_for [@submission[0].attachments.first], :remote => true do |a| %>
+	<%= a.file_field :pic %>
+	<%= a.submit "Update Image" %>
+<% end -%>
+<hr />

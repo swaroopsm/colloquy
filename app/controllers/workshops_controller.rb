@@ -58,6 +58,8 @@ class WorkshopsController < ApplicationController
     respond_to do |format|
       if @workshop.save
         format.js
+      else
+        format.js
       end
     end
   end

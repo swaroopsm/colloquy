@@ -1,0 +1,5 @@
+<% if @attachment.errors.any? -%>
+	message('error', '<% @attachment.errors.full_messages.map do |error| %><%= error %><br><% end -%>');
+<% else -%>
+	message('success', 'Image has been updated.')
+<% end -%>

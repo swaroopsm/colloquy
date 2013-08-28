@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 	before_filter :getallextras
 
+
+
 	def participate
 		tickets = []
 		cur_ticket = params[:participate][:ticket]

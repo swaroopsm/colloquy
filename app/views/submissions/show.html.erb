@@ -1,54 +1,13 @@
-<p id="notice"><%= notice %></p>
-<p>
-  <b>Title:</b>
-  <%= @submission.title %>
-</p>
+<% if @submission[0].approved == 1 %>
+<div class="plenary yellowback">ORAL &nbsp; P R E S E N T A T I O N</div>
+<% elsif @submission[0].approved == 2 %>
+<div class="plenary yellowback">P O S T E R &nbsp; P R E S E N T A T I O N</div>
+<% end %>
 
-<p>
-  <b>Authors:</b>
-  <%= @submission.authors %>
-</p>
-
-<p>
-  <b>Content:</b>
-  <%= raw @submission.content %>
-</p>
-
-<p>
-  <b>Conference:</b>
-  <%= @submission.conference_id %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @submission.user_id %>
-</p>
-
-<p>
-  <b>Approved:</b>
-  <%= @submission.approved %>
-</p>
-
-<p>
-  <b>Preference:</b>
-  <%= @submission.preference %>
-</p>
-
-<p>
-  <b>Bursary for:</b>
-  <%= @submission.bursary_for %>
-</p>
-
-<p>
-  <b>Bursary why:</b>
-  <%= @submission.bursary_why %>
-</p>
-<% if @submission.attachments.any? -%>
-	<% @submission.attachments.each do |a| -%>
-		<p><%= image_tag a.pic.url %></p>
-	<% end -%>
-<% end -%>
-
-
-<%= link_to 'Edit', edit_submission_path(@submission) %> |
-<%= link_to 'Back', submissions_path %>
+<div class="pageview">
+<h1><%= @submission[0].title %></h1>
+<h2>Presenter: <%= @submission[0].user.first_name %> <%= @submission[0].user.last_name %></h2>
+<p>Authors: <%= @submission[0].authors %></p>
+<%= image_tag @submission[0].attachments[0].pic %>
+<%=raw @submission[0].content %>
+</div>

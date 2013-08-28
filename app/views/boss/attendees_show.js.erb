@@ -1,0 +1,20 @@
+html = '<h3>Details of <%= @attendee.first_name %> <%= @attendee.last_name %></h3> <hr />'
+html += '<table>'
+html += '<tr><td>First Name </td><td><%= @attendee.first_name %></td></tr>'
+html += '<tr><td>Last Name </td><td><%= @attendee.last_name %></td></tr>'
+html += '<tr><td>Email </td><td><%= link_to @attendee.email, "mailto: #{@attendee.email}" %></td></tr>'
+<% unless @attendee.detail.nil? -%>
+	html += '<tr><td>Gender </td><td><%= @attendee.detail.gender %></td></tr>'
+	html += '<tr><td>Date of Birth </td><td><%= @attendee.detail.dob %></td></tr>'
+	html += '<tr><td>Affiliation </td><td><%= @attendee.detail.institute_affiliation %></td></tr>'
+	html += '<tr><td>Academic Status </td><td><%= @attendee.detail.academic %></td></tr>'
+	html += '<tr><td>Address </td><td><%=j @attendee.detail.address %></td></tr>'
+	html += '<tr><td>Phone </td><td><%= @attendee.detail.phone %></td></tr>'
+	html += '<tr><td>Nationality </td><td><%= @attendee.detail.nationality %></td></tr>'
+<% end -%>
+<% if @attendee.registered? -%>
+	html += '<tr><td>Ticket </td><td><%= @ticket.ticket %></td></tr>'
+<% end -%>
+html += '</table>'
+
+modalload(html)

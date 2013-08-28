@@ -20,6 +20,9 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'therubyracer'
+gem 'execjs'
+
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
@@ -47,6 +50,11 @@ gem 'rest-client'
 
 # Mass-insertion of records
 gem 'activerecord-import'
+
+
+# Background jobs
+gem 'redis'
+gem 'sidekiq'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

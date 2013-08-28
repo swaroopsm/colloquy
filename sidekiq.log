@@ -1,0 +1,50 @@
+# Logfile created on 2013-08-27 17:28:59 +0530 by logger.rb/36483
+2013-08-27T11:59:02Z 1509 TID-apkl4 INFO: Booting Sidekiq 2.14.0 using redis://localhost:6379/0 with options {}
+2013-08-27T11:59:02Z 1509 TID-apkl4 INFO: Running in ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-linux]
+2013-08-27T11:59:02Z 1509 TID-apkl4 INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2013-08-27T11:59:11Z 1509 TID-fvpk4 Sidekiq::Extensions::DelayedMailer JID-bb3401bd69b71b4c3bdfebb5 INFO: start
+2013-08-27T11:59:15Z 1509 TID-fvpk4 Sidekiq::Extensions::DelayedMailer JID-bb3401bd69b71b4c3bdfebb5 INFO: done: 3.847 sec
+2013-08-27T12:07:54Z 1509 TID-fvpk4 Sidekiq::Extensions::DelayedMailer JID-5ec4ce4e297021b069dffe81 INFO: start
+2013-08-27T12:07:58Z 1509 TID-fvpk4 Sidekiq::Extensions::DelayedMailer JID-5ec4ce4e297021b069dffe81 INFO: done: 3.508 sec
+2013-08-27T12:12:49Z 2345 TID-6fres INFO: Booting Sidekiq 2.14.0 using redis://localhost:6379/0 with options {}
+2013-08-27T12:12:49Z 2345 TID-6fres INFO: Running in ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-linux]
+2013-08-27T12:12:49Z 2345 TID-6fres INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2013-08-27T12:13:06Z 2345 TID-eoshw Sidekiq::Extensions::DelayedMailer JID-40fe3c614c401657fe953ffc INFO: start
+2013-08-27T12:13:10Z 2345 TID-eoshw Sidekiq::Extensions::DelayedMailer JID-40fe3c614c401657fe953ffc INFO: done: 3.748 sec
+2013-08-27T12:13:31Z 2345 TID-eoshw Sidekiq::Extensions::DelayedMailer JID-22d24fa6de98110b821e7d68 INFO: start
+2013-08-27T12:13:34Z 2345 TID-eoshw Sidekiq::Extensions::DelayedMailer JID-22d24fa6de98110b821e7d68 INFO: done: 3.413 sec
+2013-08-27T12:14:25Z 1509 TID-fvpk4 Sidekiq::Extensions::DelayedMailer JID-25eb03361c21f9850048236a INFO: start
+2013-08-27T12:14:28Z 1509 TID-fvpk4 Sidekiq::Extensions::DelayedMailer JID-25eb03361c21f9850048236a INFO: done: 3.799 sec
+2013-08-27T12:15:16Z 1509 TID-fvpk4 Sidekiq::Extensions::DelayedMailer JID-3b9afe6df3b80cbe68746e81 INFO: start
+2013-08-27T12:15:20Z 1509 TID-fvpk4 Sidekiq::Extensions::DelayedMailer JID-3b9afe6df3b80cbe68746e81 INFO: done: 3.406 sec
+2013-08-27T12:19:09Z 1509 TID-fvpk4 Sidekiq::Extensions::DelayedMailer JID-ad3e4e212073b81da2399769 INFO: start
+2013-08-27T12:19:13Z 1509 TID-fvpk4 Sidekiq::Extensions::DelayedMailer JID-ad3e4e212073b81da2399769 INFO: done: 3.763 sec
+2013-08-27T12:22:13Z 1509 TID-fvpk4 Sidekiq::Extensions::DelayedMailer JID-b10a673a948c301538f7cdb4 INFO: start
+2013-08-27T12:22:17Z 1509 TID-fvpk4 Sidekiq::Extensions::DelayedMailer JID-b10a673a948c301538f7cdb4 INFO: done: 3.628 sec
+2013-08-27T12:25:50Z 2345 TID-eoshw Sidekiq::Extensions::DelayedMailer JID-22b0c63be23269f961904371 INFO: start
+2013-08-27T12:25:53Z 2345 TID-eoshw Sidekiq::Extensions::DelayedMailer JID-22b0c63be23269f961904371 INFO: done: 3.375 sec
+2013-08-27T12:26:30Z 1509 TID-fvpk4 Sidekiq::Extensions::DelayedMailer JID-6fede1e3332a6b8078185f55 INFO: start
+2013-08-27T12:26:33Z 1509 TID-fvpk4 Sidekiq::Extensions::DelayedMailer JID-6fede1e3332a6b8078185f55 INFO: done: 3.601 sec
+2013-08-27T12:32:01Z 2345 TID-eoshw Sidekiq::Extensions::DelayedMailer JID-e15a0f39171a2c6b8d6e9c50 INFO: start
+2013-08-27T12:32:05Z 2345 TID-eoshw Sidekiq::Extensions::DelayedMailer JID-e15a0f39171a2c6b8d6e9c50 INFO: done: 3.422 sec
+2013-08-27T12:34:08Z 3297 TID-3k610 INFO: Booting Sidekiq 2.14.0 using redis://localhost:6379/0 with options {}
+2013-08-27T12:34:08Z 3297 TID-3k610 INFO: Running in ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-linux]
+2013-08-27T12:34:08Z 3297 TID-3k610 INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2013-08-27T12:34:11Z 3297 TID-bti0w Sidekiq::Extensions::DelayedMailer JID-eb403e34016520361ef7ee9f INFO: start
+2013-08-27T12:34:14Z 3297 TID-bti0w Sidekiq::Extensions::DelayedMailer JID-eb403e34016520361ef7ee9f INFO: done: 3.45 sec
+2013-08-27T12:46:49Z 1509 TID-fvpk4 Sidekiq::Extensions::DelayedMailer JID-124a4ccabb2b690cd668f209 INFO: start
+2013-08-27T12:46:52Z 1509 TID-fvpk4 Sidekiq::Extensions::DelayedMailer JID-124a4ccabb2b690cd668f209 INFO: done: 3.417 sec
+2013-08-27T12:50:22Z 3297 TID-bti0w Sidekiq::Extensions::DelayedMailer JID-895395b66ef9cd448d8e468a INFO: start
+2013-08-27T12:50:25Z 3297 TID-bti0w Sidekiq::Extensions::DelayedMailer JID-895395b66ef9cd448d8e468a INFO: done: 3.446 sec
+2013-08-27T12:53:12Z 2345 TID-eoshw Sidekiq::Extensions::DelayedMailer JID-a78de3459f745b411cd7ca5d INFO: start
+2013-08-27T12:53:15Z 2345 TID-eoshw Sidekiq::Extensions::DelayedMailer JID-a78de3459f745b411cd7ca5d INFO: done: 3.386 sec
+2013-08-27T12:54:17Z 3297 TID-bti0w Sidekiq::Extensions::DelayedMailer JID-481501ac6f7d91e0377723ec INFO: start
+2013-08-27T12:54:20Z 3297 TID-bti0w Sidekiq::Extensions::DelayedMailer JID-481501ac6f7d91e0377723ec INFO: done: 3.451 sec
+2013-08-27T13:10:11Z 2345 TID-eoshw Sidekiq::Extensions::DelayedMailer JID-183fe0983aa7993c90fb83f2 INFO: start
+2013-08-27T13:10:15Z 2345 TID-eoshw Sidekiq::Extensions::DelayedMailer JID-183fe0983aa7993c90fb83f2 INFO: done: 3.912 sec
+2013-08-27T13:11:05Z 3297 TID-bti0w Sidekiq::Extensions::DelayedMailer JID-79db50e3e04edf541a582169 INFO: start
+2013-08-27T13:11:09Z 3297 TID-bti0w Sidekiq::Extensions::DelayedMailer JID-79db50e3e04edf541a582169 INFO: done: 3.522 sec
+2013-08-27T13:18:16Z 1509 TID-fvpk4 Sidekiq::Extensions::DelayedMailer JID-bf9a6fe2b5a327d6d79d22bd INFO: start
+2013-08-27T13:18:19Z 1509 TID-fvpk4 Sidekiq::Extensions::DelayedMailer JID-bf9a6fe2b5a327d6d79d22bd INFO: done: 3.475 sec
+2013-08-27T13:19:37Z 1509 TID-fvpk4 Sidekiq::Extensions::DelayedMailer JID-18d63d2ae5dd09d4365ea2ed INFO: start
+2013-08-27T13:19:40Z 1509 TID-fvpk4 Sidekiq::Extensions::DelayedMailer JID-18d63d2ae5dd09d4365ea2ed INFO: done: 3.438 sec

@@ -7,4 +7,5 @@ theme_advanced_buttons3_add:
 plugins:
   - table
   - fullscreen
-imagemanager_contextmenu: true
+  - link
+  - image

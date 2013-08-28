@@ -2,6 +2,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Email</th>
       <th>Gender</th>
       <th>Affiliation</th>
       <th>Academic Status</th>
@@ -12,8 +13,11 @@
   </thead>
   <tbody>
   <% @attendees.each do |a| %>
+  <% unless a.user.nil? %>
+    <% unless a.user.detail.nil? %>
   <tr>
-      <td><%= a.user.first_name %> <%= a.user.last_name %></td>
+      <td><%= link_to "#{a.user.first_name} #{a.user.last_name}", boss_attendees_show_path(a.user), :remote => true %></td>
+      <td><%= link_to "#{a.user.email}", "mailto:#{a.user.email}"  %></td>
       <td><%= a.user.detail.gender %></td>
       <td><%= a.user.detail.institute_affiliation %> </td>
       <td><%= a.user.detail.academic %></td>
@@ -21,6 +25,8 @@
       <td><%= a.user.detail.phone %></td>
       <td><%= a.user.detail.nationality %></td>
     </tr>
+    <% end %>
+  <% end %>
   <% end %>
 
   </tbody>

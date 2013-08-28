@@ -5,6 +5,7 @@ html += '<h1><%= @submission[0].title %></h1>';
 html += '<%= @submission[0].authors %>';
 html += '<hr><br>';
 html += '<%= image_tag @submission[0].attachments[0].pic, :class=>"abstractimage" %>'
+html += '<%=j render "attachments/change_abstract_image" %>'
 html += "<%=raw @submission[0].content %>";
 html += '<br><hr><br>';
 <% if current_user.admin? %>
@@ -12,11 +13,11 @@ html += '<h3>COMMENTS</h3>';
 <% @submission[0].comments.each do |c| %>
   <% unless c.content == "" %>
     <% if c.category == 1 %>
-      html += '<strong>Comment from <%= c.user.first_name %> to Attendee</strong><br>';
+      html += '<strong>Comment from <%=j c.user.first_name %> to Attendee</strong><br>';
     <% else %>
-      html += '<strong>Comment from <%= c.user.first_name %> to OC</strong><br>';
+      html += '<strong>Comment from <%=j c.user.first_name %> to OC</strong><br>';
     <% end %>
-    html += '<%= c.content %><br><br>';
+    html += '<%=j c.content %><br><br>';
   <% end %>
 <% end %>
 html += '<br><hr><br>';

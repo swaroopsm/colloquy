@@ -1,3 +1,49 @@
+<div class="timer" id="earlybird">
+  <p class="timertitle">Early Bird Registration Close</p>
+    <div class="timermonth"><%= @conference.early_bird_close.strftime("%b") %></div>
+    <div class="timerdate"><%= @conference.early_bird_close.strftime("%d") %></div>
+    <!-- <div class="timeryear"><%= @conference.early_bird_close.strftime("%y") %></div> -->
+  <% if Date.today > @conference.early_bird_close %>
+    <p class="timerto">Early Bird Registration closed.</p>
+  <% else %>
+    <p class="timerto"></p>
+  <% end %>
+</div>
+<div class="timer" id="abstractsubmissiondeadline">
+  <p class="timertitle">Abstract Submission Close</p>
+    <div class="timermonth"><%= @conference.abstract_submission_close.strftime("%b") %></div>
+    <div class="timerdate"><%= @conference.abstract_submission_close.strftime("%d") %></div>
+    <!-- <div class="timeryear"><%= @conference.abstract_submission_close.strftime("%y") %></div> -->
+  <% if Date.today > @conference.abstract_submission_close %>
+    <p class="timerto">Abstract Submission closed.</p>
+  <% else %>
+    <p class="timerto"></p>
+  <% end %>
+</div>
+<div class="timer" id="workshopregistrationopen">
+  <p class="timertitle">Workshop Registrations Open</p>
+    <div class="timermonth"><%= @conference.workshop_registration_start.strftime("%b") %></div>
+    <div class="timerdate"><%= @conference.workshop_registration_start.strftime("%d") %></div>
+    <!-- <div class="timeryear"><%= @conference.workshop_registration_start.strftime("%y") %></div> -->
+  <% if Date.today > @conference.workshop_registration_start %>
+    <p class="timerto">Workshop Registration Opens.</p>
+  <% else %>
+    <p class="timerto">Opens at 10AM IST.</p>
+    <!-- <p class="timerto"><%= distance_of_time_in_words @conference.workshop_registration_start, Date.today %></p> -->
+  <% end %>
+</div>
+<div class="timer" id="onlineclose">
+  <p class="timertitle">Online Registrations Close</p>
+    <div class="timermonth"><%= @conference.online_registration_close.strftime("%b") %></div>
+    <div class="timerdate"><%= @conference.online_registration_close.strftime("%d") %></div>
+    <!-- <div class="timeryear"><%= @conference.online_registration_close.strftime("%y") %></div> -->
+  <% if Date.today > @conference.online_registration_close %>
+    <p class="timerto">Online Registrations Close.</p>
+  <% else %>
+    <p class="timerto"><%= distance_of_time_in_words @conference.online_registration_close, Date.today %> to go.</p>
+  <% end %>
+</div>
+
 <div id="gals">
 <div id="gallery">
 <div class="galwrap1">
