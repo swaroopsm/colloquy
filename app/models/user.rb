@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
   has_one	  :detail
   belongs_to :role
   has_many	 :boards
+  has_many	 :ideas
 
 	# Check role of a user
 	def admin?

@@ -1,3 +1,8 @@
 class Idea < ActiveRecord::Base
-  attr_accessible :board_id, :description, :user_id
+
+  attr_accessible :description
+
+  belongs_to	:board
+  belongs_to	:user
+
 end
