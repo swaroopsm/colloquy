@@ -1,8 +1,24 @@
 <div class="plenary yellowback">P O S T E R &nbsp; P R E S E N T A T I O N S</div>
 <h1>Posters</h1>
-<div class="pageview">
+<div class="pageview" style="text-transform: capitalize;">
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Presenter</th>
+      <th>Authors</th>
+    </tr>
+  </thead>
+  <tbody>
+
+
 <% @submissions.each do |s| %>
-  <%= s.title %>
-  <br>
+  <tr>
+    <td><%= link_to s.title, conference_submission_path(@conference, s) %></td>
+    <td><%= s.user.first_name %> <%= s.user.last_name %></td>
+    <td><%= s.authors %></td>
+  </tr>
 <% end %>
+  </tbody>
+</table>
 </div>

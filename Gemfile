@@ -51,6 +51,11 @@ gem 'rest-client'
 # Mass-insertion of records
 gem 'activerecord-import'
 
+
+# Background jobs
+gem 'redis'
+gem 'sidekiq'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

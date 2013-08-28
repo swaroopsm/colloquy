@@ -1,5 +1,11 @@
 Colloquy::Application.routes.draw do
 
+  devise_for :users, :skip => [:registrations]
+    as :user do
+      get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
+      put 'users' => 'devise/registrations#update', :as => 'user_registration'
+    end
+
 	# Participate path
 	match "participate" => "home#participate", :as => "participate"
 	match "signup" => "users#participate", :as => "participate", :method => :post
@@ -11,6 +17,7 @@ Colloquy::Application.routes.draw do
   match "boss/conferences" => "boss#conferences", :as => "boss_conferences"
   match "boss/plenaries" => "boss#plenaries", :as => "boss_plenaries"
   match "boss/attendees" => "boss#attendees", :as => "boss_attendees"
+  match "boss/attendees/:user_id" => "boss#attendees_show", :as => "boss_attendees_show"
   match "boss/submissions" => "boss#submissions", :as => "boss_submissions"
   match "boss/schedule/workshops" => "boss#schedule_workshops", :as => "schedule_workshops"
   match "boss/schedule/plenaries" => "boss#schedule_plenaries", :as => "schedule_plenaries"
@@ -26,7 +33,7 @@ Colloquy::Application.routes.draw do
 
   resources :pagecats
 
-  devise_for :users
+
 
   root :to => "home#index"
 
@@ -37,9 +44,6 @@ Colloquy::Application.routes.draw do
 	resources :submissions, :only => [:new, :create], :path => :abstracts do
   	resources :scores
   end
-
-
-  devise_for :users
 
   resources :plenaries do
     resources :schedules

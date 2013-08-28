@@ -70,21 +70,30 @@ class BossController < ApplicationController
 
   # This will actually send the mail
   def sendemailtoattendees
-  	@users = ConferenceUser.where(:conference_id => Conference.active)
+  	@users = User.where(:role_id => Role.find_by_title(:attendee))
   	@sub = params[:emailbody]
 
     @array = []
 
     @users.each do |u|
-      @getname = @sub.sub("@@Name@@", "#{u.user[:first_name]} #{u.user[:last_name]}" )
+      @getname = @sub.sub("@@Name@@", "#{u.first_name} #{u.last_name}" )
       @array << @getname
+      UserMailer.delay.attendee_mail(u, @getname)
     end
-
-    render :text => @array.to_json
-
+    #render :text => @array.to_json
+    respond_to do |format|
+    	format.js
+    end
 
 
   end
+ 
+# Display attendee details
+	def attendees_show
+		@attendee = User.find(params[:user_id])
+		@ticket = ConferenceUser.where(:user_id => @attendee, :conference_id => Conference.active).first
+        end 
+
 
 	private
 
