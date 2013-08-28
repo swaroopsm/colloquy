@@ -7,7 +7,8 @@ class BoardsController < ApplicationController
   # GET /boards
   # GET /boards.json
   def index
-    @boards = Board.all
+  	@conference = Conference.find(params[:conference_id])
+    @boards = Board.where(:conference_id => @conference).includes(:user)
 
     respond_to do |format|
       format.html # index.html.erb
