@@ -57,4 +57,9 @@ class User < ActiveRecord::Base
 		s = Submission.where(:user_id => self, :conference_id => Conference.active).first
 	end
 
+	# Combine user's first name and last name
+	def full_name
+		"#{self.first_name} #{self.last_name}"
+	end
+
 end
