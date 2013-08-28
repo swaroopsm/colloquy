@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130915083647) do
+ActiveRecord::Schema.define(:version => 20130915083648) do
 
   create_table "attachments", :force => true do |t|
     t.string   "attachable_type"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(:version => 20130915083647) do
     t.string   "pic_content_type"
     t.integer  "pic_file_size"
     t.datetime "pic_updated_at"
+  end
+
+  create_table "boards", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "user_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "comments", :force => true do |t|
@@ -40,8 +48,6 @@ ActiveRecord::Schema.define(:version => 20130915083647) do
     t.datetime "updated_at",    :null => false
     t.string   "ticket"
   end
-
-  add_index "conference_users", ["ticket"], :name => "index_conference_users_on_ticket", :unique => true
 
   create_table "conferences", :force => true do |t|
     t.string   "title"
@@ -73,6 +79,15 @@ ActiveRecord::Schema.define(:version => 20130915083647) do
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
     t.integer  "user_id"
+  end
+
+  create_table "ideas", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "conference_id"
+    t.integer  "user_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "pagecats", :force => true do |t|
@@ -153,6 +168,18 @@ ActiveRecord::Schema.define(:version => 20130915083647) do
     t.datetime "updated_at",                          :null => false
     t.boolean  "accomodation"
   end
+
+  create_table "topics", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "user_id"
+    t.integer  "conference_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "slug"
+  end
+
+  add_index "topics", ["slug"], :name => "index_topics_on_slug", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
