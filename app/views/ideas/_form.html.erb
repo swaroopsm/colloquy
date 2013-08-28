@@ -1,0 +1,15 @@
+<h1>Idea for <%= @board.title %></h1>
+<hr />
+
+<%= form_for [@board.conference, @board, Idea.new], :remote => true do |f| %>
+
+	<div>
+		<%= f.label :description, "Your Idea" %> <br />
+		<%= f.text_area :description, :rows => "5" %>
+	</div>
+	<br />
+	<div>
+		<%= f.submit %>
+	</div>
+
+<% end -%>
