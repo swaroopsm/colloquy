@@ -46,7 +46,10 @@ class BoardsController < ApplicationController
   # POST /boards
   # POST /boards.json
   def create
+  	@conference = Conference.find(params[:conference_id])
     @board = Board.new(params[:board])
+    @board.user = current_user
+    @board.conference = @conference
 
     respond_to do |format|
       if @board.save

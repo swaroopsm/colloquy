@@ -15,6 +15,7 @@
 /tmp
 database.yml
 public/system/attachments/*
+public/assets/*
 *~
 system/
 
