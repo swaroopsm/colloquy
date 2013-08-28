@@ -8,6 +8,10 @@
 			|
 			<%= link_to "Edit", edit_conference_board_path(@conference, @board), :remote => true %>
 		<% end -%>
+		<% if can? :create, Idea -%>
+			|
+			<%= link_to "Propose Idea", new_conference_board_idea_path(@conference, @board, @idea), :remote => true %>
+		<% end -%>
 	</h1>
 
 	<div class="plenary yellowback"><%= @board.user.full_name %></div>
