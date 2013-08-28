@@ -26,6 +26,9 @@ class Ability
 			can :create, Board do |b|
 				user.registered?
 			end
+			can [:edit, :update], Board do |b|
+				b.user == user
+			end
 
        # Workshop abilities for attendee
         can :attend, Workshop do |w|
