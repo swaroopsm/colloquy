@@ -33,7 +33,9 @@ class Ability
 			end
 
 			# Ideas for a board auth for attendee
-			can :create, Idea
+			can :create, Idea do |i|
+				user.registered?
+			end
 			can [:edit, :update], Idea do |i|
 				i.user == user
 			end
