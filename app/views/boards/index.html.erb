@@ -1,27 +1,17 @@
 <h1>Listing boards</h1>
 
-<%= link_to "Create Board", new_conference_board_path(@conference), :remote => true if can? :create, Board %>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @boards.each do |board| %>
-  <tr>
-    <td><%= board.title %></td>
-    <td><%= board.description %></td>
-    <td><%= board.user_id %></td>
-    <td><%= link_to 'Show', '#' %></td>
-    <td><%= link_to 'Edit', '#'  %></td>
-    <td><%= link_to 'Destroy', '#' %></td>
-  </tr>
-<% end %>
-</table>
+<%= link_to "Create New Board", new_conference_board_path(@conference), :remote => true if can? :create, Board %>
 
 <br />
+<hr />
+<% if @boards.any? -%>
+
+	<% @boards.each do |board| -%>
+		<div>
+			<h3><%= link_to board.title, conference_board_path(@conference, board) %></h3>
+			<span>By: <%= board.user.full_name %></span>
+		</div>
+		<hr>
+	<% end -%>
+
+<% end -%>
