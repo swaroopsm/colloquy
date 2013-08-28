@@ -66,7 +66,9 @@ Colloquy::Application.routes.draw do
   resources :conferences, :only=> [:edit, :destroy, :update]
 
   resources :conferences, :except=> [:edit, :destroy, :update], :path => "" do
-  	resources :boards
+  	resources :boards do
+  		resources :ideas
+  	end
     resources :plenaries
     resources :workshops
     resources :submissions, :except => [:new, :create], :path => :abstracts

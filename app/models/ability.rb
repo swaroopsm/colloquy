@@ -16,6 +16,7 @@ class Ability
       can :manage, Plenary
       can :manage, Workshop
       can :manage, Board
+      can :manage, Idea
 
       can :manage, Submission
     elsif user.attendee?
@@ -23,11 +24,18 @@ class Ability
     		!user.submitted? and user.registered?
     	end
 
+			# Board Auth for attendee
 			can :create, Board do |b|
 				user.registered?
 			end
 			can [:edit, :update], Board do |b|
 				b.user == user
+			end
+
+			# Ideas for a board auth for attendee
+			can :create, Idea
+			can [:edit, :update], Idea do |i|
+				i.user == user
 			end
 
        # Workshop abilities for attendee
