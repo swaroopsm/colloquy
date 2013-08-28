@@ -2,7 +2,7 @@ class IdeasController < ApplicationController
 
 	before_filter :authenticate_user!, :except => [:index, :show]
 	before_filter :load_board
-	load_and_authorize_resource	:idea, :except => [:index, :show]
+	load_and_authorize_resource
 
 	def new
 		respond_to do |format|

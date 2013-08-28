@@ -1,6 +1,6 @@
 <h1>Listing boards</h1>
 
-<%= link_to "Create New Board", new_conference_board_path(@conference), :remote => true if can? :create, Board %>
+<%= link_to "Create New Board", new_conference_board_path(@conference), :remote => true if can? :create, Board and user_signed_in? %>
 
 <br />
 <hr />

@@ -19,6 +19,7 @@ class Ability
       can :manage, Idea
 
       can :manage, Submission
+
     elsif user.attendee?
     	can [:new, :create], Submission do |s|
     		!user.submitted? and user.registered?
@@ -62,6 +63,8 @@ class Ability
     	end
     else
         # Write persmissions for public here
+        cannot :create, Board
+        cannot :create, Idea
     end
 
 
