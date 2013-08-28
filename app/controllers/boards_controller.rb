@@ -29,10 +29,11 @@ class BoardsController < ApplicationController
   # GET /boards/new
   # GET /boards/new.json
   def new
+  	@conference = Conference.find(params[:conference_id])
     @board = Board.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.js # new.js.erb
       format.json { render json: @board }
     end
   end
