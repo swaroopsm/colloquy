@@ -11,6 +11,7 @@ class Conference < ActiveRecord::Base
   has_many :submissions
   has_many :ideas
   has_many :topics
+  has_many :boards
 
   def self.active
   	c = Conference.find_by_active(true)
