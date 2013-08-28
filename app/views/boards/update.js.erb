@@ -1,0 +1,5 @@
+<% if @board.errors.any? %>
+	message("error"," <%= @board.errors.full_messages.first %>");
+<% else %>
+	message("success","Board has been updated successfully!");
+<% end %>

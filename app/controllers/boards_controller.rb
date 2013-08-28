@@ -66,11 +66,9 @@ class BoardsController < ApplicationController
 
     respond_to do |format|
       if @board.update_attributes(params[:board])
-        format.html { redirect_to @board, notice: 'Board was successfully updated.' }
-        format.json { head :no_content }
+        format.js
       else
-        format.html { render action: "edit" }
-        format.json { render json: @board.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
