@@ -1,5 +1,6 @@
 class BoardsController < ApplicationController
 
+  before_filter :getallextras
 	before_filter :authenticate_user!, :except => [:index, :show]
 	load_and_authorize_resource :except => [:index, :show]
 
@@ -84,4 +85,16 @@ class BoardsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+  def getallextras
+     @xpagecats = Pagecat.all
+		  @cats = []
+		  @xpagecats.each do | p |
+		    @cats << p.id
+		  end
+		  @xpages = Page.where("pagecat_id IN (?)", @cats ).where(:conference_id => Conference.active).group_by{ |c| c[:pagecat_id] }
+		  @conference = Conference.find(params[:conference_id])
+  end
+
 end
