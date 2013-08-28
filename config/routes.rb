@@ -73,7 +73,6 @@ Colloquy::Application.routes.draw do
     resources :workshops
     resources :submissions, :except => [:new, :create], :path => :abstracts
     resources :topics
-    resources :ideas, :path => "idea-board"
     resources :pages, :path => ""
   end
 
