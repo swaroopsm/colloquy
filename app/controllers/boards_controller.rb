@@ -7,7 +7,6 @@ class BoardsController < ApplicationController
   # GET /boards
   # GET /boards.json
   def index
-  	@conference = Conference.find(params[:conference_id])
     @boards = Board.where(:conference_id => @conference).includes(:user)
 
     respond_to do |format|
@@ -30,7 +29,6 @@ class BoardsController < ApplicationController
   # GET /boards/new
   # GET /boards/new.json
   def new
-  	@conference = Conference.find(params[:conference_id])
     @board = Board.new
 
     respond_to do |format|
@@ -42,6 +40,9 @@ class BoardsController < ApplicationController
   # GET /boards/1/edit
   def edit
     @board = Board.find(params[:id])
+    respond_to do |format|
+    	format.js
+    end
   end
 
   # POST /boards
