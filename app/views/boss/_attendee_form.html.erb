@@ -1,1 +1,60 @@
 <h1>You are adding a new Attendee</h1>
+
+<%= form_for @attendee, :url => boss_create_attendee_path, :remote => true do |f| %>
+
+	<div>
+		<%= f.label :first_name %>
+		<%= f.text_field :first_name %>
+	</div>
+
+	<div>
+		<%= f.label :last_name %>
+		<%= f.text_field :last_name %>
+	</div>
+
+	<%= fields_for :detail do |d| %>
+		<div>
+			<%= d.label :gender %>
+			<%= d.label :gender_male do %>
+				<%= d.radio_button :gender, "male" %> Male
+			<% end -%>
+			<%= d.label :gender_female do %>
+				<%= d.radio_button :gender, "female" %> Female
+			<% end -%>
+		</div>
+
+		<div>
+			<%= d.label :dob, "Date of Birth" %>
+			<%= d.date_select :dob %>
+		</div>
+
+		<div>
+			<%= d.label :academic, "Academic Status" %>
+			<%= d.text_field :academic %>
+		</div>
+
+		<div>
+			<%= d.label :institute_affiliation %>
+			<%= d.text_field :institute_affiliation %>
+		</div>
+
+		<div>
+			<%= d.label :address %>
+			<%= d.text_area :address, :rows => "4" %>
+		</div>
+
+		<div>
+			<%= d.label :phone %>
+			<%= d.text_field :phone %>
+		</div>
+
+		<div>
+			<%= d.label :nationality %>
+			<%= d.text_field :nationality %>
+		</div>
+
+	<% end -%>
+
+	<%= f.submit "Create Attendee" %>
+
+<% end -%>
