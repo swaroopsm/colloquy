@@ -87,12 +87,21 @@ class BossController < ApplicationController
 
 
   end
- 
-# Display attendee details
+
+	# Display attendee details
 	def attendees_show
 		@attendee = User.find(params[:user_id])
 		@ticket = ConferenceUser.where(:user_id => @attendee, :conference_id => Conference.active).first
-        end 
+  end
+
+
+  # New Attendee
+  def new_attendee
+  	@attendee = User.new
+  	respond_to do |format|
+  		format.js
+  	end
+  end
 
 
 	private
