@@ -1,0 +1,5 @@
+<% if @attendee.errors.any? %>
+	message("error"," <%= @attendee.errors.full_messages.first %>");
+<% else %>
+	message("success","Attendee has been added!");
+<% end %>
