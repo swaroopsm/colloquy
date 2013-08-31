@@ -6,4 +6,12 @@ class ConferenceUser < ActiveRecord::Base
 
 #  validates_uniqueness_of :ticket
 
+	class << self
+
+		def lowest_ticket
+			ConferenceUser.minimum(:ticket)
+		end
+
+	end
+
 end
