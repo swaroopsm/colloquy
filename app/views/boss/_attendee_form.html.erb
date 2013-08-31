@@ -12,6 +12,11 @@
 		<%= f.text_field :last_name %>
 	</div>
 
+	<div>
+		<%= f.label :email %>
+		<%= f.text_field :email %>
+	</div>
+
 	<%= fields_for :detail do |d| %>
 		<div>
 			<%= d.label :gender %>
@@ -25,7 +30,7 @@
 
 		<div>
 			<%= d.label :dob, "Date of Birth" %>
-			<%= d.date_select :dob %>
+			<%= d.date_select :dob, :start_year => 1940 %>
 		</div>
 
 		<div>
