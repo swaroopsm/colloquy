@@ -29,6 +29,8 @@ class User < ActiveRecord::Base
   has_many	 :boards
   has_many	 :ideas
 
+  accepts_nested_attributes_for :detail
+
 	# Check role of a user
 	def admin?
 		self.role.title == "admin"
