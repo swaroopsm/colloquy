@@ -98,9 +98,29 @@ class BossController < ApplicationController
   # New Attendee
   def new_attendee
   	@attendee = User.new
+  	@attendee.build_detail
   	respond_to do |format|
   		format.js
   	end
+  end
+
+  # Creates an attendee
+  def create_attendee
+  	@attendee = User.new(params[:user])
+  	@attendee.password = Devise.friendly_token[1..8]
+  	@attendee.build_detail(params[:detail])
+  	@attendee.status = :new_attendee
+		if @attendee.save
+			c = ConferenceUser.new
+			c.conference = Conference.active
+			c.user = @attendee
+			c.ticket = ConferenceUser.lowest_ticket.to_i - 2
+			c.save
+			@attendee.send_reset_password_instructions
+		end
+		respond_to do |format|
+			format.js
+		end
   end
 
 
