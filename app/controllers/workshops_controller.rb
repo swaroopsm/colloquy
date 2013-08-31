@@ -83,7 +83,12 @@ class WorkshopsController < ApplicationController
   # DELETE /workshops/1.json
   def destroy
     @workshop = Workshop.find(params[:id])
-    @workshop.destroy
+    if @workshop.destroy
+    	@schedule = Schedule.where(:schedulable_type => "Workshop", :schedulable_id => @workshop)
+    	@schedule.delete_all
+    	@workshop_attendees = WorkshopAttendee.where(:workshop_id => @workshop)
+    	@workshop_attendees.delete_all
+    end
 
     respond_to do |format|
       format.js
