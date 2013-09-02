@@ -40,7 +40,7 @@ class WorkshopsController < ApplicationController
 
   # GET /workshops/1/edit
   def edit
-    @workshop = Workshop.find(params[:id])
+    @workshop = Workshop.includes({:workshop_attendees => :user}).find(params[:id])
     @conference = Conference.find(params[:conference_id])
     respond_to do |format|
       format.js
@@ -116,8 +116,14 @@ class WorkshopsController < ApplicationController
    # Unattend the workshop
   def unattend
     @workshop = Workshop.find(params[:workshop_id])
-    @workshop_attendee = WorkshopAttendee.where(:user_id => current_user, :workshop_id => @workshop)
-    @workshop_attendee[0].destroy
+    if params[:user_id] && current_user.admin?
+    	@attendee = User.find(params[:user_id])
+    	@workshop_attendee = WorkshopAttendee.where(:user_id => @attendee, :workshop_id => @workshop)
+	    @workshop_attendee[0].destroy
+    else
+		  @workshop_attendee = WorkshopAttendee.where(:user_id => current_user, :workshop_id => @workshop)
+		  @workshop_attendee[0].destroy
+    end
       respond_to do |format|
         format.js
       end

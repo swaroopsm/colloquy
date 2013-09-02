@@ -26,4 +26,8 @@ class Workshop < ActiveRecord::Base
     return can_register
   end
 
+	def seats_left
+		self.seats - self.workshop_attendees.size
+	end
+
 end

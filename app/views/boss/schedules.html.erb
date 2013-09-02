@@ -9,13 +9,14 @@
 		    <th>Start time</th>
 		    <th>Session Length (in minutes)</th>
 		    <th>Venue</th>
+		    <th>Seats Left</th>
 		  </tr>
 	</thead>
 	<tbody>
 		<% if @schedules.any? %>
 			<% @schedules.each do |schedule| %>
 			  <tr>
-			  	<td><%= schedule.schedulable.conference.title %></td>
+			  	<td><%= link_to schedule.schedulable.title, edit_conference_workshop_path(schedule.schedulable.conference, schedule.schedulable), :remote => true %></td>
 			   	<td><%= schedule.schedulable_type %></td>
 			    <td><%= schedule.schedulable.title %></td>
 			    <td><%= schedule.schedulable.presenter %></td>
@@ -23,6 +24,13 @@
 			    <td><%= schedule.starttime.strftime("%H : %M") %></td>
 			    <td><%= schedule.minutes %></td>
 			    <td><%= schedule.venue%></td>
+			    <td>
+			    	<% if schedule.schedulable.is_a? Workshop -%>
+							<%= schedule.schedulable.seats_left %> / <%= schedule.schedulable.seats %>
+						<% else -%>
+							N/A
+			    	<% end -%>
+			    </td>
 			  </tr>
 			<% end %>
 		<% else %>

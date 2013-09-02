@@ -52,7 +52,7 @@ class BossController < ApplicationController
 
 	# list all the scheduled things
 	def schedules
-		@schedules = Schedule.all
+		@schedules = Schedule.includes(:schedulable).all
 	end
 
   def submissions

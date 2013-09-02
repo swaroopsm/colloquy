@@ -1,5 +1,9 @@
 <% if @workshop_attendee[0].errors.any? -%>
 	message("error"," <%= @workshop_attendee[0].errors.full_messages.first %>");
 <% else -%>
-	message("success",'You are no longer attending this workshop.');
+	<% if current_user.admin? -%>
+		message("success",'<%= @attendee.full_name %> is unregistered from this workshop.');
+	<% else -%>
+		message("success",'You are no longer attending this workshop.');
+	<% end -%>
 <% end -%>

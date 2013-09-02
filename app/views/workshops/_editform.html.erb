@@ -40,3 +40,14 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<% if @workshop.workshop_attendees.any? -%>
+	<br />
+	<hr />
+	<h3>Attendee who have registered:</h3>
+		<% 0.upto(@workshop.workshop_attendees.size - 1) do |i| -%>
+			<p>
+				<%= i + 1 %>. <%= @workshop.workshop_attendees[i].user.full_name %> | <%= link_to "Unregister", boss_attendees_workshops_unattend_path(@workshop.workshop_attendees[i].user, @workshop), :remote => true %>
+			</p>
+		<% end -%>
+<% end -%>
