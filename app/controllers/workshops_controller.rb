@@ -103,7 +103,9 @@ class WorkshopsController < ApplicationController
     @workshop_attendee.workshop = @workshop
 
 
-    @workshop_attendee.save
+    if @workshop_attendee.save
+			WorkshopMailer.delay.after_registration(@workshop_attendee)
+    end
 
     respond_to do |format|
       format.js

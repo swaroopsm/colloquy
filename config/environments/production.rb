@@ -65,15 +65,15 @@ Colloquy::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  config.action_mailer.default_url_options = { :host => 'sccs-bng.org' }
+  config.action_mailer.default_url_options = { :host => '' }
   config.action_mailer.perform_deliveries = true
  config.action_mailer.delivery_method = :smtp
  config.action_mailer.smtp_settings = {
                 :address              => "smtp.gmail.com",
                 :port                 => 587,
-                :domain               => 'sccs-bng.org',
-                :user_name            => 'sccs@sccs-bng.org',
-                :password             => 'raja in tihar',
+                :domain               => '',
+                :user_name            => '',
+                :password             => '',
                 :authentication       => 'plain',
                 :enable_starttls_auto => true  }
 

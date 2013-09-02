@@ -1,0 +1,13 @@
+<p>Dear <%= @registered.user.full_name %></p>
+
+<p>
+
+	This is to confirm your registration for the workshop <%= @registered.workshop.title %> on <%= depict_date(@registered.workshop.schedule.day) %>.
+
+</p>
+
+<br /><br />
+
+<p>
+	Thank You
+</p>
