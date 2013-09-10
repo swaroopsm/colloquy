@@ -55,6 +55,11 @@
 			<%= link_to "Schedule Plenaries", schedule_plenaries_path %>
 			<%= link_to "View Schedules", boss_schedules_path %>
 		</div>
+		
+		<div class="manage">
+			<h5>Sessions</h5>
+			<%= link_to "Add Session", new_conference_period_path(@conference), :remote => true %>
+		</div>
 
 		<div class="manage">
 		<h5>eMail</h5>
