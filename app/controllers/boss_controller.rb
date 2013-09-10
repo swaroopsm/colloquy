@@ -26,6 +26,11 @@ class BossController < ApplicationController
 	def workshops
 		@workshops = Workshop.all
 	end
+	
+	# list abstract submissions that are pending from session assignment
+	def sessions_submissions
+		@submissions = Submission.non_allotted(@conference)
+	end
 
 	# list workshops for scheduling
 	def schedule_workshops
