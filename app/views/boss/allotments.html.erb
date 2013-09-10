@@ -1,0 +1,15 @@
+<table id="datatable">
+<thead>
+	<th>Abstract Name</th>
+	<th>Session</th>
+	<th>Actions</th>
+</thead>
+<tbody>
+<% @allotments.each do |a| %>
+	<tr>
+		<td><%= link_to a.allotable.title, conference_submission_path(Conference.active, a.allotable), :remote=>true %></td>
+		<td><%= a.period.title %></td>
+		<td><%= link_to "Assign to Session", new_sessions_allotment_path(a), :remote => true %></td>
+	</tr>
+<% end %>
+</tbody>
