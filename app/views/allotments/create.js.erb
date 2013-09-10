@@ -1,0 +1,9 @@
+<% if @allotment.errors.any? %>
+	var error = '';
+	<% @allotment.errors.full_messages.map do |e| %> error += '<%= e %>' <% end %>
+	message('error', error);
+
+<% else %>
+	message('success', 'Successfuly assigned Abstract to <%= @allotment.period.title %> Session')
+
+<% end %>
