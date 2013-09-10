@@ -1,8 +1,5 @@
 Colloquy::Application.routes.draw do
 
-  resources :periods
-
-
   devise_for :users, :skip => [:registrations]
     as :user do
       get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
@@ -74,7 +71,8 @@ Colloquy::Application.routes.draw do
   resources :conferences, :except=> [:edit, :destroy, :update], :path => "" do
   	resources :boards do
   		resources :ideas
-  	end
+		end
+		resources :periods, :path => :sessions
     resources :plenaries
     resources :workshops
     resources :submissions, :except => [:new, :create], :path => :abstracts
