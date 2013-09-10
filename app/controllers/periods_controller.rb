@@ -28,11 +28,11 @@ class PeriodsController < ApplicationController
   # GET /periods/new
   # GET /periods/new.json
   def new
+  	@conference = Conference.find(params[:conference_id])
     @period = Period.new
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @period }
+      format.js
     end
   end
 
@@ -45,6 +45,7 @@ class PeriodsController < ApplicationController
   # POST /periods.json
   def create
     @period = Period.new(params[:period])
+    @period.conference = Conference.find(params[:conference_id])
 
     respond_to do |format|
       if @period.save
