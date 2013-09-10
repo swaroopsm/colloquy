@@ -46,15 +46,10 @@ class PeriodsController < ApplicationController
   def create
     @period = Period.new(params[:period])
     @period.conference = Conference.find(params[:conference_id])
+		@period.save
 
     respond_to do |format|
-      if @period.save
-        format.html { redirect_to @period, notice: 'Period was successfully created.' }
-        format.json { render json: @period, status: :created, location: @period }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @period.errors, status: :unprocessable_entity }
-      end
+    	format.js
     end
   end
 
