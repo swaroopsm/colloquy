@@ -1,0 +1,9 @@
+<% if @period.errors.any? %>
+	var errors = '';
+	<% @period.errors.each do |e| %> errors += '<%= e %>' <% end %>
+	message('error', errors);
+<% else %>
+	message('success', 'Session has been added successfully!')
+<% end %>
+
+closemodal()
