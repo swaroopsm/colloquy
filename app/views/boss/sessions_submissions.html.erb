@@ -9,7 +9,7 @@
 	<tr>
 		<td><%= link_to s.title, conference_submission_path(s.conference, s), :remote=>true %></td>
 		<td><%= s.user.first_name %> <%= s.user.last_name %></td>
-		<td><%= link_to "Assign to Session" %></td>
+		<td><%= link_to "Assign to Session", new_sessions_allotment_path(s), :remote => true %></td>
 	</tr>
 <% end %>
 </tbody>
