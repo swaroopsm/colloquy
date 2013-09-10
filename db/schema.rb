@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130915083650) do
+ActiveRecord::Schema.define(:version => 20130915083651) do
 
   create_table "attachments", :force => true do |t|
     t.string   "attachable_type"
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(:version => 20130915083650) do
     t.datetime "updated_at",    :null => false
     t.string   "ticket"
   end
+
+  add_index "conference_users", ["ticket"], :name => "ticket", :unique => true
 
   create_table "conferences", :force => true do |t|
     t.string   "title"
@@ -106,6 +108,13 @@ ActiveRecord::Schema.define(:version => 20130915083650) do
     t.datetime "updated_at",    :null => false
     t.integer  "pagecat_id"
     t.string   "slug"
+  end
+
+  create_table "periods", :force => true do |t|
+    t.string   "title"
+    t.integer  "day"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "plenaries", :force => true do |t|
