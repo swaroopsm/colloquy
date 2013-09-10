@@ -19,6 +19,7 @@ class Ability
       can :manage, Idea
 
       can :manage, Submission
+      can :manage, Period
 
     elsif user.attendee?
     	can [:new, :create], Submission do |s|
