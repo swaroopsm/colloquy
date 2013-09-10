@@ -31,6 +31,11 @@ class BossController < ApplicationController
 	def sessions_submissions
 		@submissions = Submission.non_allotted(@conference)
 	end
+	
+	# list all allotted sessions on abstracts
+	def allotments
+		@allotments = Allotment.all
+	end
 
 	# list workshops for scheduling
 	def schedule_workshops
