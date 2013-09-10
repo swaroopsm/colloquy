@@ -1,5 +1,12 @@
 <h3>Assign <%= @submission.title %> to a Session</h3>
 
-<%= form_for "", :url => sessions_allotment_path(@submission), :remote => true do |f| %>
+<%= form_for Allotment.new, :url => sessions_allotment_path(@submission), :remote => true do |f| %>
+
+	<%= f.label :period, "Session" %>
+	<%= f.collection_select :period_id, @periods, :id, :title %>
+
+	<br />
+
+	<%= f.submit "Assign" %>
 
 <% end %>
