@@ -22,6 +22,8 @@ Colloquy::Application.routes.draw do
   match "boss/attendees/:user_id" => "boss#attendees_show", :as => "boss_attendees_show"
   match "boss/attendees/:user_id/workshops/:workshop_id/unattend" => "workshops#unattend", :as => "boss_attendees_workshops_unattend"
   match "boss/submissions" => "boss#submissions", :as => "boss_submissions"
+  match "boss/sessions" => "boss#sessions_submissions", :as => "sessions_submissions"  
+  match "boss/schedule/submissions" => "boss#schedule_submissions", :as => "schedule_workshops"
   match "boss/schedule/workshops" => "boss#schedule_workshops", :as => "schedule_workshops"
   match "boss/schedule/plenaries" => "boss#schedule_plenaries", :as => "schedule_plenaries"
   match "boss/schedule/workshop/:workshop_id" => "boss#schedule_workshop", :as => "schedule_workshop"
