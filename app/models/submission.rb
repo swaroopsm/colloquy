@@ -24,6 +24,12 @@ class Submission < ActiveRecord::Base
 		approval = [1,2]
 		!self.approved.nil? or approval.include? self.approved
 	end
+	
+	def self.non_allotted(conf)
+		allotted = Allotment.select('id').where(:allotable_type => "Submission")
+		Submission.where("id NOT IN (?)", allotted).where(:conference_id => conf) unless allotted.empty?
+		Submission.where(:conference_id => conf) if allotted.empty?
+	end
 
   private
   def full_content
