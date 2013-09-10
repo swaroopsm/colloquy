@@ -1,17 +1,24 @@
-<h1>Listing boards</h1>
+	<h1>
+		Listing boards
+		<% if can? :create, Board and user_signed_in? %>
+			| <%= link_to "Create New Board", new_conference_board_path(@conference), :remote => true %>
+		<% end %>
+	</h1>
 
-<%= link_to "Create New Board", new_conference_board_path(@conference), :remote => true if can? :create, Board and user_signed_in? %>
 
 <br />
-<hr />
 <% if @boards.any? -%>
 
-	<% @boards.each do |board| -%>
-		<div>
-			<h3><%= link_to board.title, conference_board_path(@conference, board) %></h3>
-			<span>By: <%= board.user.full_name %></span>
+	<% 0.upto(@boards.size - 1) do |b| -%>
+		<div class="pageview">
+			<strong><%= b+1 %>. <%= link_to @boards[b].title, conference_board_path(@conference, @boards[b]) %></strong>
+			<span> | By: <%= @boards[b].user.full_name %></span>
 		</div>
 		<hr>
 	<% end -%>
-
+<% else %>
+	There are no boards here. 
+	<% unless user_signed_in? %>
+		You need to <% link_to "Login", new_user_session_path %> in order create a new board.
+	<% end %>
 <% end -%>

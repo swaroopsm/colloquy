@@ -14,7 +14,8 @@
         <% unless @submission.empty? %>
         <%= link_to "My Abstract", conference_submission_path(@conference, @submission[0]), :remote => true  %>
         <% end %>
-        <%= link_to "Register for Workshops", attendee_workshops_path  %>
+				<%= link_to "Register for Workshops", attendee_workshops_path  %>
+				<%= link_to "Birds of a Feather", conference_boards_path(@conference) %>
         <%= link_to "My Account", edit_user_registration_path  %>
         <%= link_to "Log Out", destroy_user_session_path, :method => :delete %>
         </div>

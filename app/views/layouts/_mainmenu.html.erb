@@ -25,6 +25,7 @@
 		<% @xpages.each do |c| %>
 				<li><a href="#"><%= c[1].first.pagecat.title %></a>
 				<ul>
+					<li><%= link_to "Birds Of A Feather", conference_boards_path(@conference) %></li>
 						<% c[1].each do |p| %>
 							<li><%= link_to p.title, conference_page_path(@conference, p) %></li>
 						<% end %>
