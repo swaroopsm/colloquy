@@ -20,6 +20,7 @@ class Ability
 
       can :manage, Submission
       can :manage, Period
+      can :manage, Allotment
 
     elsif user.attendee?
     	can [:new, :create], Submission do |s|
