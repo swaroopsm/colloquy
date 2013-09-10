@@ -1,3 +1,7 @@
 class Period < ActiveRecord::Base
-  attr_accessible :day, :title
+  
+  attr_accessible :title
+
+	belongs_to	:conference
+
 end
