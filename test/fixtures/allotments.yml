@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  period_id: 1
+  allotable_type: MyString
+  allotable_id: 1
+
+two:
+  period_id: 1
+  allotable_type: MyString
+  allotable_id: 1
