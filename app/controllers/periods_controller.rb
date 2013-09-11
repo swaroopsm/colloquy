@@ -82,7 +82,8 @@ class PeriodsController < ApplicationController
 	end
 
 	def submissions
-		@period = Period.includes({ :submissions => :allotable }).find(params[:period_id])
+		@period = Period.find(params[:period_id])
+		@allotments = Allotment.where(:period_id => @period).rank(:row_order).includes(:allotable)
 		
 		respond_to do |format|
 			format.js
