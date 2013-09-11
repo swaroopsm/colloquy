@@ -2,12 +2,14 @@
 <thead>
 	<th>Session</th>
 	<th>Number of Abstracts</th>
+	<th>Acrions</th>
 </thead>
 <tbody>
 <% @periods.each do |p| %>
 	<tr>
 		<td><%= p.title %></td>
 		<td><%= p.submissions.size %></td>
+		<td><%= link_to "Arrange Abstracts", period_submissions_path(p), :remote => true %></td>
 	</tr>
 <% end %>
 </tbody>
