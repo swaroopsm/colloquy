@@ -47,4 +47,13 @@ class AllotmentsController < ApplicationController
 		end
 	end
 
+	def destroy
+		@allotment = Allotment.find(params[:allotment_id])
+		@allotment.destroy
+
+		respond_to do |format|
+			format.js
+		end
+	end
+
 end

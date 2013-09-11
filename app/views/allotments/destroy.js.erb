@@ -1,0 +1,11 @@
+<% if @allotment.errors.any? %>
+	var errors = '';
+	<% @allotment.errors.each do |e| %> errors += '<%= e %>' <% end %>
+	message('error', errors);
+<% else %>
+	message('success', 'Abstract has been cancelled from this Session.')
+<% end %>
+
+closemodal()
+
+

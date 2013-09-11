@@ -11,7 +11,7 @@
 		<td><%= a.period.title %></td>
 		<td>
 			<%= link_to "Re-Assign to Session", edit_sessions_allotment_path(a), :remote => true %> | 
-			<%= link_to "Cancel From Session", destroy_sessions_allotment_path(a), :remote => true, :method => :delete %>
+			<%= link_to "Cancel From Session", destroy_sessions_allotment_path(a), :remote => true, :method => :delete, :data => { :confirm => "Are you sure?" } %>
 		</td>
 	</tr>
 <% end %>
