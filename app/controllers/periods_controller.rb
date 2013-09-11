@@ -79,5 +79,14 @@ class PeriodsController < ApplicationController
       format.html { redirect_to periods_url }
       format.json { head :no_content }
     end
-  end
+	end
+
+	def submissions
+		@period = Period.includes({ :submissions => :allotable }).find(params[:period_id])
+		
+		respond_to do |format|
+			format.js
+		end
+	end
+
 end
