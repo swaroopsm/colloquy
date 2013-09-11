@@ -1,1 +1,19 @@
 <h3>Abstracts assigned to <%= @period.title %></h3>
+<p><em>Drag and Drop to the desired position<em></p>
+<br>
+<ul class="sortable">
+	<% @allotments.each do |a| %>
+		<li data-allotment="<%= a.id %>"><%= link_to a.allotable.title, conference_submission_path(Conference.active, a.allotable), :remote => true %></li>
+	<% end %>
+</ul>
+
+<script>
+	$(".sortable").sortable({
+			update: function(event, ui) {
+				$.ajax({
+					url: "/boss/allotments/"+ui.item.attr('data-allotment')+"/arrange/"+ui.item.index(),
+					type: "POST"
+				})	
+			}
+	});
+</script>
