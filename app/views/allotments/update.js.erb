@@ -1,0 +1,10 @@
+<% if @allotment.errors.any? %>
+	var errors = '';
+	<% @allotment.errors.each do |e| %> errors += '<%= e %>' <% end %>
+	message('error', errors);
+<% else %>
+	message('success', 'Session for the Abstract has been re-assigned successfully.')
+<% end %>
+
+closemodal()
+

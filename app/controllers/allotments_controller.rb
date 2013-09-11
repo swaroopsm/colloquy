@@ -37,4 +37,14 @@ class AllotmentsController < ApplicationController
 		end
 	end
 
+	def update
+		@allotment = Allotment.find(params[:allotment_id])
+		@allotment.period = Period.find(params[:allotment][:period_id])
+		@allotment.save
+		
+		respond_to do |format|
+			format.js
+		end
+	end
+
 end
