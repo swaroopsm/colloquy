@@ -30,6 +30,7 @@ Colloquy::Application.routes.draw do
 	match "boss/allotments/:allotment_id/edit" => "allotments#edit", :as => "edit_sessions_allotment" 
 	match "boss/allotment/:allotment_id" => "allotments#update", :as => "allotment", :method => :put 
 	match "boss/allotments/:allotment_id" => "allotments#destroy", :as => "destroy_sessions_allotment", :method => :delete  
+	match "boss/allotments/:allotment_id/arrange/:order_position" => "allotments#arrange", :as => "arrange_allotment", :method => :post  
 	match "boss/allotments" => "boss#allotments", :as => "allotments"
   match "boss/schedule/submissions" => "boss#schedule_submissions", :as => "schedule_workshops"
   match "boss/schedule/workshops" => "boss#schedule_workshops", :as => "schedule_workshops"
