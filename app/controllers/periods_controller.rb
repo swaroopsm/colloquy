@@ -62,16 +62,11 @@ class PeriodsController < ApplicationController
   # PUT /periods/1.json
   def update
     @period = Period.find(params[:id])
-
-    respond_to do |format|
-      if @period.update_attributes(params[:period])
-        format.html { redirect_to @period, notice: 'Period was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @period.errors, status: :unprocessable_entity }
-      end
-    end
+    @period.update_attributes(params[:period])
+		
+		respond_to do |format|
+			format.js
+		end
   end
 
   # DELETE /periods/1

@@ -1,0 +1,11 @@
+<% if @period.errors.any? %>
+	var errors = '';
+	<% @period.errors.each do |e| %> errors += '<%= e %>' <% end %>
+	message('error', errors);
+<% else %>
+	message('success', 'Session has been updated successfully.')
+<% end %>
+
+closemodal()
+
+
