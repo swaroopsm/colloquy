@@ -56,6 +56,9 @@ gem 'activerecord-import'
 gem 'redis'
 gem 'sidekiq'
 
+# For ordering abstracts
+gem 'ranked-model'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
