@@ -27,6 +27,11 @@ class BossController < ApplicationController
 		@workshops = Workshop.all
 	end
 	
+	# list all sessions
+	def sessions_list
+		@periods = Period.includes(:submissions).all
+	end
+
 	# list abstract submissions that are pending from session assignment
 	def sessions_submissions
 		@submissions = Submission.non_allotted(@conference)
