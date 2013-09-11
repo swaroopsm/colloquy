@@ -1,0 +1,12 @@
+<h3>Re-Assign <%= @allotment.allotable.title %> to a Session</h3>
+
+<%= form_for @allotment, :remote => true do |f| %>
+
+	<%= f.label :period, "Session" %>
+	<%= f.collection_select :period_id, @periods, :id, :title %>
+
+	<br />
+
+	<%= f.submit "Re-Assign" %>
+
+<% end %>
