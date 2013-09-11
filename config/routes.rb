@@ -23,6 +23,7 @@ Colloquy::Application.routes.draw do
   match "boss/attendees/:user_id/workshops/:workshop_id/unattend" => "workshops#unattend", :as => "boss_attendees_workshops_unattend"
   match "boss/submissions" => "boss#submissions", :as => "boss_submissions"
   match "boss/sessions" => "boss#sessions_submissions", :as => "sessions_submissions"
+  match "boss/sessions/list" => "boss#sessions_list", :as => "boss_sessions_list"
 	match "boss/sessions/:submission_id/new" => "allotments#new", :as => "new_sessions_allotment"  
 	match "boss/sessions/:submission_id" => "allotments#create", :as => "sessions_allotment", :method => :post  
 	match "boss/allotments/:allotment_id/edit" => "allotments#edit", :as => "edit_sessions_allotment" 
