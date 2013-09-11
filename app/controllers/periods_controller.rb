@@ -38,7 +38,12 @@ class PeriodsController < ApplicationController
 
   # GET /periods/1/edit
   def edit
+  	@conference = Conference.find(params[:conference_id])
     @period = Period.find(params[:id])
+
+    respond_to do |format|
+			format.js
+		end
   end
 
   # POST /periods
