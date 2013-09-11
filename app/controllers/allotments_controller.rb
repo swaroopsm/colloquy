@@ -55,6 +55,16 @@ class AllotmentsController < ApplicationController
 		end
 	end
 	
+	# Arrange Allotables based on a period/session
+	def arrange
+		@allotment = Allotment.find(params[:allotment_id])
+		if @allotment.update_attribute :row_order_position, params[:order_position].to_i
+			respond_to do |format|
+				format.json{ render :json => @allotment }
+			end
+		end
+	end
+
 	private
 	def find_allotable
 		params.each do |name, value|
