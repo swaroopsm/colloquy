@@ -15,10 +15,9 @@ class AllotmentsController < ApplicationController
 	def create
 		@allotment = Allotment.new
 		@period = Period.find(params[:allotment][:period_id])
-		@submission = Submission.find(params[:submission_id])
 		
 		@allotment.period = @period
-		@allotment.allotable = @submission
+		@allotment.allotable = find_allotable
 
 		@allotment.save
 
@@ -54,6 +53,16 @@ class AllotmentsController < ApplicationController
 		respond_to do |format|
 			format.js
 		end
+	end
+	
+	private
+	def find_allotable
+		params.each do |name, value|
+			if name =~ /(.+)_id$/
+				return $1.classify.constantize.find(value)
+			end
+		end
+		nil
 	end
 
 end
