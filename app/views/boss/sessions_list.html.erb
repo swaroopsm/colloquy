@@ -1,0 +1,14 @@
+<table id="datatable">
+<thead>
+	<th>Session</th>
+	<th>Number of Abstracts</th>
+</thead>
+<tbody>
+<% @periods.each do |p| %>
+	<tr>
+		<td><%= p.title %></td>
+		<td><%= p.submissions.size %></td>
+	</tr>
+<% end %>
+</tbody>
+
