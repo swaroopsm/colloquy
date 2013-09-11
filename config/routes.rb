@@ -26,6 +26,7 @@ Colloquy::Application.routes.draw do
   match "boss/sessions/list" => "boss#sessions_list", :as => "boss_sessions_list"
 	match "boss/sessions/:submission_id/new" => "allotments#new", :as => "new_sessions_allotment"  
 	match "boss/sessions/:submission_id" => "allotments#create", :as => "sessions_allotment", :method => :post  
+	match "boss/sessions/:period_id/submissions" => "periods#submissions", :as => "period_submissions"  
 	match "boss/allotments/:allotment_id/edit" => "allotments#edit", :as => "edit_sessions_allotment" 
 	match "boss/allotment/:allotment_id" => "allotments#update", :as => "allotment", :method => :put 
 	match "boss/allotments/:allotment_id" => "allotments#destroy", :as => "destroy_sessions_allotment", :method => :delete  
