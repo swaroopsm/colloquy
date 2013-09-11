@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130915083654) do
+ActiveRecord::Schema.define(:version => 20130915083655) do
 
   create_table "allotments", :force => true do |t|
     t.integer  "period_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20130915083654) do
     t.integer  "allotable_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.integer  "row_order"
   end
 
   create_table "attachments", :force => true do |t|
