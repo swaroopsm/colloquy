@@ -28,4 +28,13 @@ class AllotmentsController < ApplicationController
 
 	end
 
+	def edit
+		@allotment = Allotment.find(params[:allotment_id])
+		@periods = Period.all
+		
+		respond_to do |format|
+			format.js
+		end
+	end
+
 end
