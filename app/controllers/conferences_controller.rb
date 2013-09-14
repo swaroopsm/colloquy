@@ -49,11 +49,7 @@ class ConferencesController < ApplicationController
 
     respond_to do |format|
       if @conference.save
-        format.html { redirect_to @conference, notice: 'Conference was successfully created.' }
-        format.json { render json: @conference, status: :created, location: @conference }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @conference.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -64,12 +60,8 @@ class ConferencesController < ApplicationController
     @conference = Conference.find(params[:id])
 
     respond_to do |format|
-      if @conference.update_attributes(params[:conference])
-        format.html { redirect_to @conference, notice: 'Conference was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @conference.errors, status: :unprocessable_entity }
+      if @conference.update_attributes(params[:conference]) and @conference.save
+        format.js
       end
     end
   end
@@ -81,8 +73,7 @@ class ConferencesController < ApplicationController
     @conference.destroy
 
     respond_to do |format|
-      format.html { redirect_to conferences_url }
-      format.json { head :no_content }
+      format.js
     end
   end
 

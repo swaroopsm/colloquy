@@ -1,6 +1,5 @@
 <% if @workshop.errors.any? %>
-	alert(" <%= @workshop.errors.full_messages.first %>");
+	message("error"," <%= @workshop.errors.full_messages.first %>");
 <% else %>
-	alert("Workshop has been created successfully!");
-	location.reload();
+	message("success","Workshop has been created successfully!");
 <% end %>

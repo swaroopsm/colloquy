@@ -1,0 +1,31 @@
+<p class="instruction">
+	Click on the title link below to edit.
+</p>
+
+<table id="datatable">
+	<thead>
+		 <tr>
+		    <th>Title</th>
+		    <th>Description</th>
+		    <th>Start date</th>
+		    <th>Number of days</th>
+		    <th>Venue</th>
+		    <th>Active</th>
+		    <th>Actions</th>
+		  </tr>
+	</thead>
+	<tbody>
+		<% @conferences.each do |conference| %>
+	  <tr>
+	    <td><%= link_to conference.title, edit_conference_path(conference), :remote => true %></td>
+	    <td><%= conference.description %></td>
+	    <td><%= conference.start_date %></td>
+	    <td><%= conference.number_of_days %></td>
+	    <td><%= conference.venue %></td>
+	    <td><%= conference.active %></td>
+	    <td><%= link_to 'Edit', edit_conference_path(conference), :remote => true %>
+	    <%= link_to 'Destroy', conference, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true %></td>
+	  </tr>
+<% end %>
+	</tbody>
+</table>

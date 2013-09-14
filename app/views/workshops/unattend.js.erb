@@ -1,6 +1,5 @@
 <% if @workshop_attendee[0].errors.any? -%>
-	alert(" <%= @workshop_attendee[0].errors.full_messages.first %>");
+	message("error"," <%= @workshop_attendee[0].errors.full_messages.first %>");
 <% else -%>
-	alert('You are no longer attending this workshop.');
-	location.reload();
+	message("success",'You are no longer attending this workshop.');
 <% end -%>
