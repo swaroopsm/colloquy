@@ -1,0 +1,43 @@
+<p class="instruction">
+	Click on the title link below to edit.
+</p>
+
+<table id="datatable">
+	<thead>
+		 <tr>
+		    <th>Title</th>
+		    <th>Presenter</th>
+		    <th>Conference</th>
+		    <th>Start time</th>
+		    <th>Session length (in minutes)</th>
+		    <th>Venue</th>
+		    <th></th>
+		  </tr>
+	</thead>
+	<tbody>
+		<% if @workshops.any? %>
+			<% @workshops.each do |workshop| %>
+			  <tr>
+			  	<%= form_for @schedule, :action => schedule_workshop_path(workshop), :remote => true do |f| %>
+				   <td><%= link_to workshop.title, edit_conference_workshop_path(@conference, workshop), :remote => true %></td>
+				    <td><%= workshop.presenter %></td>
+				    <td><%= workshop.conference.title %></td>
+				    <td><%= f.date_select :starttime %> | <%= f.time_select :starttime, :ignore_date => true, :ampm => true %></td>
+				    <td><%= f.number_field :minutes %></td>
+				    <td><%= f.text_field :venue %></td>
+				    <td><%= f.submit "Submit" %></td>
+			    <% end %>
+			  </tr>
+			<% end %>
+		<% else %>
+			<tr>
+				<td>No workshops yet!</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+	</tbody>
+	<% end %>
+</table>
