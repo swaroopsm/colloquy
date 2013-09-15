@@ -1,0 +1,5 @@
+<% if @schedule.errors.any? %>
+	message("error"," <%= @schedule.errors.full_messages.first %>");
+<% else %>
+	message("success","<%= @schedule.schedulable_type %> has been scheduled successfully!");
+<% end %>

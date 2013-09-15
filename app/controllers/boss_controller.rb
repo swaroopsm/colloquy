@@ -35,7 +35,7 @@ class BossController < ApplicationController
 
 	# schedule the workshop
 	def schedule_workshop
-		@workshop = Plenary.find(params[:workshop_id])
+		@workshop = Workshop.find(params[:workshop_id])
 		@schedule = Schedule.new
 	end
 
@@ -50,6 +50,10 @@ class BossController < ApplicationController
 		@schedule = Schedule.new
 	end
 
+	# list all the scheduled things
+	def schedules
+		@schedules = Schedule.all
+	end
 	
 	private
 
