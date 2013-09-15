@@ -1,7 +1,7 @@
 Colloquy::Application.routes.draw do
 
   resources :workshops
-  resources :schedules
+  
 
   # boss paths
   resources :boss, :only => [:index]
@@ -14,6 +14,8 @@ Colloquy::Application.routes.draw do
   match "boss/schedule/workshops" => "boss#schedule_workshops", :as => "schedule_workshops"
   match "boss/schedule/plenaries" => "boss#schedule_plenaries", :as => "schedule_plenaries"
   match "boss/schedule/workshop/:workshop_id" => "boss#schedule_workshop", :as => "schedule_workshop"
+  match "boss/schedule/plenary/:plenary_id" => "boss#schedule_plenary", :as => "schedule_plenary"
+
 
   resources :pagetypes
 
@@ -36,6 +38,13 @@ Colloquy::Application.routes.draw do
 
 
   devise_for :users
+
+    resources :plenaries do
+      resources :schedules
+    end
+    resources :workshops do
+      resources :schedules
+    end
 
   resources :conferences, :path => "" do
     resources :plenaries

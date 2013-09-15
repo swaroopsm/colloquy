@@ -35,21 +35,22 @@ class BossController < ApplicationController
 
 	# schedule the workshop
 	def schedule_workshop
-		@workshop = Workshop.find(params[:workshop_id])
-		@schedule = Schedule.new(params[:schedule])
-		@schedule.schedulable = @workshop
-
-		if @schedule.save
-			respond_to do |format|
-				format.js 
-			end
-		end
+		@workshop = Plenary.find(params[:workshop_id])
+		@schedule = Schedule.new
 	end
 
+	# list plenaries for scheduling
 	def schedule_plenaries
 		@plenaries = Plenary.all
 	end
 
+	# schedule the plenary
+	def schedule_plenary
+		@plenary = Plenary.find(params[:plenary_id])
+		@schedule = Schedule.new
+	end
+
+	
 	private
 
 	def onlyboss
