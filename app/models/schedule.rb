@@ -2,6 +2,7 @@ class Schedule < ActiveRecord::Base
   attr_accessible :minutes, :starttime, :venue, :day
 
   belongs_to :schedulable, :polymorphic => true
+  belongs_to :conference
 	
 	validates_presence_of	:day
 	validates_presence_of	:starttime

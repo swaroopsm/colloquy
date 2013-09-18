@@ -1,6 +1,7 @@
 class SchedulesController < ApplicationController
 
 	def create
+		@schedule.conference = Conference.active
 		@schedule = Schedule.new(params[:schedule])
 		@schedule.schedulable = find_schedulable
 
