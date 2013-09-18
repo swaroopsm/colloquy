@@ -17,11 +17,11 @@
 			<% @schedules.each do |schedule| %>
 			  <tr>
 			  	<td><%= link_to schedule.schedulable.title, edit_conference_workshop_path(schedule.schedulable.conference, schedule.schedulable), :remote => true %></td>
-			   	<td><%= schedule.schedulable_type %></td>
+			   	<td><%= schedule.schedulable.class.name == 'Period' ? "Session" : schedule.schedulable_type %></td>
 			    <td><%= schedule.schedulable.title %></td>
-			    <td><%= schedule.schedulable.presenter %></td>
+			    <td><%= schedule.schedulable.class.name == 'Period' ? "N/A" : schedule.schedulable.presenter %></td>
 			    <td><%= schedule.day %></td>
-			    <td><%= schedule.starttime.strftime("%H : %M") %></td>
+			    <td><%= schedule.starttime.strftime("%I : %M %p") %></td>
 			    <td><%= schedule.minutes %></td>
 			    <td><%= schedule.venue%></td>
 			    <td>
