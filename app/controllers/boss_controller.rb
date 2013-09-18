@@ -70,6 +70,12 @@ class BossController < ApplicationController
 		@periods = Period.all
 	end
 	
+	# schedule the plenary
+	def schedule_period
+		@period = Period.find(params[:period_id])
+		@schedule = Schedule.new
+	end
+
 	# list all the scheduled things
 	def schedules
 		@schedules = Schedule.includes(:schedulable).all
