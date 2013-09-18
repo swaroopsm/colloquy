@@ -4,7 +4,9 @@
     <th>Attendee</th>
     <th>Average Conservation Score</th>
     <th>Average Science Score</th>
-    <th>Assigned Reviewers</th>
+		<th>Assigned Reviewers</th>
+		<th>Bursary</th>
+		<th>Reason for Bursary</th>
     <th>Approval Status</th>
     <th>Actions</th>
   </thead>
@@ -31,7 +33,11 @@
       <% s.reviewers.each do |r| %>
         <%= r.user.first_name %> <%= r.user.last_name %>,
       <% end %>
-      </td>
+			</td>
+			<td>
+				<%= bursary_status(s.bursary_for) %>
+			</td>
+			<td><%= s.bursary_why.empty? ? "N/A" : s.bursary_why %></td>
       <td>
       <%= "Talk" if s.approved == 1 %>
       <%= "Poster" if s.approved == 2 %>
