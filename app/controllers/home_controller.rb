@@ -11,7 +11,7 @@ class HomeController < ApplicationController
 	end
 
 	def schedule
-	
+		@schedules = Schedule.where(:conference_id => @conference).order(:day,:starttime).includes(:schedulable).group_by{ |s| s[:day] }
 	end
 
   private

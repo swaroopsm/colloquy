@@ -1,8 +1,8 @@
 class SchedulesController < ApplicationController
 
 	def create
-		@schedule.conference = Conference.active
 		@schedule = Schedule.new(params[:schedule])
+		@schedule.conference = Conference.active
 		@schedule.schedulable = find_schedulable
 
 		# render :text => find_schedulable

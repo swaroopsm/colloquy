@@ -1,0 +1,32 @@
+<h1>Schedule</h1>
+
+
+<br />
+<% if @schedules.any? -%>
+
+	<% @schedules.each do |s| %>
+		<div class="pageview">
+		<div class="plenary yellowback">Day <%= s[0] %> </div><br>
+		<table>
+			<strong><% s[1].each do |schedule| %></strong>
+				<tr>
+					<td style="width: 80px;"><%= schedule.starttime.strftime("%I:%M %p") %></td>
+					<td style="width: 100px;"><%= schedule.schedulable_type == 'Period' ? "Session(#{schedule.schedulable.title})" : schedule.schedulable.class.name %></td>
+					<td style="min-width: 100px;"><%= schedule.venue %></td>
+						<% unless schedule.schedulable.instance_of? Period %>
+							<td><%= link_to schedule.schedulable.title, schedulable_path(@conference, schedule.schedulable) %></td>
+						<% else %>
+							<td colspan="<%= schedule.schedulable.submissions.size %>">
+							<% schedule.schedulable.submissions.order(:row_order).includes(:allotable).each do |sub| %>
+								<%= link_to sub.allotable.title, schedulable_path(@conference, sub.allotable) %> <hr>
+							<% end %>
+						</td>
+						<% end %>
+					</td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+	<% end %>
+
+<% end -%>
