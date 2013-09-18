@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130915083655) do
+ActiveRecord::Schema.define(:version => 20130918092312) do
 
   create_table "allotments", :force => true do |t|
     t.integer  "period_id"
@@ -159,7 +159,10 @@ ActiveRecord::Schema.define(:version => 20130915083655) do
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
     t.integer  "day"
+    t.integer  "conference_id"
   end
+
+  add_index "schedules", ["conference_id"], :name => "index_schedules_on_conference_id"
 
   create_table "scores", :force => true do |t|
     t.integer  "submission_id"
