@@ -32,6 +32,15 @@ class SchedulesController < ApplicationController
 		end
 	end
 
+	def update
+		@schedule = Schedule.find(params[:id])
+		@schedule.update_attributes(params[:schedule])
+
+		respond_to do |format|
+			format.js
+		end
+	end
+
 	private
 	def find_schedulable
 		params.each do |name, value|
