@@ -1,0 +1,21 @@
+<%= form_for [@schedule.schedulable, @schedule], :remote => true do |f| %>
+	<p>
+		<%= f.label "Start time" %>
+		<%= f.time_select :starttime %>
+	</p>
+	<p>
+		<%= f.label :day %>
+		<%= f.number_field :day %>
+	</p>
+	<p>
+		<%= f.label "Session length (in minutes)" %>
+		<%= f.number_field :minutes %>
+	</p>
+	<p>
+		<%= f.label "Venue" %>
+		<%= f.text_field :venue %>
+	</p>
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>

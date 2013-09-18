@@ -39,6 +39,8 @@ Colloquy::Application.routes.draw do
   match "boss/schedule/workshop/:workshop_id" => "boss#schedule_workshop", :as => "schedule_workshop"
   match "boss/schedule/plenary/:plenary_id" => "boss#schedule_plenary", :as => "schedule_plenary"
   match "boss/schedule/session/:period_id" => "boss#schedule_period", :as => "schedule_session"
+  match "boss/schedule/:id/edit" => "schedules#edit", :as => "edit_schedule"
+  match "boss/schedule/:id" => "schedules#update", :as => "update_schedule", :method => :put
   match "boss/schedules" => "boss#schedules", :as => "boss_schedules"
   match "boss/sendemailtoattendees" => "boss#sendemailtoattendees", :as => "send_email_attendees", :method => :post
   match "boss/emailform" => "boss#emailform", :as => "boss_email_attendees"

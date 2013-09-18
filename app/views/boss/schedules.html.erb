@@ -9,7 +9,8 @@
 		    <th>Start time</th>
 		    <th>Session Length (in minutes)</th>
 		    <th>Venue</th>
-		    <th>Seats Left</th>
+				<th>Seats Left</th>
+				<th>Actions</th>
 		  </tr>
 	</thead>
 	<tbody>
@@ -30,7 +31,10 @@
 						<% else -%>
 							N/A
 			    	<% end -%>
-			    </td>
+					</td>
+					<td>
+						<%= link_to "Edit", edit_schedule_path(schedule), :remote => true %> <%= link_to "Remove" %>
+					</td>
 			  </tr>
 			<% end %>
 		<% else %>
