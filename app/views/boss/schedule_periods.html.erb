@@ -1,0 +1,22 @@
+<p class="instruction">
+  Click on the title link below to edit.
+</p>
+
+<table id="datatable">
+  <thead>
+    <tr>
+      <th>Session Name</th>
+      <th>Conference</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @periods.each do |p| %>
+      <tr>
+        <td><%= link_to p.title, edit_conference_period_path(p.conference, p), :remote=>true  %></td>
+        <td><%= p.conference.title %></td>
+        <td><%= link_to "Schedule", schedule_session_path(p), :remote => true %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

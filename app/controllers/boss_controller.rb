@@ -65,6 +65,11 @@ class BossController < ApplicationController
 		@schedule = Schedule.new
 	end
 
+	# list sessions for scheduling
+	def schedule_periods
+		@periods = Period.all
+	end
+	
 	# list all the scheduled things
 	def schedules
 		@schedules = Schedule.includes(:schedulable).all
