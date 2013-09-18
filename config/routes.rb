@@ -69,6 +69,10 @@ Colloquy::Application.routes.draw do
     resources :schedules
   end
 
+  resources :periods, :path => :sessions do
+    resources :schedules
+  end
+
   # resources :submissions, :only => [:new, :create]
   resources :attachments, :only => [:update, :destroy, :edit, :index]
 
