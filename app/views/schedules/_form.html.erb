@@ -1,10 +1,10 @@
-<%
-if @plenary
-	@main_action = @plenary
-elsif @workshop
-	@main_action = @workshop
-end
- %>
+<% if @plenary %>
+	<% @main_action = @plenary %>
+<% elsif @workshop %>
+	<% 	@main_action = @workshop %>
+<% else %>
+	<% @main_action = @period %>
+<% end %>
 <%= form_for [@main_action, Schedule.new], :remote => true do |f| %>
 	<p>
 		<%= f.label "Start time" %>
