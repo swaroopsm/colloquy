@@ -19,6 +19,9 @@
 					<li><%= link_to "Workshops", conference_workshops_path(@conference) %></li>
 					<li><%= link_to "Talks", conference_talks_path(@conference)  %></li>
 					<li><%= link_to "Posters", conference_posters_path(@conference)  %></li>
+					<% if can? :manage, Page %>
+						<li><%= link_to "Real Schedule", conference_schedule_path(@conference) %></li>
+					<% end %>
 				</ul>
 		</li>
 
