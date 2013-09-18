@@ -6,7 +6,7 @@ module ApplicationHelper
 		elsif s.instance_of? Plenary
 			conference_plenary_path(conf, s)
 		else
-			conference_submission_path(conf, s)
+			conference_period_path(conf, s)
 		end
 	end
 

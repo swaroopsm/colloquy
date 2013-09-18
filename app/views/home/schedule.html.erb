@@ -11,17 +11,15 @@
 			<strong><% s[1].each do |schedule| %></strong>
 				<tr>
 					<td style="width: 80px;"><%= schedule.starttime.strftime("%I:%M %p") %></td>
-					<td style="width: 100px;"><%= schedule.schedulable_type == 'Period' ? "Session(#{schedule.schedulable.title})" : schedule.schedulable.class.name %></td>
-					<td style="min-width: 100px;"><%= schedule.venue %></td>
+					<td style="width: 120px;"><%= schedule.schedulable_type == 'Period' ? "Session(#{schedule.schedulable.title})" : schedule.schedulable.class.name %></td>
+					<td style="width: 150px;"><%= schedule.venue %></td>
+						<td>
 						<% unless schedule.schedulable.instance_of? Period %>
-							<td><%= link_to schedule.schedulable.title, schedulable_path(@conference, schedule.schedulable) %></td>
+							<%= link_to schedule.schedulable.title, schedulable_path(@conference, schedule.schedulable) %>
 						<% else %>
-							<td colspan="<%= schedule.schedulable.submissions.size %>">
-							<% schedule.schedulable.submissions.order(:row_order).includes(:allotable).each do |sub| %>
-								<%= link_to sub.allotable.title, schedulable_path(@conference, sub.allotable) %> <hr>
-							<% end %>
-						</td>
+							<%= link_to schedule.schedulable.title, schedulable_path(@conference, schedule.schedulable), :remote => true %>
 						<% end %>
+					</td>
 					</td>
 				</tr>
 			<% end %>
