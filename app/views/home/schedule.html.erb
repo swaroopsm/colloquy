@@ -11,7 +11,7 @@
 			<strong><% s[1].each do |schedule| %></strong>
 				<tr>
 					<td style="width: 80px;"><%= schedule.starttime.strftime("%I:%M %p") %></td>
-					<td style="width: 120px;"><%= schedule.schedulable_type == 'Period' ? "Session(#{schedule.schedulable.title})" : schedule.schedulable.class.name %></td>
+					<td style="width: 120px;"><%= schedule.schedulable_type == 'Period' ? "Session" : schedule.schedulable.class.name %></td>
 					<td style="width: 150px;"><%= schedule.venue %></td>
 						<td>
 						<% unless schedule.schedulable.instance_of? Period %>

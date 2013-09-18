@@ -1,0 +1,19 @@
+<h1>Talks/Posters for Session<%= @period.title %></h1>
+<hr>
+
+<table>
+	<thead>
+		<th>Abstract</th>
+		<th>Type</th>
+		<th>Presenter</th>
+	</thead>
+	<tbody>
+		<% @submissions.each do |s| %>
+			<tr>
+				<td><%= link_to s.allotable.title, conference_submission_path(s.allotable) %></td>
+				<td><%= approval_status s.allotable.approved %></td>
+				<td><%= s.allotable.user.full_name %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
