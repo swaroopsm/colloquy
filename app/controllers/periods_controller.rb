@@ -18,10 +18,10 @@ class PeriodsController < ApplicationController
   # GET /periods/1.json
   def show
     @period = Period.find(params[:id])
+    @submissions = Allotment.where(:period_id => @period).order(:row_order).includes({ :allotable => :user })
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @period }
+      format.js
     end
   end
 
