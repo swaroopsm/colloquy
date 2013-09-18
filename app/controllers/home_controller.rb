@@ -10,6 +10,10 @@ class HomeController < ApplicationController
 
 	end
 
+	def schedule
+	
+	end
+
   private
   def getallextras
     @xpagecats = Pagecat.all
