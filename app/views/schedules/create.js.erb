@@ -1,5 +1,9 @@
 <% if @schedule.errors.any? %>
 	message("error"," <%= @schedule.errors.full_messages.first %>");
 <% else %>
-	message("success","<%= @schedule.schedulable_type %> has been scheduled successfully!");
+	<% if @schedule.schedulable_type.is_a? Period %>
+		message("success","Session has been scheduled successfully!");
+	<% else %>
+		message("success","<%= @schedule.schedulable_type %> has been scheduled successfully!");
+	<% end %>
 <% end %>
