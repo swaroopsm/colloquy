@@ -73,11 +73,12 @@ class PeriodsController < ApplicationController
   # DELETE /periods/1.json
   def destroy
     @period = Period.find(params[:id])
+    @submissions = Allotment.where(:period_id => @period)
+    @submissions.delete_all
     @period.destroy
 
     respond_to do |format|
-      format.html { redirect_to periods_url }
-      format.json { head :no_content }
+      format.js
     end
 	end
 
