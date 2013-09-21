@@ -7,9 +7,9 @@
 <tbody>
 <% @periods.each do |p| %>
 	<tr>
-		<td><%= p.title %></td>
+		<td><%= link_to p.title, edit_conference_period_path(@conference, p), :remote => true %></td>
 		<td><%= p.submissions.size %></td>
-		<td><%= link_to "Arrange Abstracts", period_submissions_path(p), :remote => true %></td>
+		<td><%= link_to "Arrange Abstracts", period_submissions_path(p), :remote => true %> | <%= link_to "Unassign Abstracts & Remove Session", conference_period_path(@conference, p), :method => 'delete', :remote => true, :data => { :confirm => "Are you sure?" } %></td>
 	</tr>
 <% end %>
 </tbody>
