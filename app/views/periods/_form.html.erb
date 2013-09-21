@@ -12,8 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label :title %>
     <%= f.text_field :title %>
+	</div>
+	<br>
+	<div class="field">
+		<%= f.label :category %>
+		<%= f.select :category, period_categories %>
+	</div>
+	<br>
+	<div class="field">
+		<%= f.label :content %>
+		<%= f.text_area :content, :rows => "4" %>
 	</div>
 	<br>
   <div class="actions">
