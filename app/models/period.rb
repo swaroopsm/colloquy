@@ -8,5 +8,6 @@ class Period < ActiveRecord::Base
 
 	belongs_to	:conference
 	has_many		:submissions, :class_name => "Allotment", :foreign_key => :period_id
+	has_one			:schedule, :as => :schedulable
 
 end
