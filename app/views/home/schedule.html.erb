@@ -9,6 +9,7 @@
 		<div class="plenary yellowback">Day <%= s[0] %> </div><br>
 		<table>
 			<strong><% s[1].each do |schedule| %></strong>
+				<% unless schedule.schedulable.nil? %>
 				<tr>
 					<td style="width: 80px;"><%= schedule.starttime.strftime("%I:%M %p") %></td>
 					<td style="width: 120px;"><%= schedule.schedulable_type == 'Period' ? "Session" : schedule.schedulable.class.name %></td>
@@ -22,6 +23,7 @@
 					</td>
 					</td>
 				</tr>
+			<% end %>
 			<% end %>
 		</table>
 	</div>

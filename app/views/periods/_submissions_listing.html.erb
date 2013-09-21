@@ -1,6 +1,6 @@
+<% unless @period.category == Period::BREAK_SESSION %>
 <h1>Talks/Posters for Session<%= @period.title %></h1>
 <hr>
-
 <table>
 	<thead>
 		<th>Abstract</th>
@@ -17,3 +17,10 @@
 		<% end %>
 	</tbody>
 </table>
+<% else %>
+<h1><%= @period.title %></h1>
+<hr>
+	<div class="plenary yellowback"><%= @period.schedule.starttime.strftime("%I:%M %p") %> to <%= (@period.schedule.starttime + @period.schedule.minutes * 60).strftime("%I:%M %p") %></div>
+	<br><br>
+	<p><%= @period.content %></p>
+<% end %>
