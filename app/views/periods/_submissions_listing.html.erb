@@ -18,9 +18,10 @@
 	</tbody>
 </table>
 <% else %>
-<h1><%= @period.title %></h1>
-<hr>
-	<div class="plenary yellowback"><%= @period.schedule.starttime.strftime("%I:%M %p") %> to <%= (@period.schedule.starttime + @period.schedule.minutes * 60).strftime("%I:%M %p") %></div>
-	<br><br>
+	<h1>
+		<%= @period.title %>
+		<div class="plenary yellowback"><%= @period.schedule.starttime.strftime("%I:%M %p") %> to <%= (@period.schedule.starttime + @period.schedule.minutes * 60).strftime("%I:%M %p") %></div>
+	</h1>
+	<hr>
 	<p><%= @period.content %></p>
 <% end %>
