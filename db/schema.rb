@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130918092312) do
+ActiveRecord::Schema.define(:version => 20130921162052) do
 
   create_table "allotments", :force => true do |t|
     t.integer  "period_id"
@@ -124,6 +124,8 @@ ActiveRecord::Schema.define(:version => 20130918092312) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.integer  "conference_id"
+    t.integer  "category"
+    t.text     "content"
   end
 
   create_table "plenaries", :force => true do |t|
