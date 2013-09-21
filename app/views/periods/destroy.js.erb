@@ -1,0 +1,10 @@
+<% if @period.errors.any? -%>
+  html = "";
+  <% @period.errors.full_messages.each do |error| -%>
+    html += '<%= error %>. '
+  <% end -%>
+  message("error", html);
+<% else -%>
+  message("success", "Session has been removed!");
+  modalclose();
+<% end -%>
