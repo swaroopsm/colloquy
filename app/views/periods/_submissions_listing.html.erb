@@ -23,5 +23,5 @@
 		<div class="plenary yellowback"><%= @period.schedule.starttime.strftime("%I:%M %p") %> to <%= (@period.schedule.starttime + @period.schedule.minutes * 60).strftime("%I:%M %p") %></div>
 	</h1>
 	<hr>
-	<p><%= @period.content %></p>
+	<p><%= raw @period.content %></p>
 <% end %>
